@@ -1,0 +1,3234 @@
+-- [AegisVM Fast Minify v3.4]
+-- Protected by AegisVM - Fast Build
+-- [AEGIS-VM CHECKSUM]: 0x8596fb46
+-- [SECURITY LEVEL]: FAST
+local _AegisVM_Env = (getfenv and getfenv()) or _ENV or _G
+
+local function _0x_dec_24(_tbl, _k)
+    local _out = {}
+    for _i = 1, #_tbl do
+        _out[_i] = string.char((_tbl[_i] ~ (_k + (_i % 13))) % 256)
+    end
+    return table.concat(_out)
+end
+
+
+
+
+
+
+
+local _0xe4e61 = game:GetService(_0x_dec_24({117,74,70,81,76,88,88}, 36))
+local _0x1093b2 = game:GetService(_0x_dec_24({113,81,66,77,71,121,78,94,91,71,76,85}, 36))
+local _0x12d903 = game:GetService(_0x_dec_24({112,85,66,90,96,68,91,89,89,125,74,66,82,76,69,66}, 36))
+local _0x151e54 = game:GetService(_0x_dec_24({109,82,83,88,122,79,89,90,68,77,74}, 36))
+
+local _0x1763a5 = _0xe4e61.LocalPlayer
+local _0x19a8f6 = workspace.CurrentCamera
+
+
+
+
+
+local function _0x1bee47()
+    if gethui then
+        return gethui()
+    end
+
+    if syn and syn.protect_gui then
+        local _0x1e3398 = Instance.new(_0x_dec_24({118,69,85,77,76,68,108,89,68}, 36))
+        syn.protect_gui(_0x1e3398)
+        _0x1e3398.Parent = game:GetService(_0x_dec_24({102,73,85,77,110,95,66}, 36))
+        return _0x1e3398
+    end
+
+    return game:GetService(_0x_dec_24({102,73,85,77,110,95,66}, 36))
+end
+
+local _0x2078e9 = _0x1bee47()
+
+pcall(function()
+    local _0x22be3a = _0x2078e9:FindFirstChild(_0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,101,108,121,113,27}, 36))
+    if _0x22be3a then
+        _0x22be3a:Destroy()
+    end
+end)
+
+
+
+
+
+local _0x25038b = _0x_dec_24({77,82,83,88,90,16,4,3,74,75,65,30,84,74,74,75,65,71,75,95,69,66,64,92,30,69,76,9,81,25}, 36)
+local _0x2748dc = ""
+local _0x298e2d = ""
+local _0x2bd37e = _0x_dec_24({102,78,70,92}, 36)
+local _0x2e18cf = _0x_dec_24({104,71,78,70,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,98}, 36)
+
+local _0x305e110 = {}
+local _0x32a3611 = 0
+local _0x34e8b12 = 0
+local _0x372e013 = 0
+local _0x07f514 = 0
+local _0x2c4a15 = ""
+local _0x509f16 = false
+local _0x74f417 = false
+local _0x994918 = false
+
+
+local _0xbd9e19 = false
+local _0xe1f31a = false
+local _0x106481b = 12
+local _0x12a9d1c = 8
+local _0x14ef21d = 0
+local _0x173471e = {}
+local _0x1979c1f = {}
+
+local _0x1bbf120 = {
+    _0x_dec_24({74,86,66,70,72,67,4,75,93,90,2,5,10,17,11,73,73,71,69}, 36),
+    _0x_dec_24({74,86,66,70,72,67,4,75,93,90,2,4,75,8,75,78,70,64}, 36),
+    _0x_dec_24({74,86,66,70,72,67,4,75,93,90,2,95,87,86,11,21,24,75}, 36),
+}
+
+
+
+
+
+local _0x1e04621 = {
+    Background = Color3.fromRGB(9, 9, 12),
+    Background2 = Color3.fromRGB(14, 14, 18),
+    _0x1da6053 = Color3.fromRGB(15, 15, 20),
+    Card = Color3.fromRGB(22, 22, 28),
+    Card2 = Color3.fromRGB(29, 29, 37),
+    Accent = Color3.fromRGB(119, 92, 255),
+    Accent2 = Color3.fromRGB(161, 128, 255),
+    Text = Color3.fromRGB(245, 245, 248),
+    SubText = Color3.fromRGB(151, 151, 165),
+    Border = Color3.fromRGB(46, 46, 58),
+    UserBubble = Color3.fromRGB(38, 38, 48),
+    AIBubble = Color3.fromRGB(23, 23, 29),
+    Code = Color3.fromRGB(10, 10, 14),
+    Green = Color3.fromRGB(70, 220, 150),
+    Red = Color3.fromRGB(255, 92, 110),
+    Yellow = Color3.fromRGB(255, 200, 82),
+    Cyan = Color3.fromRGB(78, 210, 255),
+}
+
+
+
+
+
+local function _0x2049b22(_0x2541c11f, _0x27871120)
+    local _0x228f023 = Instance.new(_0x2541c11f)
+    for key, _0x2570f106 in pairs(_0x27871120 or {}) do
+        _0x228f023[key] = _0x2570f106
+    end
+    return _0x228f023
+end
+
+local function _0x24d4524(_0x228f023, _0x29cc6121)
+    local _0x2719a25 = Instance.new(_0x_dec_24({112,111,100,71,91,68,78,94}, 36))
+    _0x2719a25.CornerRadius = UDim.new(0, _0x29cc6121 or 10)
+    _0x2719a25.Parent = _0x228f023
+    return _0x2719a25
+end
+
+local function _0x295ef26(_0x228f023, _0x2c11b122, _0x2e570123, _0x309c5124)
+    local _0x2ba4427 = Instance.new(_0x_dec_24({112,111,116,92,91,69,64,73}, 36))
+    _0x2ba4427.Color = _0x2c11b122 or _0x1e04621.Border
+    _0x2ba4427.Thickness = _0x2e570123 or 1
+    _0x2ba4427.Transparency = _0x309c5124 or 0
+    _0x2ba4427.Parent = _0x228f023
+    return _0x2ba4427
+end
+
+local function _0x2de9928(_0x228f023, _0x32e1a125, _0x3526f126, _0x376c4127, _0x0bd9128)
+    local _0x302ee29 = TweenInfo.new(
+        _0x32e1a125 or 0.2,
+        _0x376c4127 or Enum.EasingStyle.Quart,
+        _0x0bd9128 or Enum.EasingDirection.Out
+    )
+    local _0x327432a = _0x1093b2:Create(_0x228f023, _0x302ee29, _0x3526f126)
+    _0x327432a:Play()
+    return _0x327432a
+end
+
+local function _0x34b982b(_0x182f7ce)
+    return tostring(_0x182f7ce or ""):gsub(_0x_dec_24({123,3,120,24,81,18,26,78,28,75,31,27}, 36), ""):gsub(_0x_dec_24({0,121,23,80,17,27,73,29,72,30,4,20}, 36), "")
+end
+
+local function _0x36fed2c()
+    if syn and syn.request then
+        return syn.request
+    end
+    if request then
+        return request
+    end
+    if http_request then
+        return http_request
+    end
+    if http and http.request then
+        return http.request
+    end
+    return nil
+end
+
+local function _0x05022d(_0x182f7ce)
+    pcall(function()
+        if setclipboard then
+            setclipboard(_0x182f7ce)
+        elseif toclipboard then
+            toclipboard(_0x182f7ce)
+        elseif set_clipboard then
+            set_clipboard(_0x182f7ce)
+        end
+    end)
+end
+
+local function _0x29572e(_0x228f023)
+    if _0x228f023 and _0x228f023.Parent then
+        _0x228f023:Destroy()
+    end
+end
+
+
+
+
+
+local _0x4dac2f = _0x2049b22(_0x_dec_24({118,69,85,77,76,68,108,89,68}, 36), {
+    Name = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,101,108,121,113,27}, 36),
+    Parent = _0x2078e9,
+    ResetOnSpawn = false,
+    IgnoreGuiInset = true,
+    ZIndexBehavior = Enum.ZIndexBehavior.Sibling,
+})
+
+local _0x720130 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x4dac2f,
+    Name = _0x_dec_24({106,80,66,90,69,75,82,96,76,87,74,66}, 36),
+    Size = UDim2.fromScale(1, 1),
+    BackgroundTransparency = 1,
+    BorderSizePixel = 0,
+    ZIndex = 900,
+})
+
+
+
+
+
+local function _0x965631()
+    local _0xbaab32 = _0x19a8f6.ViewportSize
+    local _0xdf0033 = math.clamp(_0xbaab32.X - 24, 340, 760)
+    local _0x1035534 = math.clamp(_0xbaab32.Y - 220, 320, 370)
+    return _0xdf0033, _0x1035534
+end
+
+
+
+
+
+local _0x127aa35 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x4dac2f,
+    Name = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,116,76,74,75}, 36),
+    AnchorPoint = Vector2.new(0.5, 1),
+    Size = UDim2.fromOffset(124, 44),
+    Position = UDim2.new(0.5, 0, 1, -18),
+    BackgroundColor3 = _0x1e04621.Background2,
+    BorderSizePixel = 0,
+    Active = true,
+    ZIndex = 500,
+})
+
+_0x24d4524(_0x127aa35, 999)
+_0x295ef26(_0x127aa35, _0x1e04621.Accent, 1.25, 0.08)
+
+_0x2049b22(_0x_dec_24({112,111,96,90,72,78,66,73,67,90}, 36), {
+    Parent = _0x127aa35,
+    Rotation = 120,
+    Color = ColorSequence.new({
+        ColorSequenceKeypoint.new(0, Color3.fromRGB(41, 41, 52)),
+        ColorSequenceKeypoint.new(1, Color3.fromRGB(13, 13, 17)),
+    }),
+})
+
+local _0x14bff36 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x127aa35,
+    Size = UDim2.fromScale(1, 1),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({117,6,7,8,121,69,71,64,68,64,78,68,77,74,72,84}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 12,
+    Font = Enum.Font.GothamBold,
+    AutoButtonColor = false,
+    ZIndex = 501,
+})
+
+local _0x1705437 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x127aa35,
+    AnchorPoint = Vector2.new(1, 0.5),
+    Position = UDim2.new(1, -11, 0.5, 0),
+    Size = UDim2.fromOffset(7, 7),
+    BackgroundColor3 = _0x1e04621.Green,
+    BorderSizePixel = 0,
+    ZIndex = 502,
+})
+_0x24d4524(_0x1705437, 999)
+
+
+
+
+
+local _0x194a938 = false
+local _0x1b8fe39 = false
+local _0x1dd533a = nil
+local _0x201a83b = nil
+local _0x225fd3c = nil
+local _0x24a523d = nil
+local _0x26ea73e = nil
+local _0x292fc3f = nil
+
+local function _0x2b75140(_0x302e129, _0x548312a)
+    local _0xbaab32 = _0x19a8f6.ViewportSize
+    local _0x2dba641 = _0x127aa35.AbsoluteSize
+    local _0x2fffb42 = math.max(8, _0xbaab32.X - _0x2dba641.X - 8)
+    local _0x3245043 = math.max(8, _0xbaab32.Y - _0x2dba641.Y - 8)
+    return math.clamp(_0x302e129, 8, _0x2fffb42), math.clamp(_0x548312a, 8, _0x3245043)
+end
+
+local function _0x348a544(_0x21d2487, _0x28a238a)
+    _0x21d2487, _0x28a238a = _0x2b75140(_0x21d2487, _0x28a238a)
+    _0x127aa35.Position = UDim2.fromOffset(
+        _0x21d2487 + (_0x127aa35.AbsoluteSize.X * _0x127aa35.AnchorPoint.X),
+        _0x28a238a + (_0x127aa35.AbsoluteSize.Y * _0x127aa35.AnchorPoint.Y)
+    )
+end
+
+local function _0x36cfa45()
+    if _0x292fc3f then
+        pcall(function()
+            _0x292fc3f:Cancel()
+        end)
+        _0x292fc3f = nil
+    end
+end
+
+local function _0x020f46(_0x78d812b)
+    if not _0x194a938 or not _0x1dd533a or not _0x201a83b then
+        return
+    end
+
+    local _0x266447 = _0x78d812b - _0x1dd533a
+    if math.abs(_0x266447.X) > 4 or math.abs(_0x266447.Y) > 4 then
+        _0x1b8fe39 = true
+    end
+
+    _0x348a544(
+        _0x201a83b.X + _0x266447.X,
+        _0x201a83b.Y + _0x266447.Y
+    )
+end
+
+local function _0x4ab948()
+    if not _0x194a938 then
+        return
+    end
+
+    _0x194a938 = false
+    _0x225fd3c = nil
+    _0x1dd533a = nil
+    _0x201a83b = nil
+
+    if _0x26ea73e then
+        _0x26ea73e:Disconnect()
+        _0x26ea73e = nil
+    end
+end
+
+_0x14bff36.InputBegan:Connect(function(_0x9d2d12c)
+    if _0x9d2d12c.UserInputType ~= Enum.UserInputType.MouseButton1
+    and _0x9d2d12c.UserInputType ~= Enum.UserInputType.Touch then
+        return
+    end
+
+    _0x36cfa45()
+
+    _0x194a938 = true
+    _0x1b8fe39 = false
+    _0x225fd3c = _0x9d2d12c
+    _0x1dd533a = _0x9d2d12c.Position
+    _0x201a83b = _0x127aa35.AbsolutePosition
+
+    if _0x26ea73e then
+        _0x26ea73e:Disconnect()
+    end
+
+    _0x26ea73e = _0x9d2d12c.Changed:Connect(function()
+        if _0x9d2d12c.UserInputState == Enum.UserInputState.End then
+            _0x4ab948()
+        end
+    end)
+end)
+
+_0x14bff36.InputChanged:Connect(function(_0x9d2d12c)
+    if _0x9d2d12c.UserInputType == Enum.UserInputType.MouseMovement
+    or _0x9d2d12c.UserInputType == Enum.UserInputType.Touch then
+        _0x225fd3c = _0x9d2d12c
+    end
+end)
+
+if _0x24a523d then
+    _0x24a523d:Disconnect()
+end
+
+_0x24a523d = _0x12d903.InputChanged:Connect(function(_0x9d2d12c)
+    if not _0x194a938 then
+        return
+    end
+
+    if _0x9d2d12c == _0x225fd3c
+    or _0x9d2d12c.UserInputType == Enum.UserInputType.MouseMovement
+    or _0x9d2d12c.UserInputType == Enum.UserInputType.Touch then
+        _0x020f46(_0x9d2d12c.Position)
+    end
+end)
+
+local function _0x6f0e49()
+    local _0x93634a = _0x1b8fe39
+    _0x1b8fe39 = false
+    return _0x93634a
+end
+
+
+
+
+
+local _0xb7b84b, _0xdc0d4c = _0x965631()
+
+local _0x100624d = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x4dac2f,
+    Name = _0x_dec_24({104,71,78,70}, 36),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    Size = UDim2.fromOffset(_0xb7b84b, _0xdc0d4c),
+    Position = UDim2.fromScale(0.5, 0.5),
+    BackgroundColor3 = _0x1e04621.Background,
+    BorderSizePixel = 0,
+    Visible = false,
+    ClipsDescendants = true,
+    Active = true,
+    ZIndex = 100,
+})
+_0x24d4524(_0x100624d, 15)
+_0x295ef26(_0x100624d, _0x1e04621.Border, 1)
+
+
+
+
+
+local _0x124b74e = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x100624d,
+    Size = UDim2.new(1, 0, 0, 46),
+    BackgroundColor3 = _0x1e04621.Background2,
+    BorderSizePixel = 0,
+    ZIndex = 101,
+})
+
+_0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x124b74e,
+    Position = UDim2.new(0, 0, 1, -2),
+    Size = UDim2.new(1, 0, 0, 2),
+    BackgroundColor3 = _0x1e04621.Accent,
+    BorderSizePixel = 0,
+    ZIndex = 102,
+})
+
+local _0x1490c4f = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x124b74e,
+    Position = UDim2.fromOffset(9, 8),
+    Size = UDim2.fromOffset(30, 30),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    ZIndex = 103,
+})
+_0x24d4524(_0x1490c4f, 9)
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x1490c4f,
+    Size = UDim2.fromScale(1, 1),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({117}, 36),
+    TextColor3 = _0x1e04621.Accent2,
+    TextSize = 17,
+    Font = Enum.Font.GothamBlack,
+    ZIndex = 104,
+})
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x124b74e,
+    Position = UDim2.fromOffset(48, 4),
+    Size = UDim2.new(1, -150, 0, 21),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,100,111}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 16,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 103,
+})
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x124b74e,
+    Position = UDim2.fromOffset(49, 24),
+    Size = UDim2.new(1, -150, 0, 14),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({102,74,66,73,71,10,70,67,79,71,67,85,4,82,73,85,67,90,90,74,79,72}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.Gotham,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 103,
+})
+
+local _0x16d6150 = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x124b74e,
+    AnchorPoint = Vector2.new(1, 0.5),
+    Position = UDim2.new(1, -51, 0.5, 0),
+    Size = UDim2.fromOffset(92, 24),
+    BackgroundColor3 = _0x1e04621.Card,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({234,6,7,102,102,10,96,105,116}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Center,
+    ZIndex = 104,
+})
+_0x24d4524(_0x16d6150, 8)
+_0x295ef26(_0x16d6150, _0x1e04621.Border, 1)
+
+local _0x191b651 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x124b74e,
+    AnchorPoint = Vector2.new(1, 0.5),
+    Position = UDim2.new(1, -10, 0.5, 0),
+    Size = UDim2.fromOffset(31, 31),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({242}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 20,
+    Font = Enum.Font.GothamBold,
+    AutoButtonColor = false,
+    ZIndex = 105,
+})
+_0x24d4524(_0x191b651, 9)
+
+
+
+
+
+local _0x1b60b52 = 138
+
+local _0x1da6053 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x100624d,
+    Position = UDim2.fromOffset(0, 46),
+    Size = UDim2.new(0, _0x1b60b52, 1, -46),
+    BackgroundColor3 = _0x1e04621.Sidebar,
+    BorderSizePixel = 0,
+    ZIndex = 101,
+})
+
+_0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+    Parent = _0x1da6053,
+    PaddingTop = UDim.new(0, 9),
+    PaddingLeft = UDim.new(0, 7),
+    PaddingRight = UDim.new(0, 7),
+})
+
+_0x2049b22(_0x_dec_24({112,111,107,65,90,94,103,77,84,65,90,68}, 36), {
+    Parent = _0x1da6053,
+    Padding = UDim.new(0, 4),
+    SortOrder = Enum.SortOrder.LayoutOrder,
+})
+
+local function _0x1feb554(_0x1461968, _0xc18212d)
+    local _0x2230a55 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+        Parent = _0x1da6053,
+        Name = _0x1461968 .. _0x_dec_24({113,71,69}, 36),
+        Size = UDim2.new(1, 0, 0, 33),
+        BackgroundColor3 = _0x1e04621.Card,
+        BorderSizePixel = 0,
+        Text = _0xc18212d .. _0x_dec_24({5,6}, 36) .. _0x1461968,
+        TextColor3 = _0x1e04621.SubText,
+        TextSize = 9,
+        Font = Enum.Font.GothamMedium,
+        AutoButtonColor = false,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        ZIndex = 105,
+    })
+    _0x24d4524(_0x2230a55, 9)
+    _0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+        Parent = _0x2230a55,
+        PaddingLeft = UDim.new(0, 10),
+    })
+    return _0x2230a55
+end
+
+local _0x2475f56 = _0x1feb554(_0x_dec_24({104,71,78,70}, 36), _0x_dec_24({237}, 36))
+local _0x26bb457 = _0x1feb554(_0x_dec_24({100,118,110}, 36), _0x_dec_24({227}, 36))
+local _0x2900958 = _0x1feb554(_0x_dec_24({104,71,73,73,78,79,70,73,67,90}, 36), _0x_dec_24({188}, 36))
+local _0x2b45e59 = _0x1feb554(_0x_dec_24({100,66,81,73,71,73,78}, 36), _0x_dec_24({3}, 36))
+
+
+
+
+
+local _0x2d8b35a = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x100624d,
+    Position = UDim2.fromOffset(_0x1b60b52, 46),
+    Size = UDim2.new(1, -_0x1b60b52, 1, -46),
+    BackgroundColor3 = _0x1e04621.Background,
+    BorderSizePixel = 0,
+    ZIndex = 101,
+})
+
+
+
+
+
+local _0x2fd085b = {}
+
+local function _0x3215d5c(_0x1461968, _0xe5d712e)
+    local page
+
+    if _0xe5d712e then
+        page = _0x2049b22(_0x_dec_24({118,69,85,71,69,70,66,66,74,104,93,81,73,64}, 36), {
+            Parent = _0x2d8b35a,
+            Name = _0x1461968,
+            Size = UDim2.fromScale(1, 1),
+            BackgroundTransparency = 1,
+            BorderSizePixel = 0,
+            Visible = false,
+            CanvasSize = UDim2.fromOffset(0, 0),
+            AutomaticCanvasSize = Enum.AutomaticSize.Y,
+            ScrollBarThickness = 3,
+            ScrollBarImageColor3 = _0x1e04621.Border,
+            ScrollingDirection = Enum.ScrollingDirection.Y,
+            Active = true,
+            ZIndex = 103,
+        })
+
+        _0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+            Parent = page,
+            PaddingBottom = UDim.new(0, 18),
+        })
+    else
+        page = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+            Parent = _0x2d8b35a,
+            Name = _0x1461968,
+            Size = UDim2.fromScale(1, 1),
+            BackgroundTransparency = 1,
+            BorderSizePixel = 0,
+            Visible = false,
+            ZIndex = 103,
+        })
+    end
+
+    _0x2fd085b[_0x1461968] = page
+    return page
+end
+
+local _0x345b25d = _0x3215d5c(_0x_dec_24({104,71,78,70,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,98}, 36), false)
+local _0x36a075e = _0x3215d5c(_0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,100,118,110}, 36), true)
+local _0x38e5c5f = _0x3215d5c(_0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,104,71,73,73,78,79,70,73,67,90}, 36), true)
+local _0x237160 = _0x3215d5c(_0x_dec_24({100,66,81,73,71,73,78}, 36), true)
+
+
+
+
+
+local SelectPage
+local ModelDropdown
+local CodeboxTextBox
+local TokenTotalValue
+local TokenBreakdown
+local ConnectionValue
+local ModelValue
+local RequestsValue
+local SessionTokensValue
+local AddMessage
+local SendMessage
+
+
+
+
+
+local ChatHeader = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x345b25d,
+    Position = UDim2.fromOffset(13, 10),
+    Size = UDim2.new(1, -26, 0, 38),
+    BackgroundTransparency = 1,
+    ZIndex = 104,
+})
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = ChatHeader,
+    Size = UDim2.new(1, -92, 0, 21),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({102,78,70,92,9,93,66,88,69,14,127,95,72,73,79,73,73,93,67,68,66,94}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 16,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 105,
+})
+
+local _0x47c661 = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = ChatHeader,
+    Position = UDim2.fromOffset(0, 20),
+    Size = UDim2.new(1, -92, 0, 14),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({119,67,70,76,80}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.Gotham,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 105,
+})
+
+local _0x6c1b62 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = ChatHeader,
+    AnchorPoint = Vector2.new(1, 0),
+    Position = UDim2.new(1, 0, 0, 1),
+    Size = UDim2.fromOffset(74, 30),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({14,6,105,77,94}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 9,
+    Font = Enum.Font.GothamMedium,
+    AutoButtonColor = false,
+    ZIndex = 106,
+})
+_0x24d4524(_0x6c1b62, 8)
+
+local _0x907063 = _0x2049b22(_0x_dec_24({118,69,85,71,69,70,66,66,74,104,93,81,73,64}, 36), {
+    Parent = _0x345b25d,
+    Position = UDim2.fromOffset(13, 51),
+    Size = UDim2.new(1, -26, 0, 28),
+    BackgroundTransparency = 1,
+    BorderSizePixel = 0,
+    CanvasSize = UDim2.fromOffset(0, 0),
+    AutomaticCanvasSize = Enum.AutomaticSize.X,
+    ScrollingDirection = Enum.ScrollingDirection.X,
+    ScrollBarThickness = 0,
+    Active = true,
+    ZIndex = 106,
+})
+
+local _0xb4c564 = {
+    {_0x_dec_24({102,78,70,92}, 36), _0x_dec_24({102,78,70,92}, 36)},
+    {_0x_dec_24({102,73,67,77}, 36), _0x_dec_24({102,73,67,77}, 36)},
+    {_0x_dec_24({99,79,95}, 36), _0x_dec_24({99,79,95}, 36)},
+    {_0x_dec_24({96,94,87,68,72,67,69}, 36), _0x_dec_24({96,94,87,68,72,67,69}, 36)},
+    {_0x_dec_24({100,111,7,108,76,92}, 36), _0x_dec_24({100,111,7,108,76,92}, 36)},
+}
+
+local _0xd91a65 = {}
+
+local function _0xfd6f66()
+    for modeName, _0x2230a55 in pairs(_0xd91a65) do
+        local _0x121c467 = modeName == _0x2bd37e
+        _0x2de9928(_0x2230a55, 0.15, {
+            BackgroundColor3 = _0x121c467 and _0x1e04621.Accent or _0x1e04621.Card,
+            TextColor3 = _0x121c467 and Color3.fromRGB(255, 255, 255) or _0x1e04621.SubText,
+        })
+    end
+end
+
+for index, _0x302ee29 in ipairs(_0xb4c564) do
+    local _0x1461968 = _0x302ee29[1]
+    local _0x2230a55 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+        Parent = _0x907063,
+        Position = UDim2.fromOffset((index - 1) * 63, 0),
+        Size = UDim2.fromOffset(56, 26),
+        BackgroundColor3 = _0x1461968 == _0x2bd37e and _0x1e04621.Accent or _0x1e04621.Card,
+        BorderSizePixel = 0,
+        Text = _0x1461968,
+        TextColor3 = _0x1461968 == _0x2bd37e and Color3.fromRGB(255, 255, 255) or _0x1e04621.SubText,
+        TextSize = 8,
+        Font = Enum.Font.GothamMedium,
+        AutoButtonColor = false,
+        ZIndex = 107,
+    })
+    _0x24d4524(_0x2230a55, 8)
+    _0xd91a65[_0x1461968] = _0x2230a55
+
+    _0x2230a55.MouseButton1Click:Connect(function()
+        _0x2bd37e = _0x1461968
+        _0xfd6f66()
+    end)
+end
+
+local _0x16a6e69 = _0x2049b22(_0x_dec_24({118,69,85,71,69,70,66,66,74,104,93,81,73,64}, 36), {
+    Parent = _0x345b25d,
+    Position = UDim2.fromOffset(13, 84),
+    Size = UDim2.new(1, -26, 1, -169),
+    BackgroundTransparency = 1,
+    BorderSizePixel = 0,
+    ScrollBarThickness = 3,
+    ScrollBarImageColor3 = _0x1e04621.Border,
+    CanvasSize = UDim2.fromOffset(0, 0),
+    AutomaticCanvasSize = Enum.AutomaticSize.Y,
+    Active = true,
+    ScrollingDirection = Enum.ScrollingDirection.Y,
+    ZIndex = 104,
+})
+
+_0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+    Parent = _0x16a6e69,
+    PaddingBottom = UDim.new(0, 12),
+})
+
+_0x2049b22(_0x_dec_24({112,111,107,65,90,94,103,77,84,65,90,68}, 36), {
+    Parent = _0x16a6e69,
+    Padding = UDim.new(0, 8),
+    SortOrder = Enum.SortOrder.LayoutOrder,
+})
+
+local _0x18ec36a = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x345b25d,
+    AnchorPoint = Vector2.new(0, 1),
+    Position = UDim2.new(0, 13, 1, -12),
+    Size = UDim2.new(1, -26, 0, 72),
+    BackgroundColor3 = _0x1e04621.Card,
+    BorderSizePixel = 0,
+    ZIndex = 108,
+})
+_0x24d4524(_0x18ec36a, 11)
+_0x295ef26(_0x18ec36a, _0x1e04621.Border, 1)
+
+local _0x1b3186b = _0x2049b22(_0x_dec_24({113,67,95,92,107,69,83}, 36), {
+    Parent = _0x18ec36a,
+    Position = UDim2.fromOffset(10, 9),
+    Size = UDim2.new(1, -99, 1, -18),
+    BackgroundTransparency = 1,
+    PlaceholderText = _0x_dec_24({104,67,84,91,72,77,78,12,125,65,67,92,77,75,71,83,65,70,68,88,12,108,103,1,30,10}, 36),
+    PlaceholderColor3 = _0x1e04621.SubText,
+    Text = "",
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 10,
+    Font = Enum.Font.Gotham,
+    TextWrapped = true,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    TextYAlignment = Enum.TextYAlignment.Top,
+    ClearTextOnFocus = false,
+    MultiLine = true,
+    ZIndex = 109,
+})
+
+local _0x1d76d6c = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x18ec36a,
+    AnchorPoint = Vector2.new(1, 0.5),
+    Position = UDim2.new(1, -9, 0.5, 0),
+    Size = UDim2.fromOffset(77, 38),
+    BackgroundColor3 = _0x1e04621.Accent,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({118,67,73,76,9,10,143}, 36),
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextSize = 9,
+    Font = Enum.Font.GothamBold,
+    AutoButtonColor = false,
+    ZIndex = 110,
+})
+_0x24d4524(_0x1d76d6c, 10)
+
+
+
+
+
+local function _0x1fbc26d(_0x10a2c12f, _0x182f7ce)
+    local _0x2230a55 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+        Parent = _0x10a2c12f,
+        AnchorPoint = Vector2.new(1, 0),
+        Position = UDim2.new(1, -7, 0, 7),
+        Size = UDim2.fromOffset(52, 24),
+        BackgroundColor3 = _0x1e04621.Card2,
+        BorderSizePixel = 0,
+        Text = _0x_dec_24({102,73,87,81}, 36),
+        TextColor3 = _0x1e04621.SubText,
+        TextSize = 8,
+        Font = Enum.Font.GothamMedium,
+        AutoButtonColor = false,
+        ZIndex = 130,
+    })
+    _0x24d4524(_0x2230a55, 7)
+
+    _0x2230a55.MouseButton1Click:Connect(function()
+        _0x05022d(_0x182f7ce)
+        local _0x22be3a = _0x2230a55.Text
+        _0x2230a55.Text = _0x_dec_24({102,73,87,65,76,78}, 36)
+        task.delay(0.9, function()
+            if _0x2230a55 and _0x2230a55.Parent then
+                _0x2230a55.Text = _0x22be3a
+            end
+        end)
+    end)
+
+    return _0x2230a55
+end
+
+local function _0x220176e(_0x10a2c12f, _0x11012fd)
+    _0x2c4a15 = tostring(_0x11012fd or "")
+
+    if CodeboxTextBox and CodeboxTextBox.Parent then
+        CodeboxTextBox.Text = _0x2c4a15
+    end
+
+    local _0x2446c6f = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+        Parent = _0x10a2c12f,
+        Size = UDim2.new(1, 0, 0, 0),
+        AutomaticSize = Enum.AutomaticSize.Y,
+        BackgroundColor3 = _0x1e04621.Code,
+        BorderSizePixel = 0,
+        ZIndex = 122,
+    })
+    _0x24d4524(_0x2446c6f, 9)
+    _0x295ef26(_0x2446c6f, _0x1e04621.Border, 1)
+
+    _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+        Parent = _0x2446c6f,
+        Position = UDim2.fromOffset(10, 6),
+        Size = UDim2.new(1, -75, 0, 16),
+        BackgroundTransparency = 1,
+        Text = _0x_dec_24({102,105,99,109}, 36),
+        TextColor3 = _0x1e04621.Accent2,
+        TextSize = 7,
+        Font = Enum.Font.GothamBold,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        ZIndex = 123,
+    })
+
+    local _0x268c170 = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+        Parent = _0x2446c6f,
+        Position = UDim2.fromOffset(10, 26),
+        Size = UDim2.new(1, -20, 0, 0),
+        AutomaticSize = Enum.AutomaticSize.Y,
+        BackgroundTransparency = 1,
+        Text = tostring(_0x11012fd or ""),
+        TextColor3 = Color3.fromRGB(222, 222, 229),
+        TextSize = 9,
+        Font = Enum.Font.Code,
+        TextWrapped = true,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Top,
+        ZIndex = 123,
+    })
+
+    _0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+        Parent = _0x2446c6f,
+        PaddingBottom = UDim.new(0, 11),
+    })
+
+    _0x1fbc26d(_0x2446c6f, tostring(_0x11012fd or ""))
+    return _0x2446c6f
+end
+
+AddMessage = function(_0x12e81130, _0x182f7ce)
+    local _0x28d1671 = _0x12e81130 == _0x_dec_24({80,85,66,90}, 36)
+
+    local _0x2b16b72 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+        Parent = _0x16a6e69,
+        Size = UDim2.new(1, -4, 0, 0),
+        AutomaticSize = Enum.AutomaticSize.Y,
+        BackgroundTransparency = 1,
+        ZIndex = 115,
+    })
+
+    local _0x2d5c073 = _0x28d1671 and 0.82 or 0.92
+    local _0x2fa1574 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+        Parent = _0x2b16b72,
+        Position = _0x28d1671 and UDim2.new(1 - _0x2d5c073, 0, 0, 0) or UDim2.fromOffset(0, 0),
+        Size = UDim2.new(_0x2d5c073, 0, 0, 0),
+        AutomaticSize = Enum.AutomaticSize.Y,
+        BackgroundColor3 = _0x28d1671 and _0x1e04621.UserBubble or _0x1e04621.AIBubble,
+        BorderSizePixel = 0,
+        ZIndex = 116,
+    })
+    _0x24d4524(_0x2fa1574, 10)
+    _0x295ef26(_0x2fa1574, _0x1e04621.Border, 1, 0.22)
+
+    _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+        Parent = _0x2fa1574,
+        Position = UDim2.fromOffset(10, 7),
+        Size = UDim2.new(1, -20, 0, 15),
+        BackgroundTransparency = 1,
+        Text = _0x28d1671 and _0x_dec_24({124,105,114}, 36) or _0x_dec_24({117,105,107,100,96,100,106,120,100,97,97,99,4,100,111}, 36),
+        TextColor3 = _0x28d1671 and _0x1e04621.Accent2 or _0x1e04621.SubText,
+        TextSize = 7,
+        Font = Enum.Font.GothamBold,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        ZIndex = 117,
+    })
+
+    local _0x31e6a75 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+        Parent = _0x2fa1574,
+        Position = UDim2.fromOffset(9, 25),
+        Size = UDim2.new(1, -18, 0, 0),
+        AutomaticSize = Enum.AutomaticSize.Y,
+        BackgroundTransparency = 1,
+        ZIndex = 117,
+    })
+
+    _0x2049b22(_0x_dec_24({112,111,107,65,90,94,103,77,84,65,90,68}, 36), {
+        Parent = _0x31e6a75,
+        Padding = UDim.new(0, 6),
+        SortOrder = Enum.SortOrder.LayoutOrder,
+    })
+
+    local _0x342bf76 = string.split(tostring(_0x182f7ce or ""), _0x_dec_24({47}, 36))
+    local _0x3671477 = false
+    local _0x38b6978 = {}
+
+    local function _0x207e79()
+        if #_0x38b6978 == 0 then
+            return
+        end
+        _0x220176e(_0x31e6a75, table.concat(_0x38b6978, _0x_dec_24({47}, 36)))
+        _0x38b6978 = {}
+    end
+
+    for _, line in ipairs(_0x342bf76) do
+        if string.sub(line, 1, 3) == _0x_dec_24({69,70,71}, 36) then
+            if _0x3671477 then
+                _0x207e79()
+                _0x3671477 = false
+            else
+                _0x3671477 = true
+            end
+        elseif _0x3671477 then
+            table.insert(_0x38b6978, line)
+        else
+            _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+                Parent = _0x31e6a75,
+                Size = UDim2.new(1, 0, 0, 0),
+                AutomaticSize = Enum.AutomaticSize.Y,
+                BackgroundTransparency = 1,
+                Text = (line == "" and _0x_dec_24({5}, 36) or line),
+                TextColor3 = _0x1e04621.Text,
+                TextSize = 10,
+                Font = Enum.Font.Gotham,
+                TextWrapped = true,
+                TextXAlignment = Enum.TextXAlignment.Left,
+                TextYAlignment = Enum.TextYAlignment.Top,
+                ZIndex = 118,
+            })
+        end
+    end
+
+    if _0x3671477 then
+        _0x207e79()
+    end
+
+    _0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+        Parent = _0x2fa1574,
+        PaddingBottom = UDim.new(0, 9),
+    })
+
+    return _0x2b16b72
+end
+
+local function _0x44d37a()
+    task.defer(function()
+        if not _0x16a6e69.Parent then
+            return
+        end
+        _0x16a6e69.CanvasPosition = Vector2.new(
+            0,
+            math.max(0, _0x16a6e69.AbsoluteCanvasSize.Y - _0x16a6e69.AbsoluteWindowSize.Y)
+        )
+    end)
+end
+
+AddMessage(
+    _0x_dec_24({68,85,84,65,90,94,74,66,89}, 36),
+    _0x_dec_24({114,67,75,75,70,71,78,12,89,65,15,96,75,73,74,78,70,72,94,66,67,67,93,15,113,109,5,112,20,6,35,32}, 36) ..
+    _0x_dec_24({102,78,70,92,5,10,72,67,73,75,3,16,64,64,68,82,79,5,10,78,84,93,66,78,89,74,9,6,70,70,77,10,73,89,68,66,75,16,118,74,68,75,71,81,10,120,88,88,74,70,95,4,105,79,83,77,9,90,89,67,71,75,76,68,87,5,81,78,92,65,10,91,64,76,71,65,29,72,68,72,64,93,72,77,78,12,95,75,94,69,65,86,82,84,6,35,32}, 36) ..
+    _0x_dec_24({100,111,7,108,76,92,11,79,76,64,15,85,92,64,69,82,92,76,10,74,79,89,71,64,94,87,5,79,73,8,93,66,78,12,78,91,93,66,65,75,82,7,122,70,72,71,67,85,14,92,85,87,86,79,72,70,9,67,69,95,89,75,78,84,4,74,64,7,71,71,70,82,12,95,75,91,69,86,75,79,73,79,9,67,69,95,89,92,90,83,80,76,73,73,91,7,32,33}, 36) ..
+    _0x_dec_24({118,67,83,8,80,69,94,94,13,126,64,92,72,76,72,70,92,64,69,69,95,13,69,74,73,4,68,72,67,8,74,66,68,67,94,75,15,81,4,72,73,67,77,69,10,66,66,13,90,71,85,4,100,118,110,8,93,75,73,12,89,65,15,67,80,68,84,83,6}, 36)
+)
+
+
+
+
+
+local _0x69287b = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x720130,
+    Size = UDim2.fromScale(1, 1),
+    BackgroundTransparency = 1,
+    BorderSizePixel = 0,
+    Text = "",
+    AutoButtonColor = false,
+    Visible = false,
+    ZIndex = 990,
+})
+
+local function _0x8d7d7c(_0x10a2c12f, _0x152d6131)
+    local _0x31e6a75 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+        Parent = _0x10a2c12f,
+        Size = UDim2.new(1, 0, 0, 42),
+        BackgroundTransparency = 1,
+        ZIndex = 120,
+    })
+
+    local _0x2230a55 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+        Parent = _0x31e6a75,
+        Size = UDim2.fromScale(1, 1),
+        BackgroundColor3 = _0x1e04621.Card2,
+        BorderSizePixel = 0,
+        Text = _0x152d6131,
+        TextColor3 = _0x1e04621.Text,
+        TextSize = 9,
+        Font = Enum.Font.GothamMedium,
+        AutoButtonColor = false,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        ZIndex = 121,
+    })
+    _0x24d4524(_0x2230a55, 9)
+    _0x295ef26(_0x2230a55, _0x1e04621.Border, 1)
+
+    _0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+        Parent = _0x2230a55,
+        PaddingLeft = UDim.new(0, 10),
+        PaddingRight = UDim.new(0, 33),
+    })
+
+    local _0xb1d27d = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+        Parent = _0x2230a55,
+        AnchorPoint = Vector2.new(1, 0.5),
+        Position = UDim2.new(1, -9, 0.5, 0),
+        Size = UDim2.fromOffset(22, 18),
+        BackgroundTransparency = 1,
+        Text = _0x_dec_24({33}, 36),
+        TextColor3 = _0x1e04621.SubText,
+        TextSize = 14,
+        Font = Enum.Font.GothamBold,
+        ZIndex = 122,
+    })
+
+    local _0xd6277e = _0x2049b22(_0x_dec_24({118,69,85,71,69,70,66,66,74,104,93,81,73,64}, 36), {
+        Parent = _0x720130,
+        Size = UDim2.fromOffset(200, 40),
+        BackgroundColor3 = _0x1e04621.Card,
+        BorderSizePixel = 0,
+        ScrollBarThickness = 3,
+        ScrollBarImageColor3 = _0x1e04621.Border,
+        CanvasSize = UDim2.fromOffset(0, 0),
+        AutomaticCanvasSize = Enum.AutomaticSize.Y,
+        ScrollingDirection = Enum.ScrollingDirection.Y,
+        Visible = false,
+        Active = true,
+        ClipsDescendants = true,
+        ZIndex = 995,
+    })
+    _0x24d4524(_0xd6277e, 10)
+    _0x295ef26(_0xd6277e, _0x1e04621.Border, 1)
+
+    _0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+        Parent = _0xd6277e,
+        PaddingTop = UDim.new(0, 6),
+        PaddingBottom = UDim.new(0, 6),
+        PaddingLeft = UDim.new(0, 6),
+        PaddingRight = UDim.new(0, 6),
+    })
+
+    _0x2049b22(_0x_dec_24({112,111,107,65,90,94,103,77,84,65,90,68}, 36), {
+        Parent = _0xd6277e,
+        Padding = UDim.new(0, 4),
+        SortOrder = Enum.SortOrder.LayoutOrder,
+    })
+
+    local _0xfa7c7f = false
+    local _0x11ed180 = 0
+
+    local function _0x1432681()
+        local _0x1677b82 = 0
+        for _, _0xa8f9c8 in ipairs(_0xd6277e:GetChildren()) do
+            if _0xa8f9c8:IsA(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36)) then
+                _0x1677b82 += 1
+            end
+        end
+        return _0x1677b82
+    end
+
+    local function _0x18bd083()
+        local _0xbaab32 = _0x19a8f6.ViewportSize
+        local _0x1b02584 = _0x2230a55.AbsolutePosition
+        local _0x2dba641 = _0x2230a55.AbsoluteSize
+
+        local _0x1d47a85 = math.clamp(_0x2dba641.X, 190, math.max(190, _0xbaab32.X - 16))
+        local _0x1677b82 = math.max(1, _0x1432681())
+        local _0x1f8cf86 = math.clamp(12 + (_0x1677b82 * 32) + ((_0x1677b82 - 1) * 4), 54, 206)
+
+        local _0x21d2487 = math.clamp(_0x1b02584.X, 8, math.max(8, _0xbaab32.X - _0x1d47a85 - 8))
+        local _0x2417988 = _0x1b02584.Y + _0x2dba641.Y + 5
+        local _0x265ce89 = _0x1b02584.Y - _0x1f8cf86 - 5
+        local _0x28a238a
+
+        if _0x2417988 + _0x1f8cf86 <= _0xbaab32.Y - 8 then
+            _0x28a238a = _0x2417988
+        elseif _0x265ce89 >= 8 then
+            _0x28a238a = _0x265ce89
+        else
+            _0x28a238a = math.clamp(_0x2417988, 8, math.max(8, _0xbaab32.Y - _0x1f8cf86 - 8))
+        end
+
+        _0xd6277e.Position = UDim2.fromOffset(_0x21d2487, _0x28a238a)
+        _0xd6277e.Size = UDim2.fromOffset(_0x1d47a85, _0x1f8cf86)
+    end
+
+    local function _0x2ae788b(_0x2570f106)
+        _0xfa7c7f = _0x2570f106
+
+        if _0x2570f106 then
+            _0x18bd083()
+            _0xd6277e.Visible = true
+            _0x69287b.Visible = true
+            _0x2de9928(_0xb1d27d, 0.14, {Rotation = 180})
+        else
+            _0xd6277e.Visible = false
+            _0x69287b.Visible = false
+            _0x2de9928(_0xb1d27d, 0.14, {Rotation = 0})
+        end
+    end
+
+    _0x2230a55.MouseButton1Click:Connect(function()
+        _0x2ae788b(not _0xfa7c7f)
+    end)
+
+    _0x69287b.MouseButton1Click:Connect(function()
+        if _0xfa7c7f then
+            _0x2ae788b(false)
+        end
+    end)
+
+    _0x19a8f6:GetPropertyChangedSignal(_0x_dec_24({115,79,66,95,89,69,89,88,126,71,85,85}, 36)):Connect(function()
+        if _0xfa7c7f then
+            _0x18bd083()
+        end
+    end)
+
+    local _0x2d2cd8c = {}
+
+    function _0x2d2cd8c.Clear()
+        for _, _0xa8f9c8 in ipairs(_0xd6277e:GetChildren()) do
+            if _0xa8f9c8:IsA(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36)) then
+                _0xa8f9c8:Destroy()
+            end
+        end
+        _0x11ed180 = 0
+        _0x2230a55.Text = _0x152d6131
+    end
+
+    function _0x2d2cd8c.AddOption(_0x182f7ce)
+        _0x11ed180 += 1
+
+        local _0x2f7228d = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+            Parent = _0xd6277e,
+            Size = UDim2.new(1, 0, 0, 32),
+            BackgroundColor3 = _0x1e04621.Card2,
+            BorderSizePixel = 0,
+            Text = tostring(_0x182f7ce),
+            TextColor3 = _0x1e04621.Text,
+            TextSize = 8,
+            Font = Enum.Font.Gotham,
+            TextXAlignment = Enum.TextXAlignment.Left,
+            AutoButtonColor = false,
+            ZIndex = 996,
+        })
+        _0x24d4524(_0x2f7228d, 7)
+
+        _0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+            Parent = _0x2f7228d,
+            PaddingLeft = UDim.new(0, 9),
+            PaddingRight = UDim.new(0, 8),
+        })
+
+        _0x2f7228d.MouseButton1Click:Connect(function()
+            _0x298e2d = tostring(_0x182f7ce)
+            _0x2230a55.Text = tostring(_0x182f7ce)
+            _0x2ae788b(false)
+            if ModelValue then
+                ModelValue.Text = _0x298e2d
+            end
+        end)
+    end
+
+    function _0x2d2cd8c.Close()
+        _0x2ae788b(false)
+    end
+
+    _0x2d2cd8c.Holder = _0x31e6a75
+    _0x2d2cd8c.Button = _0x2230a55
+    _0x2d2cd8c.GetOpen = function()
+        return _0xfa7c7f
+    end
+
+    return _0x2d2cd8c
+end
+
+
+
+
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x36a075e,
+    Position = UDim2.fromOffset(17, 13),
+    Size = UDim2.new(1, -34, 0, 22),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,100,118,110}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 17,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 104,
+})
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x36a075e,
+    Position = UDim2.fromOffset(17, 36),
+    Size = UDim2.new(1, -34, 0, 28),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({96,72,83,77,91,10,82,67,88,92,15,96,75,73,74,78,70,72,94,66,67,67,93,15,113,116,108,6,76,77,80,4,11,101,89,14,92,68,69,92,85,7,65,71,10,70,73,64,65,93,73,4,74,72,75,81,7}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.Gotham,
+    TextWrapped = true,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 104,
+})
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x36a075e,
+    Position = UDim2.fromOffset(17, 70),
+    Size = UDim2.new(1, -34, 0, 16),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({100,118,110,8,98,111,114}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 7,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+})
+
+local _0x31b778e = _0x2049b22(_0x_dec_24({113,67,95,92,107,69,83}, 36), {
+    Parent = _0x36a075e,
+    Position = UDim2.fromOffset(17, 87),
+    Size = UDim2.new(1, -34, 0, 36),
+    BackgroundColor3 = _0x1e04621.Card,
+    BorderSizePixel = 0,
+    PlaceholderText = _0x_dec_24({86,77,120,6,7,4}, 36),
+    PlaceholderColor3 = _0x1e04621.SubText,
+    Text = "",
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 9,
+    Font = Enum.Font.Code,
+    ClearTextOnFocus = false,
+    TextXAlignment = Enum.TextXAlignment.Left,
+})
+_0x24d4524(_0x31b778e, 9)
+_0x295ef26(_0x31b778e, _0x1e04621.Border, 1)
+_0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+    Parent = _0x31b778e,
+    PaddingLeft = UDim.new(0, 10),
+    PaddingRight = UDim.new(0, 10),
+})
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x36a075e,
+    Position = UDim2.fromOffset(17, 132),
+    Size = UDim2.new(1, -34, 0, 16),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({104,105,99,109,101}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 7,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+})
+
+ModelDropdown = _0x8d7d7c(
+    _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+        Parent = _0x36a075e,
+        Position = UDim2.fromOffset(17, 149),
+        Size = UDim2.new(1, -34, 0, 42),
+        BackgroundTransparency = 1,
+    }),
+    _0x_dec_24({118,67,75,77,74,94,11,65,66,74,74,92}, 36)
+)
+
+local _0x33fcc8f = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x36a075e,
+    Position = UDim2.fromOffset(17, 203),
+    Size = UDim2.fromOffset(112, 36),
+    BackgroundColor3 = _0x1e04621.Accent,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({118,71,81,77,9,12,11,96,66,79,75}, 36),
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextSize = 8,
+    Font = Enum.Font.GothamBold,
+    AutoButtonColor = false,
+})
+_0x24d4524(_0x33fcc8f, 9)
+
+local _0x3642190 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x36a075e,
+    Position = UDim2.fromOffset(135, 203),
+    Size = UDim2.fromOffset(100, 36),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({158,6,117,77,79,88,78,95,69}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 8,
+    Font = Enum.Font.GothamMedium,
+    AutoButtonColor = false,
+})
+_0x24d4524(_0x3642190, 9)
+_0x295ef26(_0x3642190, _0x1e04621.Border, 1)
+
+local _0x3887691 = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x36a075e,
+    Position = UDim2.fromOffset(17, 248),
+    Size = UDim2.new(1, -34, 0, 50),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({118,82,70,92,92,89,17,12,108,126,102,16,79,64,95,7,70,70,94,11,79,66,64,73,89,67,80,84,66,76,7}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.Gotham,
+    TextWrapped = true,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    TextYAlignment = Enum.TextYAlignment.Top,
+})
+
+
+
+
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x38e5c5f,
+    Position = UDim2.fromOffset(17, 13),
+    Size = UDim2.new(1, -34, 0, 22),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,104,71,73,73,78,79,70,73,67,90}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 17,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+})
+
+local function _0x1d8b92(_0x1772b132, _0x2570f106, _0x28a238a)
+    local _0x41e093 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+        Parent = _0x38e5c5f,
+        Position = UDim2.fromOffset(17, _0x28a238a),
+        Size = UDim2.new(1, -34, 0, 58),
+        BackgroundColor3 = _0x1e04621.Card,
+        BorderSizePixel = 0,
+    })
+    _0x24d4524(_0x41e093, 9)
+    _0x295ef26(_0x41e093, _0x1e04621.Border, 1)
+
+    _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+        Parent = _0x41e093,
+        Position = UDim2.fromOffset(10, 8),
+        Size = UDim2.new(1, -20, 0, 14),
+        BackgroundTransparency = 1,
+        Text = _0x1772b132,
+        TextColor3 = _0x1e04621.SubText,
+        TextSize = 7,
+        Font = Enum.Font.GothamBold,
+        TextXAlignment = Enum.TextXAlignment.Left,
+    })
+
+    local _0x663594 = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+        Parent = _0x41e093,
+        Position = UDim2.fromOffset(10, 23),
+        Size = UDim2.new(1, -20, 0, 23),
+        BackgroundTransparency = 1,
+        Text = _0x2570f106,
+        TextColor3 = _0x1e04621.Text,
+        TextSize = 9,
+        Font = Enum.Font.GothamMedium,
+        TextXAlignment = Enum.TextXAlignment.Left,
+    })
+
+    return _0x663594
+end
+
+ConnectionValue = _0x1d8b92(_0x_dec_24({100,118,110,8,122,126,106,120,120,125}, 36), _0x_dec_24({107,73,7,105,121,99,11,71,72,87}, 36), 48)
+ModelValue = _0x1d8b92(_0x_dec_24({100,101,115,97,127,111,11,97,98,106,106,124}, 36), _0x_dec_24({107,73,73,77}, 36), 113)
+RequestsValue = _0x1d8b92(_0x_dec_24({119,99,118,125,108,121,127,127,13,122,103,121,119,5,117,98,123,122,99,100,98}, 36), _0x_dec_24({21}, 36), 178)
+SessionTokensValue = _0x1d8b92(_0x_dec_24({113,105,108,109,103,121,11,120,101,103,124,16,119,96,117,116,97,102,100}, 36), _0x_dec_24({21}, 36), 243)
+
+local _0x8a8a95 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x38e5c5f,
+    Position = UDim2.fromOffset(17, 313),
+    Size = UDim2.fromOffset(112, 36),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({102,74,66,73,91,10,104,68,76,90}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 8,
+    Font = Enum.Font.GothamMedium,
+    AutoButtonColor = false,
+})
+_0x24d4524(_0x8a8a95, 9)
+_0x295ef26(_0x8a8a95, _0x1e04621.Border, 1)
+
+local _0xaedf96 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x38e5c5f,
+    Position = UDim2.fromOffset(135, 313),
+    Size = UDim2.fromOffset(112, 36),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({102,74,66,73,91,10,106,124,100,14,100,85,93}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 8,
+    Font = Enum.Font.GothamMedium,
+    AutoButtonColor = false,
+})
+_0x24d4524(_0xaedf96, 9)
+_0x295ef26(_0xaedf96, _0x1e04621.Border, 1)
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x38e5c5f,
+    Position = UDim2.fromOffset(17, 360),
+    Size = UDim2.new(1, -34, 0, 38),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({100,74,75,8,74,69,94,66,89,75,93,67,4,68,84,66,8,90,79,88,95,68,65,65,29,75,75,74,94,6,9,100,68,12,93,91,93,83,76,68,85,66,91,9,69,89,12,89,65,68,85,74,5,74,78,69,64,94,88,12,76,92,74,16,69,65,66,66,76,7}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.Gotham,
+    TextWrapped = true,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    TextYAlignment = Enum.TextYAlignment.Top,
+})
+
+
+
+
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x237160,
+    Position = UDim2.fromOffset(17, 13),
+    Size = UDim2.new(1, -34, 0, 22),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({100,66,81,73,71,73,78}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 17,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+})
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x237160,
+    Position = UDim2.fromOffset(17, 36),
+    Size = UDim2.new(1, -34, 0, 30),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({97,67,81,77,69,69,91,73,95,14,91,95,75,73,85,7,78,70,88,11,127,89,91,75,89,75,5,106,78,92,76,6,11,79,66,74,70,94,67,9,6,100,71,77,79,73,67,85,2,15,81,74,65,6,84,77,90,89,66,67,67,14,90,67,69,66,67,9}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.Gotham,
+    TextWrapped = true,
+    TextXAlignment = Enum.TextXAlignment.Left,
+})
+
+local function _0xd33497(_0x28a238a, _0x1772b132, _0x19b80133)
+    local _0x2230a55 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+        Parent = _0x237160,
+        Position = UDim2.fromOffset(17, _0x28a238a),
+        Size = UDim2.new(1, -34, 0, 59),
+        BackgroundColor3 = _0x1e04621.Card,
+        BorderSizePixel = 0,
+        Text = "",
+        AutoButtonColor = false,
+        ZIndex = 105,
+    })
+    _0x24d4524(_0x2230a55, 10)
+    _0x295ef26(_0x2230a55, _0x1e04621.Border, 1)
+
+    _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+        Parent = _0x2230a55,
+        Position = UDim2.fromOffset(11, 8),
+        Size = UDim2.new(1, -22, 0, 17),
+        BackgroundTransparency = 1,
+        Text = _0x1772b132,
+        TextColor3 = _0x1e04621.Text,
+        TextSize = 9,
+        Font = Enum.Font.GothamBold,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        ZIndex = 106,
+    })
+
+    _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+        Parent = _0x2230a55,
+        Position = UDim2.fromOffset(11, 26),
+        Size = UDim2.new(1, -22, 0, 25),
+        BackgroundTransparency = 1,
+        Text = _0x19b80133,
+        TextColor3 = _0x1e04621.SubText,
+        TextSize = 7,
+        Font = Enum.Font.Gotham,
+        TextWrapped = true,
+        TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Top,
+        ZIndex = 106,
+    })
+
+    return _0x2230a55
+end
+
+local _0xf78998 = _0xd33497(
+    76,
+    _0x_dec_24({100,111,7,108,76,92}, 36),
+    _0x_dec_24({100,83,83,71,71,69,70,67,88,93,15,82,81,76,74,67,77,91,16,11,72,72,93,76,66,77,71,67,7,95,65,75,95,12,84,65,90,16,83,68,72,83,8,72,68,79,12,89,70,74,16,69,66,67,73,92,9,90,71,77,67,93,3,16,65,93,67,68,93,93,79,88,0,13,65,77,67,65,87,80,66,91,5,10,74,66,73,14,68,85,65,85,85,7,95,70,88,64,69,67,73,1}, 36)
+)
+
+local _0x11bde99 = _0xd33497(
+    143,
+    _0x_dec_24({100,66,81,73,71,73,78,72,13,109,64,84,77,75,65,7,3,9,105,67,77,89,90,70,94,67}, 36),
+    _0x_dec_24({106,86,66,70,9,94,67,73,13,67,78,89,74,5,69,79,73,93,10,66,66,13,109,64,84,65,5,75,72,76,76,10,77,67,95,14,67,95,74,66,67,85,8,74,69,79,69,67,73,15,67,65,86,85,78,71,71,89,7,12,73,75,77,69,67,66,79,73,79,5,10,74,66,73,14,95,92,69,75,72,78,70,78,4}, 36)
+)
+
+local _0x140339a = _0xd33497(
+    210,
+    _0x_dec_24({102,73,67,77,75,69,83}, 36),
+    _0x_dec_24({106,86,66,70,9,94,67,73,13,66,78,68,65,86,82,7,79,76,68,78,94,76,90,74,84,4,70,73,67,77,9,67,69,12,76,14,76,92,65,68,72,7,77,77,67,95,67,95,14,77,95,92,5,71,73,76,9,73,68,92,84,14,70,68,10}, 36)
+)
+
+local _0x164889b = _0xd33497(
+    277,
+    _0x_dec_24({113,73,76,77,71,89,11,109,64,65,90,94,80}, 36),
+    _0x_dec_24({118,78,72,95,9,89,78,95,94,71,64,94,9,74,72,75,81,9,67,69,92,88,90,3,16,75,80,82,87,93,93,6,11,77,67,74,15,68,75,81,71,75,8,92,89,74,75,72,14,93,85,84,74,84,83,77,77,10,73,85,13,90,71,85,4,100,118,110,6}, 36)
+)
+
+local _0x188dd9c = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x237160,
+    Position = UDim2.fromOffset(17, 344),
+    Size = UDim2.new(1, -34, 0, 66),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+})
+_0x24d4524(_0x188dd9c, 10)
+_0x295ef26(_0x188dd9c, _0x1e04621.Border, 1)
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x188dd9c,
+    Position = UDim2.fromOffset(11, 8),
+    Size = UDim2.new(1, -22, 0, 50),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({118,82,82,76,64,69,11,96,68,90,74,16,83,74,84,76,78,69,69,92,38,120,93,74,16,80,77,67,7,122,70,72,71,67,85,14,124,68,81,65,79,72,8,101,67,95,73,13,75,87,64,65,87,79,66,70,74,79,11,88,66,14,77,69,77,73,66,11,8,90,73,89,69,93,90,3,16,69,75,79,74,73,93,79,7,12,89,75,92,68,8,5,71,73,76,9,90,94,78,65,71,92,88,10,5,114,79,65,90,10,74,95,94,71,92,68,69,75,82,7,88,91,79,91,77,95,75,92,16,80,77,67,7,75,70,78,78,12,76,64,75,16,87,81,67,87,91,18,10,82,67,88,14,95,92,69,70,67,7,92,65,79,70,12,68,64,15,99,80,80,66,78,71,9,102,66,88,72,14,86,95,81,87,85,66,68,79,4}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 7,
+    Font = Enum.Font.Gotham,
+    TextWrapped = true,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    TextYAlignment = Enum.TextYAlignment.Top,
+})
+
+
+
+
+
+local _0x1ad329d = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x237160,
+    Position = UDim2.fromOffset(17, 418),
+    Size = UDim2.new(1, -34, 0, 54),
+    BackgroundColor3 = _0x1e04621.Card,
+    BorderSizePixel = 0,
+    ZIndex = 105,
+})
+_0x24d4524(_0x1ad329d, 10)
+_0x295ef26(_0x1ad329d, _0x1e04621.Border, 1)
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x1ad329d,
+    Position = UDim2.fromOffset(11, 8),
+    Size = UDim2.new(1, -84, 0, 15),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({100,111,7,108,108,124}, 36),
+    TextColor3 = _0x1e04621.Accent2,
+    TextSize = 7,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 106,
+})
+
+local _0x1d1879e = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x1ad329d,
+    Position = UDim2.fromOffset(11, 24),
+    Size = UDim2.new(1, -84, 0, 20),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({108,66,75,77,9,7,11,94,72,79,75,73,4,81,73,7,74,92,67,71,72}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.Gotham,
+    TextWrapped = true,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 106,
+})
+
+local _0x1f5dc9f = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x1ad329d,
+    AnchorPoint = Vector2.new(1, 0.5),
+    Position = UDim2.new(1, -9, 0.5, 0),
+    Size = UDim2.fromOffset(60, 28),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({118,82,72,88}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 8,
+    Font = Enum.Font.GothamBold,
+    AutoButtonColor = false,
+    ZIndex = 107,
+})
+_0x24d4524(_0x1f5dc9f, 8)
+
+
+
+
+
+local function _0x21a31a0(_0x1bfd5134, _0x1e42a135, _0x2087f136, _0x22cd4137)
+    local _0xbaab32 = _0x19a8f6.ViewportSize
+    local _0xdf0033 = math.clamp(_0xbaab32.X - 20, _0x1e42a135 < 300 and 260 or 300, _0x1e42a135)
+    local _0x1035534 = math.clamp(_0xbaab32.Y - 120, _0x2087f136, _0x22cd4137)
+    _0x1bfd5134.Size = UDim2.fromOffset(_0xdf0033, _0x1035534)
+    _0x1bfd5134.Position = UDim2.fromOffset(
+        math.floor((_0xbaab32.X - _0xdf0033) / 2),
+        math.floor((_0xbaab32.Y - _0x1035534) / 2)
+    )
+end
+
+local _0x23e86a1 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x4dac2f,
+    Size = UDim2.fromOffset(350, 230),
+    Position = UDim2.fromScale(0.5, 0.5),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    BackgroundColor3 = _0x1e04621.Card,
+    BorderSizePixel = 0,
+    Visible = false,
+    ZIndex = 800,
+})
+_0x24d4524(_0x23e86a1, 13)
+_0x295ef26(_0x23e86a1, _0x1e04621.Border, 1)
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x23e86a1,
+    Position = UDim2.fromOffset(13, 9),
+    Size = UDim2.new(1, -70, 0, 22),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({102,73,67,77,75,69,83}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 15,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 801,
+})
+
+local _0x262dba2 = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x23e86a1,
+    Position = UDim2.fromOffset(13, 28),
+    Size = UDim2.new(1, -100, 0, 17),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({105,71,83,77,90,94,11,79,66,74,74,16,70,73,73,68,67}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 7,
+    Font = Enum.Font.Gotham,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 801,
+})
+
+local _0x28730a3 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x23e86a1,
+    AnchorPoint = Vector2.new(1, 0),
+    Position = UDim2.new(1, -9, 0, 8),
+    Size = UDim2.fromOffset(28, 26),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({242}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 16,
+    Font = Enum.Font.GothamBold,
+    AutoButtonColor = false,
+    ZIndex = 802,
+})
+_0x24d4524(_0x28730a3, 8)
+
+CodeboxTextBox = _0x2049b22(_0x_dec_24({113,67,95,92,107,69,83}, 36), {
+    Parent = _0x23e86a1,
+    Position = UDim2.fromOffset(11, 51),
+    Size = UDim2.new(1, -22, 1, -88),
+    BackgroundColor3 = _0x1e04621.Code,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({107,73,7,79,76,68,78,94,76,90,74,84,4,70,73,67,77,9,83,78,88,3}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 8,
+    Font = Enum.Font.Code,
+    TextWrapped = false,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    TextYAlignment = Enum.TextYAlignment.Top,
+    MultiLine = true,
+    ClearTextOnFocus = false,
+    ZIndex = 801,
+})
+_0x24d4524(CodeboxTextBox, 9)
+_0x295ef26(CodeboxTextBox, _0x1e04621.Border, 1)
+_0x2049b22(_0x_dec_24({112,111,119,73,77,78,66,66,74}, 36), {
+    Parent = CodeboxTextBox,
+    PaddingTop = UDim.new(0, 8),
+    PaddingLeft = UDim.new(0, 8),
+    PaddingRight = UDim.new(0, 8),
+})
+
+local _0x2ab85a4 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x23e86a1,
+    AnchorPoint = Vector2.new(1, 1),
+    Position = UDim2.new(1, -11, 1, -11),
+    Size = UDim2.fromOffset(94, 28),
+    BackgroundColor3 = _0x1e04621.Accent,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({102,73,87,81,9,105,68,72,72}, 36),
+    TextColor3 = Color3.fromRGB(255, 255, 255),
+    TextSize = 8,
+    Font = Enum.Font.GothamBold,
+    AutoButtonColor = false,
+    ZIndex = 802,
+})
+_0x24d4524(_0x2ab85a4, 8)
+
+local _0x2cfdaa5 = _0x2049b22(_0x_dec_24({99,84,70,69,76}, 36), {
+    Parent = _0x4dac2f,
+    Size = UDim2.fromOffset(270, 175),
+    Position = UDim2.fromScale(0.5, 0.5),
+    AnchorPoint = Vector2.new(0.5, 0.5),
+    BackgroundColor3 = _0x1e04621.Card,
+    BorderSizePixel = 0,
+    Visible = false,
+    ZIndex = 800,
+})
+_0x24d4524(_0x2cfdaa5, 13)
+_0x295ef26(_0x2cfdaa5, _0x1e04621.Border, 1)
+
+_0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x2cfdaa5,
+    Position = UDim2.fromOffset(13, 11),
+    Size = UDim2.new(1, -26, 0, 22),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({113,73,76,77,71,89,11,109,64,65,90,94,80}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 15,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 801,
+})
+
+TokenTotalValue = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x2cfdaa5,
+    Position = UDim2.fromOffset(13, 45),
+    Size = UDim2.new(1, -26, 0, 31),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({21,6,83,71,93,75,71}, 36),
+    TextColor3 = _0x1e04621.Accent2,
+    TextSize = 20,
+    Font = Enum.Font.GothamBold,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 801,
+})
+
+TokenBreakdown = _0x2049b22(_0x_dec_24({113,67,95,92,101,75,73,73,65}, 36), {
+    Parent = _0x2cfdaa5,
+    Position = UDim2.fromOffset(13, 78),
+    Size = UDim2.new(1, -26, 0, 42),
+    BackgroundTransparency = 1,
+    Text = _0x_dec_24({108,72,87,93,93,16,11,28,39,97,90,68,84,80,82,29,8,25}, 36),
+    TextColor3 = _0x1e04621.SubText,
+    TextSize = 9,
+    Font = Enum.Font.Gotham,
+    TextXAlignment = Enum.TextXAlignment.Left,
+    ZIndex = 801,
+})
+
+local _0x2f42fa6 = _0x2049b22(_0x_dec_24({113,67,95,92,107,95,95,88,66,64}, 36), {
+    Parent = _0x2cfdaa5,
+    AnchorPoint = Vector2.new(1, 1),
+    Position = UDim2.new(1, -11, 1, -11),
+    Size = UDim2.fromOffset(88, 28),
+    BackgroundColor3 = _0x1e04621.Card2,
+    BorderSizePixel = 0,
+    Text = _0x_dec_24({102,74,72,91,76}, 36),
+    TextColor3 = _0x1e04621.Text,
+    TextSize = 8,
+    Font = Enum.Font.GothamMedium,
+    AutoButtonColor = false,
+    ZIndex = 802,
+})
+_0x24d4524(_0x2f42fa6, 8)
+
+
+
+
+
+local _0x31884a7 = {}
+
+local function _0x33cd9a8(_0x25129138)
+    table.sort(_0x25129138, function(_0x2757e139, _0x30fabf2)
+        return string.lower(_0x2757e139) < string.lower(_0x30fabf2)
+    end)
+end
+
+local function _0x3612ea9()
+    if _0x2748dc ~= "" then
+        _0x16d6150.Text = _0x_dec_24({234,6,7,105,121,99,11,126,104,111,107,105}, 36)
+        _0x16d6150.TextColor3 = _0x1e04621.Green
+        if ConnectionValue then
+            ConnectionValue.Text = _0x_dec_24({100,118,110,8,91,79,74,72,84}, 36)
+            ConnectionValue.TextColor3 = _0x1e04621.Green
+        end
+    elseif #_0x31884a7 > 0 then
+        _0x16d6150.Text = _0x_dec_24({234,6,7,122,108,107,111,117}, 36)
+        _0x16d6150.TextColor3 = _0x1e04621.Cyan
+        if ConnectionValue then
+            ConnectionValue.Text = _0x_dec_24({102,71,83,73,69,69,76,12,95,75,78,84,93}, 36)
+            ConnectionValue.TextColor3 = _0x1e04621.Cyan
+        end
+    else
+        _0x16d6150.Text = _0x_dec_24({234,6,7,102,102,10,96,105,116}, 36)
+        _0x16d6150.TextColor3 = _0x1e04621.SubText
+        if ConnectionValue then
+            ConnectionValue.Text = _0x_dec_24({107,73,7,105,121,99,11,71,72,87}, 36)
+            ConnectionValue.TextColor3 = _0x1e04621.SubText
+        end
+    end
+end
+
+local function _0x38583aa()
+    local _0x1a98ab = _0x36fed2c()
+
+    if not _0x1a98ab then
+        _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,99,65,15,67,81,85,86,72,90,93,79,79,12,101,122,123,96,4,87,67,86,93,76,89,95,12,75,91,65,83,80,76,73,73,8,94,75,88,12,75,65,90,94,64,11}, 36)
+        _0x3887691.TextColor3 = _0x1e04621.Red
+        return false
+    end
+
+    _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,97,65,78,84,77,75,65,7,120,70,70,71,69,67,79,91,89,75,75,85,7,69,70,78,78,64,94,0,1,30}, 36)
+    _0x3887691.TextColor3 = _0x1e04621.Yellow
+
+    local _0x3eedac, _0x6342ad = pcall(function()
+        return _0x1a98ab({
+            Url = _0x25038b .. _0x_dec_24({10,75,72,76,76,70,88}, 36),
+            Method = _0x_dec_24({98,99,115}, 36),
+            Headers = {
+                [_0x_dec_24({102,73,73,92,76,68,95,1,121,87,95,85}, 36)] = _0x_dec_24({68,86,87,68,64,73,74,88,68,65,65,31,78,86,73,73}, 36),
+                [_0x_dec_24({100,69,68,77,89,94}, 36)] = _0x_dec_24({68,86,87,68,64,73,74,88,68,65,65,31,78,86,73,73}, 36),
+            },
+        })
+    end)
+
+    if not _0x3eedac or not _0x6342ad then
+        _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,107,79,70,92,65,65,6,83,71,9,88,78,93,88,75,92,68,4,81,78,66,8,68,69,79,73,65,14,76,81,80,68,74,72,79,7}, 36)
+        _0x3887691.TextColor3 = _0x1e04621.Red
+        return false
+    end
+
+    if tonumber(_0x6342ad.StatusCode) ~= 200 then
+        local _0x8797ae = _0x_dec_24({109,114,115,120,9}, 36) .. tostring(_0x6342ad.StatusCode)
+        pcall(function()
+            local _0xabecaf = _0x151e54:JSONDecode(_0x6342ad.Body or "")
+            if _0xabecaf and _0xabecaf.error then
+                if type(_0xabecaf.error) == _0x_dec_24({81,71,69,68,76}, 36) then
+                    _0x8797ae = tostring(_0xabecaf.error.message or _0x8797ae)
+                else
+                    _0x8797ae = tostring(_0xabecaf.error)
+                end
+            end
+        end)
+        _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12}, 36) .. _0x8797ae
+        _0x3887691.TextColor3 = _0x1e04621.Red
+        return false
+    end
+
+    local _0xd041b0, _0xf496b1 = pcall(function()
+        return _0x151e54:JSONDecode(_0x6342ad.Body or "")
+    end)
+
+    if not _0xd041b0 or type(_0xf496b1) ~= _0x_dec_24({81,71,69,68,76}, 36) or type(_0xf496b1.data) ~= _0x_dec_24({81,71,69,68,76}, 36) then
+        _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,100,64,89,81,72,76,66,7,69,70,78,78,64,13,77,78,68,69,73,73,64,8,91,79,88,92,66,64,92,85,10}, 36)
+        _0x3887691.TextColor3 = _0x1e04621.Red
+        return false
+    end
+
+    _0x31884a7 = {}
+
+    for _, modelData in ipairs(_0xf496b1.data) do
+        if type(modelData) == _0x_dec_24({81,71,69,68,76}, 36) and modelData.id then
+            local _0x118ebb2 = tostring(modelData.id)
+            local _0x13d40b3 = string.lower(_0x118ebb2)
+
+            local _0x16195b4 =
+                string.find(_0x13d40b3, _0x_dec_24({64,75,69,77,77,78,66,66,74}, 36), 1, true)
+                or string.find(_0x13d40b3, _0x_dec_24({82,78,78,91,89,79,89}, 36), 1, true)
+                or string.find(_0x13d40b3, _0x_dec_24({81,82,84}, 36), 1, true)
+                or string.find(_0x13d40b3, _0x_dec_24({86,86,66,77,74,66}, 36), 1, true)
+                or string.find(_0x13d40b3, _0x_dec_24({68,83,67,65,70}, 36), 1, true)
+                or string.find(_0x13d40b3, _0x_dec_24({83,79,67,77,70}, 36), 1, true)
+                or string.find(_0x13d40b3, _0x_dec_24({76,75,70,79,76}, 36), 1, true)
+
+            if not _0x16195b4 and modelData.active ~= false then
+                table.insert(_0x31884a7, _0x118ebb2)
+            end
+        end
+    end
+
+    _0x33cd9a8(_0x31884a7)
+
+    ModelDropdown.Clear()
+    for _, modelId in ipairs(_0x31884a7) do
+        ModelDropdown.AddOption(modelId)
+    end
+
+    if #_0x31884a7 == 0 then
+        _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,99,65,15,68,65,93,82,7,69,70,78,78,64,94,14,88,85,86,64,6,85,77,93,95,89,66,72,74,1}, 36)
+        _0x3887691.TextColor3 = _0x1e04621.Red
+        return false
+    end
+
+    if _0x298e2d == "" or not table.find(_0x31884a7, _0x298e2d) then
+        _0x298e2d = _0x31884a7[1]
+    end
+
+    ModelDropdown.Button.Text = _0x298e2d
+    ModelValue.Text = _0x298e2d
+    _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,97,65,78,84,65,65,6}, 36) .. tostring(#_0x31884a7) .. _0x_dec_24({5,82,66,80,93,7,72,77,93,79,77,92,65,5,75,72,76,76,70,88,2}, 36)
+    _0x3887691.TextColor3 = _0x1e04621.Green
+    _0x3612ea9()
+    return true
+end
+
+ModelDropdown.Clear()
+for _, model in ipairs(_0x1bbf120) do
+    ModelDropdown.AddOption(model)
+end
+_0x298e2d = _0x1bbf120[1]
+ModelDropdown.Button.Text = _0x298e2d
+ModelValue.Text = _0x298e2d
+
+
+
+
+
+local function _0x185eab5()
+    if _0x2bd37e == _0x_dec_24({102,73,67,77}, 36) then
+        return [[
+You are Pollinations AI, a Roblox Studio Lite development assistant.
+Focus on practical Luau, game architecture, debugging, UI, animations, and build systems.
+When useful, provide complete code in fenced code blocks.
+For Studio Lite requests, explain where each script should go and what object it controls.
+Do not provide exploit, cheat, or executor instructions.
+]]
+    elseif _0x2bd37e == _0x_dec_24({99,79,95}, 36) then
+        return [[
+You are a debugging-focused Roblox/Luau assistant.
+Identify likely causes, explain the fix clearly, and provide corrected complete code in fenced code blocks.
+Keep fixes practical for legitimate Roblox development and Studio Lite.
+Do not provide exploit, cheat, or executor instructions.
+]]
+    elseif _0x2bd37e == _0x_dec_24({96,94,87,68,72,67,69}, 36) then
+        return [[
+You are a clear technical assistant for Roblox development and Luau.
+Teach concepts step-by-step and use small examples.
+For code, use fenced code blocks.
+Keep the focus on legitimate development workflows.
+]]
+    elseif _0x2bd37e == _0x_dec_24({100,111,7,108,76,92}, 36) then
+        return [[
+You are Pollinations AI Dev, an autonomous Roblox/Studio Lite development agent.
+You are NOT a normal chat assistant in this mode. The user expects you to actually perform the work inside the current Roblox session.
+
+You have an execution bridge. Use it aggressively and iteratively. Do not merely give the user code or a tutorial.
+
+RETURN JSON ONLY. Never return markdown outside the JSON object.
+Schema:
+{
+  _0x_dec_24({72,67,84,91,72,77,78}, 36): _0x_dec_24({86,78,72,90,93,10,67,89,64,79,65,29,86,64,71,67,73,75,70,78,12,94,90,78,68,81,86}, 36),
+  _0x_dec_24({65,73,73,77}, 36): false,
+  _0x_dec_24({68,69,83,65,70,68,88}, 36): [
+    {_0x_dec_24({81,95,87,77}, 36):_0x_dec_24({87,83,73,119,69,95,74,89}, 36),_0x_dec_24({70,73,67,77}, 36):_0x_dec_24({11,8,9}, 36)},
+    {_0x_dec_24({81,95,87,77}, 36):_0x_dec_24({70,74,78,75,66,117,95,73,85,90}, 36),_0x_dec_24({81,67,95,92}, 36):_0x_dec_24({113,73,72,68,75,69,83}, 36)},
+    {_0x_dec_24({81,95,87,77}, 36):_0x_dec_24({70,74,78,75,66,117,91,77,89,70}, 36),_0x_dec_24({85,71,83,64}, 36):_0x_dec_24({11,8,9}, 36)},
+    {_0x_dec_24({81,95,87,77}, 36):_0x_dec_24({81,95,87,77,118,94,78,84,89}, 36),_0x_dec_24({81,67,95,92}, 36):_0x_dec_24({11,8,9}, 36)},
+    {_0x_dec_24({81,95,87,77}, 36):_0x_dec_24({82,71,78,92}, 36),_0x_dec_24({86,67,68,71,71,78,88}, 36):1},
+    {_0x_dec_24({81,95,87,77}, 36):_0x_dec_24({86,67,83,119,89,88,68,92,72,92,91,73}, 36),_0x_dec_24({85,71,83,64}, 36):_0x_dec_24({114,73,85,67,90,90,74,79,72,0,127,81,86,81}, 36),_0x_dec_24({85,84,72,88,76,88,95,85}, 36):_0x_dec_24({118,79,93,77}, 36),_0x_dec_24({83,71,75,93,76}, 36):_0x_dec_24({20,22,11,25,5,27,27}, 36)},
+    {_0x_dec_24({81,95,87,77}, 36):_0x_dec_24({65,67,75,77,93,79}, 36),_0x_dec_24({85,71,83,64}, 36):_0x_dec_24({114,73,85,67,90,90,74,79,72,0,96,92,64,117,71,85,92}, 36)}
+  ]
+}
+
+Available action types:
+- run_luau: execute Luau immediately in the current Roblox session. This is the most powerful tool. Use it to create/update/delete/inspect Instances, build maps, configure properties, create scripts, make UI, and perform game-side work.
+- click_text: find a visible GUI object by Text/Name and activate it. Use this for Studio Lite controls such as Toolbox, Explorer, Properties, Select, Move, Scale, Rotate, Animation, Publish, etc.
+- click_path: activate a GuiButton at an exact instance path.
+- type_text: place text into a visible TextBox, useful for script editors/search/property inputs.
+- wait: pause for UI/game changes.
+- set_property: change a common Instance property.
+- delete: destroy an instance at a path.
+
+IMPORTANT:
+1. Inspect the environment snapshot before acting.
+2. Prefer direct Luau for reliable project/data-model changes.
+3. Use click_text/type_text when the task specifically requires a Studio Lite UI control.
+4. After meaningful changes, continue with another round so you can inspect the new state and fix mistakes.
+5. Never pretend an action succeeded. The bridge reports actual success/errors.
+6. Keep working until the task is actually implemented or you genuinely hit a platform limitation.
+7. You can emit complete Luau inside run_luau and it will be executed automatically.
+8. For “build me a game” requests, independently create the hierarchy, parts, lighting, scripts, UI, systems, animations, polish, and test logic needed for a usable result.
+9. Every newly-created physical BasePart should be anchored by default. Set `AIDevKeepUnanchored` to true BEFORE intentionally making a physical part unanchored for a working physics system.
+10. When creating many parts, explicitly set `Anchored = true` in the same run_luau action. The bridge also performs an automatic anchor/stabilization pass after every build action.
+11. Do not tell the user to manually copy/paste code when run_luau can perform the change.
+]]
+    end
+
+    return [[
+You are Pollinations AI helping with Roblox Studio Lite.
+You can chat normally and help with Luau, UI, game systems, debugging, animation logic, and technical questions.
+When a user describes a feature, convert it into clear development steps and code when useful.
+Use fenced code blocks for code.
+Do not provide exploit, cheat, or executor instructions.
+]]
+end
+
+
+
+
+
+local function _0x1aa3fb6(_0x299d313a)
+    local _0x1a98ab = _0x36fed2c()
+
+    if not _0x1a98ab then
+        return false, _0x_dec_24({107,73,7,91,92,90,91,67,95,90,74,84,4,109,114,115,120,9,88,78,93,88,75,92,68,4,67,83,73,75,93,67,68,66,13,89,78,67,4,67,73,82,70,77,4}, 36)
+    end
+
+    if _0x2748dc == "" then
+        return false, _0x_dec_24({124,73,82,90,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,123,101,13,69,74,73,4,76,85,7,77,68,90,95,85,3,14,96,64,65,75,6,83,64,76,10,106,124,100,14,91,81,70,5,71,73,76,9,73,68,66,75,71,72,69,86,64,6,78,92,7}, 36)
+    end
+
+    if _0x298e2d == "" then
+        return false, _0x_dec_24({107,73,7,69,70,78,78,64,13,71,92,16,87,64,74,66,75,93,79,79,2}, 36)
+    end
+
+    local _0x1ce94b7 = {
+        {
+            _0x12e81130 = _0x_dec_24({86,95,84,92,76,71}, 36),
+            content = _0x185eab5(),
+        },
+    }
+
+    local _0x1f2e9b8 = math.max(1, #_0x305e110 - 12)
+    for i = _0x1f2e9b8, #_0x305e110 do
+        table.insert(_0x1ce94b7, _0x305e110[i])
+    end
+
+    table.insert(_0x1ce94b7, {
+        _0x12e81130 = _0x_dec_24({80,85,66,90}, 36),
+        content = _0x299d313a,
+    })
+
+    local _0x2173eb9 = {
+        model = _0x298e2d,
+        _0x1ce94b7 = _0x1ce94b7,
+        temperature = 0.7,
+    }
+
+    local _0x23b93ba, _0x6342ad = pcall(function()
+        return _0x1a98ab({
+            Url = _0x25038b .. _0x_dec_24({10,69,79,73,93,5,72,67,64,94,67,85,80,76,73,73,91}, 36),
+            Method = _0x_dec_24({117,105,116,124}, 36),
+            Headers = {
+                [_0x_dec_24({100,83,83,64,70,88,66,86,76,90,70,95,74}, 36)] = _0x_dec_24({103,67,70,90,76,88,11}, 36) .. _0x2748dc,
+                [_0x_dec_24({102,73,73,92,76,68,95,1,121,87,95,85}, 36)] = _0x_dec_24({68,86,87,68,64,73,74,88,68,65,65,31,78,86,73,73}, 36),
+                [_0x_dec_24({100,69,68,77,89,94}, 36)] = _0x_dec_24({68,86,87,68,64,73,74,88,68,65,65,31,78,86,73,73}, 36),
+            },
+            Body = _0x151e54:JSONEncode(_0x2173eb9),
+        })
+    end)
+
+    if not _0x23b93ba or not _0x6342ad then
+        return false, _0x_dec_24({113,78,66,8,97,126,127,124,13,92,74,65,81,64,85,83,8,79,75,66,64,72,74,1}, 36)
+    end
+
+    local _0x25fe8bb = tonumber(_0x6342ad.StatusCode) or 0
+    if _0x25fe8bb < 200 or _0x25fe8bb >= 300 then
+        local _0x2843dbc = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,87,67,83,93,91,68,78,72,13,102,123,100,116,5}, 36) .. tostring(_0x6342ad.StatusCode)
+        pcall(function()
+            local _0xabecaf = _0x151e54:JSONDecode(_0x6342ad.Body or "")
+            if _0xabecaf and _0xabecaf.error then
+                if type(_0xabecaf.error) == _0x_dec_24({81,71,69,68,76}, 36) then
+                    _0x2843dbc = tostring(_0xabecaf.error.message or _0x2843dbc)
+                else
+                    _0x2843dbc = tostring(_0xabecaf.error)
+                end
+            end
+        end)
+        return false, _0x2843dbc
+    end
+
+    local _0x2a892bd, _0xf496b1 = pcall(function()
+        return _0x151e54:JSONDecode(_0x6342ad.Body or "")
+    end)
+
+    if not _0x2a892bd or type(_0xf496b1) ~= _0x_dec_24({81,71,69,68,76}, 36) then
+        return false, _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,87,67,83,93,91,68,78,72,13,71,65,70,69,73,79,67,8,99,121,100,98,3}, 36)
+    end
+
+    if not _0xf496b1.choices or not _0xf496b1.choices[1] or not _0xf496b1.choices[1].message then
+        return false, _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,65,79,67,8,71,69,95,12,95,75,91,69,86,75,6,70,8,68,79,88,95,76,73,74,30}, 36)
+    end
+
+    local _0x2cce7be = tostring(_0xf496b1.choices[1].message.content or "")
+    if _0x2cce7be == "" then
+        return false, _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,87,67,83,93,91,68,78,72,13,79,65,16,65,72,86,83,81,9,71,78,95,94,79,72,85,10}, 36)
+    end
+
+    local _0x2f13cbf = _0xf496b1.usage or {}
+    local _0x31591c0 = tonumber(_0x2f13cbf.input_tokens or _0x2f13cbf.prompt_tokens or 0) or 0
+    local _0x339e6c1 = tonumber(_0x2f13cbf.output_tokens or _0x2f13cbf.completion_tokens or 0) or 0
+    local _0x35e3bc2 = tonumber(_0x2f13cbf.total_tokens) or (_0x31591c0 + _0x339e6c1)
+
+    return true, _0x2cce7be, {
+        _0x9d2d12c = _0x31591c0,
+        output = _0x339e6c1,
+        total = _0x35e3bc2,
+    }
+end
+
+
+
+
+
+local function _0x38290c3()
+    local _0x23b93ba, _0x17a5c4 = pcall(function()
+        return game:GetService(_0x_dec_24({102,73,85,77,110,95,66}, 36))
+    end)
+    return _0x23b93ba and _0x17a5c4 or nil
+end
+
+local function _0x3bfac5(_0x2be2813b, _0x35b48db)
+    if not _0x2be2813b or not _0x35b48db or _0x35b48db == "" then
+        return nil
+    end
+
+    local _0x604fc6 = _0x2be2813b
+    for segment in string.gmatch(_0x35b48db, _0x_dec_24({126,120,2,6,116,1}, 36)) do
+        if _0x604fc6 == game then
+            if segment == _0x_dec_24({82,73,85,67,90,90,74,79,72}, 36) or segment == _0x_dec_24({114,73,85,67,90,90,74,79,72}, 36) then
+                _0x604fc6 = workspace
+            else
+                local _0x23b93ba, _0x84a4c7 = pcall(function()
+                    return game:GetService(segment)
+                end)
+                if _0x23b93ba and _0x84a4c7 then
+                    _0x604fc6 = _0x84a4c7
+                else
+                    local _0xa8f9c8
+                    pcall(function() _0xa8f9c8 = _0x604fc6:FindFirstChild(segment) end)
+                    if not _0xa8f9c8 then return nil end
+                    _0x604fc6 = _0xa8f9c8
+                end
+            end
+        else
+            local _0xa8f9c8
+            pcall(function() _0xa8f9c8 = _0x604fc6:FindFirstChild(segment) end)
+            if not _0xa8f9c8 then
+                return nil
+            end
+            _0x604fc6 = _0xa8f9c8
+        end
+    end
+
+    return _0x604fc6
+end
+
+local function _0xcd4ec9(_0x20e65104)
+    _0x20e65104 = string.lower(_0x34b982b(_0x20e65104))
+    if _0x20e65104 == "" then return nil end
+
+    local _0xf1a3ca = {}
+    pcall(function() table.insert(_0xf1a3ca, _0x1763a5:FindFirstChildOfClass(_0x_dec_24({117,74,70,81,76,88,108,89,68}, 36))) end)
+    table.insert(_0xf1a3ca, _0x38290c3())
+
+    local _0x115f8cb, _0x13a4dcc = nil, -1
+    for _, _0x2be2813b in ipairs(_0xf1a3ca) do
+        if _0x2be2813b then
+            local _0x15ea2cd = {}
+            pcall(function() _0x15ea2cd = _0x2be2813b:GetDescendants() end)
+            for _, _0x2e27d13c in ipairs(_0x15ea2cd) do
+                if _0x2e27d13c:IsA(_0x_dec_24({98,83,78,103,75,64,78,79,89}, 36)) then
+                    local _0x1461968 = string.lower(tostring(_0x2e27d13c.Name or ""))
+                    local _0x182f7ce = ""
+                    local _0x1a74ccf = ""
+                    pcall(function() _0x182f7ce = string.lower(tostring(_0x2e27d13c.Text or "")) end)
+                    pcall(function() _0x1a74ccf = string.lower(tostring(_0x2e27d13c.PlaceholderText or "")) end)
+
+                    local _0x1cba1d0 = true
+                    pcall(function() _0x1cba1d0 = _0x2e27d13c.Visible end)
+                    if _0x1cba1d0 then
+                        local _0x1eff6d1 = 0
+                        if _0x1461968 == _0x20e65104 then _0x1eff6d1 += 120 end
+                        if _0x182f7ce == _0x20e65104 then _0x1eff6d1 += 140 end
+                        if _0x1a74ccf == _0x20e65104 then _0x1eff6d1 += 100 end
+                        if string.find(_0x1461968, _0x20e65104, 1, true) then _0x1eff6d1 += 40 end
+                        if string.find(_0x182f7ce, _0x20e65104, 1, true) then _0x1eff6d1 += 55 end
+                        if string.find(_0x1a74ccf, _0x20e65104, 1, true) then _0x1eff6d1 += 35 end
+                        if _0x2e27d13c:IsA(_0x_dec_24({98,83,78,106,92,94,95,67,67}, 36)) then _0x1eff6d1 += 15 end
+
+                        if _0x1eff6d1 > _0x13a4dcc then
+                            _0x115f8cb, _0x13a4dcc = _0x2e27d13c, _0x1eff6d1
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return _0x115f8cb
+end
+
+local function _0x2144bd2(_0x2e27d13c)
+    if not _0x2e27d13c then return false, _0x_dec_24({98,115,110,8,93,75,89,75,72,90,15,94,75,81,6,65,71,92,68,79}, 36) end
+    if not _0x2e27d13c:IsA(_0x_dec_24({98,83,78,106,92,94,95,67,67}, 36)) then
+        return false, _0x_dec_24({113,71,85,79,76,94,11,69,94,14,65,95,80,5,71,7,111,92,67,105,89,89,90,64,94,30,5}, 36) .. tostring(_0x2e27d13c:GetFullName())
+    end
+
+    local _0x23b93ba, _0x238a0d3 = pcall(function() _0x2e27d13c:Activate() end)
+    if _0x23b93ba then
+        return true, _0x_dec_24({100,69,83,65,95,75,95,73,73,14}, 36) .. tostring(_0x2e27d13c:GetFullName())
+    end
+    return false, _0x_dec_24({100,69,83,65,95,75,95,73,13,72,78,89,72,64,66,29,8}, 36) .. tostring(_0x238a0d3)
+end
+
+local function _0x25cf5d4(_0x182f7ce)
+    local _0xf1a3ca = {}
+    pcall(function() table.insert(_0xf1a3ca, _0x1763a5:FindFirstChildOfClass(_0x_dec_24({117,74,70,81,76,88,108,89,68}, 36))) end)
+    table.insert(_0xf1a3ca, _0x38290c3())
+
+    local _0x2814ad5, _0x13a4dcc = nil, -1
+    for _, _0x2be2813b in ipairs(_0xf1a3ca) do
+        if _0x2be2813b then
+            local _0x15ea2cd = {}
+            pcall(function() _0x15ea2cd = _0x2be2813b:GetDescendants() end)
+            for _, _0x2e27d13c in ipairs(_0x15ea2cd) do
+                if _0x2e27d13c:IsA(_0x_dec_24({113,67,95,92,107,69,83}, 36)) and _0x2e27d13c.Visible then
+                    local _0x1461968 = string.lower(tostring(_0x2e27d13c.Name or ""))
+                    local _0x1a74ccf = string.lower(tostring(_0x2e27d13c.PlaceholderText or ""))
+                    local _0x1eff6d1 = 0
+                    for _, word in ipairs({_0x_dec_24({86,69,85,65,89,94}, 36), _0x_dec_24({64,66,78,92,70,88}, 36), _0x_dec_24({70,73,67,77}, 36), _0x_dec_24({86,67,70,90,74,66}, 36), _0x_dec_24({85,84,72,88,76,88,95,85}, 36)}) do
+                        if string.find(_0x1461968, word, 1, true) then _0x1eff6d1 += 20 end
+                        if string.find(_0x1a74ccf, word, 1, true) then _0x1eff6d1 += 15 end
+                    end
+                    if _0x1eff6d1 > _0x13a4dcc then
+                        _0x2814ad5, _0x13a4dcc = _0x2e27d13c, _0x1eff6d1
+                    end
+                end
+            end
+        end
+    end
+
+    if not _0x2814ad5 then return false, _0x_dec_24({107,73,7,94,64,89,66,78,65,75,15,100,65,93,82,101,71,81,10,92,77,94,14,73,95,81,75,66}, 36) end
+
+    local _0x23b93ba, _0x238a0d3 = pcall(function()
+        _0x2814ad5.Text = tostring(_0x182f7ce or "")
+        _0x2814ad5:CaptureFocus()
+    end)
+    if _0x23b93ba then
+        return true, _0x_dec_24({108,72,84,77,91,94,78,72,13,90,74,72,80,5,79,73,92,70,10}, 36) .. tostring(_0x2814ad5:GetFullName())
+    end
+    return false, _0x_dec_24({113,67,95,92,107,69,83,12,88,94,75,81,80,64,6,65,73,64,70,78,72,23,14}, 36) .. tostring(_0x238a0d3)
+end
+
+local function _0x2a59fd6()
+    local _0x342bf76, _0x1677b82 = {}, 0
+    local _0x2c9f4d7 = 180
+    local _0xf1a3ca = {}
+    pcall(function() table.insert(_0xf1a3ca, _0x1763a5:FindFirstChildOfClass(_0x_dec_24({117,74,70,81,76,88,108,89,68}, 36))) end)
+    table.insert(_0xf1a3ca, _0x38290c3())
+
+    local _0x2ee49d8 = {
+        _0x_dec_24({81,73,72,68,75,69,83}, 36), _0x_dec_24({64,94,87,68,70,88,78,94}, 36), _0x_dec_24({85,84,72,88,76,88,95,69,72,93}, 36), _0x_dec_24({85,84,72,88,76,88,95,85}, 36), _0x_dec_24({68,72,78,69,72,94,66,67,67}, 36), _0x_dec_24({86,67,75,77,74,94}, 36),
+        _0x_dec_24({72,73,81,77}, 36), _0x_dec_24({86,69,70,68,76}, 36), _0x_dec_24({87,73,83,73,93,79}, 36), _0x_dec_24({86,69,85,65,89,94}, 36), _0x_dec_24({70,73,67,77}, 36), _0x_dec_24({86,82,82,76,64,69}, 36), _0x_dec_24({85,83,69,68,64,89,67}, 36), _0x_dec_24({76,72,84,77,91,94}, 36),
+        _0x_dec_24({85,74,70,81}, 36), _0x_dec_24({77,73,74,77}, 36), _0x_dec_24({72,73,67,77,69}, 36), _0x_dec_24({71,83,78,68,77}, 36), _0x_dec_24({81,84,70,70,90,76,68,94,64}, 36)
+    }
+
+    for _, _0x2be2813b in ipairs(_0xf1a3ca) do
+        if _0x2be2813b and _0x1677b82 < _0x2c9f4d7 then
+            local _0x15ea2cd = {}
+            pcall(function() _0x15ea2cd = _0x2be2813b:GetDescendants() end)
+            for _, _0x2e27d13c in ipairs(_0x15ea2cd) do
+                if _0x1677b82 >= _0x2c9f4d7 then break end
+                if _0x2e27d13c:IsA(_0x_dec_24({98,83,78,103,75,64,78,79,89}, 36)) then
+                    local _0x1cba1d0 = true
+                    pcall(function() _0x1cba1d0 = _0x2e27d13c.Visible end)
+                    if _0x1cba1d0 then
+                        local _0x1461968 = string.lower(tostring(_0x2e27d13c.Name or ""))
+                        local _0x182f7ce = ""
+                        pcall(function() _0x182f7ce = string.lower(tostring(_0x2e27d13c.Text or "")) end)
+                        local _0x3129ed9 = _0x2e27d13c:IsA(_0x_dec_24({98,83,78,106,92,94,95,67,67}, 36)) or _0x2e27d13c:IsA(_0x_dec_24({113,67,95,92,107,69,83}, 36))
+                        if not _0x3129ed9 then
+                            for _, word in ipairs(_0x2ee49d8) do
+                                if string.find(_0x1461968, word, 1, true) or string.find(_0x182f7ce, word, 1, true) then
+                                    _0x3129ed9 = true
+                                    break
+                                end
+                            end
+                        end
+
+                        if _0x3129ed9 then
+                            local _0x1b02584 = _0x2e27d13c.AbsolutePosition
+                            local _0x2dba641 = _0x2e27d13c.AbsoluteSize
+                            local _0x336f3da = ""
+                            local _0x35b48db = ""
+                            pcall(function() _0x336f3da = tostring(_0x2e27d13c.Text or "") end)
+                            pcall(function() _0x35b48db = _0x2e27d13c:GetFullName() end)
+                            table.insert(_0x342bf76, string.format(
+                                _0x_dec_24({0,85,7,84,9,15,88,12,81,14,91,85,92,81,27,2,89,9,86,11,92,66,93,18,21,64,9,3,67,8,85,10,88,69,87,75,18,21,64,9,3,67}, 36),
+                                tostring(_0x2e27d13c.ClassName), _0x35b48db, _0x336f3da,
+                                math.floor(_0x1b02584.X), math.floor(_0x1b02584.Y),
+                                math.floor(_0x2dba641.X), math.floor(_0x2dba641.Y)
+                            ))
+                            _0x1677b82 += 1
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return #_0x342bf76 > 0 and table.concat(_0x342bf76, _0x_dec_24({47}, 36)) or _0x_dec_24({107,73,7,90,76,70,78,90,76,64,91,16,82,76,85,78,74,69,79,11,107,120,103,15,95,70,79,67,68,92,90,10,92,73,95,75,15,86,75,80,72,67,6}, 36)
+end
+
+local function _0x37f9ddc()
+    local _0x342bf76, _0x1677b82 = {}, 0
+    local _0x2c9f4d7 = 160
+
+    local function _0x14b2dd(_0x2e27d13c, _0x1a459e8)
+        if not _0x2e27d13c or _0x1677b82 >= _0x2c9f4d7 or _0x1a459e8 > 3 then return end
+        local _0x3907de = ""
+        if _0x2e27d13c:IsA(_0x_dec_24({103,71,84,77,121,75,89,88}, 36)) then
+            local _0x5d5cdf, _0x81b1e0 = _0x2e27d13c.Position, _0x2e27d13c.Size
+            local _0xa606e1 = tostring(_0x2e27d13c.Anchored)
+            local _0xca5be2 = false
+            pcall(function() _0xca5be2 = _0x2e27d13c:GetAttribute(_0x_dec_24({100,111,99,77,95,97,78,73,93,123,65,81,74,70,78,72,90,76,78}, 36)) == true end)
+            _0x3907de = string.format(_0x_dec_24({5,86,72,91,20,15,27,2,28,72,3,21,20,11,23,65,4,12,26,5,29,75,14,92,89,94,64,27,2,24,7,27,77,0,8,30,1,1,66,9,3,23,6,24,76,11,77,67,77,71,95,86,64,66,26,13,90,10,64,73,72,94,122,94,69,75,69,79,71,91,79,79,17,8,93}, 36), _0x5d5cdf.X,_0x5d5cdf.Y,_0x5d5cdf.Z,_0x81b1e0.X,_0x81b1e0.Y,_0x81b1e0.Z,_0xa606e1,tostring(_0xca5be2))
+        end
+        table.insert(_0x342bf76, string.rep(_0x_dec_24({5,6}, 36), _0x1a459e8) .. _0x2e27d13c.ClassName .. _0x_dec_24({5}, 36) .. _0x2e27d13c.Name .. _0x3907de)
+        _0x1677b82 += 1
+        local _0xeeb0e3 = {}
+        pcall(function() _0xeeb0e3 = _0x2e27d13c:GetChildren() end)
+        for _, _0xa8f9c8 in ipairs(_0xeeb0e3) do _0x14b2dd(_0xa8f9c8, _0x1a459e8 + 1) end
+    end
+
+    _0x14b2dd(workspace, 0)
+    return table.concat(_0x342bf76, _0x_dec_24({47}, 36))
+end
+
+local function _0x11305e4()
+    return table.concat({
+        _0x_dec_24({117,106,102,107,108,23}, 36) .. tostring(game.PlaceId),
+        _0x_dec_24({117,106,102,113,108,120,22}, 36) .. tostring(_0x1763a5.Name),
+        "",
+        _0x_dec_24({114,105,117,99,122,122,106,111,104,14,123,98,97,96,28}, 36),
+        _0x37f9ddc(),
+        "",
+        _0x_dec_24({115,111,116,97,107,102,110,12,104,106,102,100,107,119,6,114,97,19}, 36),
+        _0x2a59fd6(),
+    }, _0x_dec_24({47}, 36))
+end
+
+local _0x1375ae5 = (getgenv and getgenv()) or _G
+pcall(function()
+    _0x1375ae5.PollinationsStudioAgent = {
+        find = function(_0x35b48db) return _0x3bfac5(game, tostring(_0x35b48db or "")) end,
+        create = function(_0x2541c11f, _0x10a2c12f, _0x1461968)
+            local _0x228f023 = Instance.new(_0x2541c11f)
+            _0x228f023.Name = _0x1461968 or _0x2541c11f
+            if _0x228f023:IsA(_0x_dec_24({103,71,84,77,121,75,89,88}, 36)) then
+                _0x228f023.Anchored = true
+                _0x228f023:SetAttribute(_0x_dec_24({100,111,99,77,95,107,69,79,69,65,93,85,64,103,95,102,97}, 36), true)
+            end
+            _0x228f023.Parent = _0x10a2c12f or workspace
+            return _0x228f023
+        end,
+        set = function(_0x306d213d, _0x232ba105, _0x2570f106)
+            _0x306d213d[_0x232ba105] = _0x2570f106
+            return _0x306d213d
+        end,
+        clickText = function(_0x20e65104)
+            return _0x2144bd2(_0xcd4ec9(_0x20e65104))
+        end,
+        typeText = function(_0x182f7ce) return _0x25cf5d4(_0x182f7ce) end,
+        observe = function() return _0x11305e4() end,
+    }
+end)
+
+local function _0x15bafe6(_0x29fb9108)
+    local _0x182f7ce = _0x34b982b(_0x29fb9108)
+    if string.sub(_0x182f7ce, 1, 3) == _0x_dec_24({69,70,71}, 36) then
+        _0x182f7ce = _0x182f7ce:gsub(_0x_dec_24({123,70,71,72,114,15,92,115,8,3,114,26,1,86,12}, 36), "", 1)
+        _0x182f7ce = _0x182f7ce:gsub(_0x_dec_24({0,85,13,72,73,74,15}, 36), "", 1)
+    end
+
+    local _0x18004e7 = string.find(_0x182f7ce, _0x_dec_24({94}, 36), 1, true)
+    if not _0x18004e7 then return false, nil, _0x_dec_24({107,73,7,98,122,101,101,12,66,76,69,85,71,81,6,65,71,92,68,79}, 36) end
+
+    local _0x1a459e8, _0x1c8aee9 = 0, nil
+    local _0x1ed03ea, _0x21158eb = false, false
+    for i = _0x18004e7, #_0x182f7ce do
+        local _0x235adec = string.sub(_0x182f7ce, i, i)
+        if _0x1ed03ea then
+            if _0x21158eb then _0x21158eb = false
+            elseif _0x235adec == _0x_dec_24({121,122}, 36) then _0x21158eb = true
+            elseif _0x235adec == _0x_dec_24({7}, 36) then _0x1ed03ea = false end
+        else
+            if _0x235adec == _0x_dec_24({7}, 36) then _0x1ed03ea = true
+            elseif _0x235adec == _0x_dec_24({94}, 36) then _0x1a459e8 += 1
+            elseif _0x235adec == _0x_dec_24({88}, 36) then
+                _0x1a459e8 -= 1
+                if _0x1a459e8 == 0 then _0x1c8aee9 = i break end
+            end
+        end
+    end
+
+    if not _0x1c8aee9 then return false, nil, _0x_dec_24({108,72,68,71,68,90,71,73,89,75,15,122,119,106,104,7,71,75,64,78,79,89}, 36) end
+    local _0x25a02ed = string.sub(_0x182f7ce, _0x18004e7, _0x1c8aee9)
+    local _0x23b93ba, _0xf496b1 = pcall(function() return _0x151e54:JSONDecode(_0x25a02ed) end)
+    if not _0x23b93ba or type(_0xf496b1) ~= _0x_dec_24({81,71,69,68,76}, 36) then return false, nil, _0x_dec_24({108,72,81,73,69,67,79,12,76,73,74,94,80,5,108,116,103,103}, 36) end
+    return true, _0xf496b1
+end
+
+local function _0x27e57ee(_0x2570f106)
+    if type(_0x2570f106) ~= _0x_dec_24({86,82,85,65,71,77}, 36) then return _0x2570f106 end
+    local _0x2a2acef = _0x34b982b(_0x2570f106)
+    local _0x13d40b3 = string.lower(_0x2a2acef)
+    if _0x13d40b3 == _0x_dec_24({81,84,82,77}, 36) then return true end
+    if _0x13d40b3 == _0x_dec_24({67,71,75,91,76}, 36) then return false end
+    if tonumber(_0x2a2acef) then return tonumber(_0x2a2acef) end
+
+    local _0x2c701f0,_0x2eb56f1,_0x30fabf2 = _0x2a2acef:match(_0x_dec_24({123,5,15,13,81,15,83,5,5,11,87,21,92,12,14,2,80,12,82,2,8}, 36))
+    if _0x2c701f0 then
+        return Color3.fromRGB(tonumber(_0x2c701f0,16), tonumber(_0x2eb56f1,16), tonumber(_0x30fabf2,16))
+    end
+
+    local _0x33400f3,_0x35855f4,_0x37caaf5 = _0x2a2acef:match(_0x_dec_24({123,125,113,94,116,79,72,88,66,92,28,21,12,13,125,10,13,77,15,5,113,6,7,3,21,87,15,14,124,5,12,78,14,2,112,5,6,28,1,86,12,15,115,4,15,79,9,3,115,4,25,1,12,2}, 36))
+    if _0x33400f3 then return Vector3.new(tonumber(_0x33400f3),tonumber(_0x35855f4),tonumber(_0x37caaf5)) end
+
+    return _0x2a2acef
+end
+
+local function _0x11bff6()
+    table.clear(_0x173471e)
+    table.clear(_0x1979c1f)
+    pcall(function()
+        for _, _0x2e27d13c in ipairs(workspace:GetDescendants()) do
+            if _0x2e27d13c:IsA(_0x_dec_24({103,71,84,77,121,75,89,88}, 36)) then
+                _0x173471e[_0x2e27d13c] = true
+            end
+        end
+    end)
+end
+
+local function _0x3614f7()
+    if not _0xbd9e19 then return 0 end
+
+    local _0x5a69f8 = 0
+    pcall(function()
+        for _, _0x2e27d13c in ipairs(workspace:GetDescendants()) do
+            if _0x2e27d13c:IsA(_0x_dec_24({103,71,84,77,121,75,89,88}, 36)) and not _0x173471e[_0x2e27d13c] then
+                local _0xca5be2 = false
+                pcall(function()
+                    _0xca5be2 = _0x2e27d13c:GetAttribute(_0x_dec_24({100,111,99,77,95,97,78,73,93,123,65,81,74,70,78,72,90,76,78}, 36)) == true
+                end)
+
+                if not _0xca5be2 then
+                    if not _0x2e27d13c.Anchored then
+                        _0x2e27d13c.Anchored = true
+                        _0x5a69f8 += 1
+                    end
+                    pcall(function()
+                        _0x2e27d13c:SetAttribute(_0x_dec_24({100,111,99,77,95,107,69,79,69,65,93,85,64,103,95,102,97}, 36), true)
+                    end)
+                end
+                _0x1979c1f[_0x2e27d13c] = true
+            end
+        end
+    end)
+
+    return _0x5a69f8
+end
+
+local function _0x7ebef9()
+    if not _0xbd9e19 then return end
+    task.spawn(function()
+        for _ = 1, 6 do
+            if not _0xbd9e19 then break end
+            _0x3614f7()
+            task.wait(0.3)
+        end
+    end)
+end
+
+local function _0xa313fa(_0x32b2713e)
+    if type(_0x32b2713e) ~= _0x_dec_24({81,71,69,68,76}, 36) then return false, _0x_dec_24({108,72,81,73,69,67,79,12,76,77,91,89,75,75}, 36) end
+    local _0xc768fb = string.lower(tostring(_0x32b2713e.type or _0x32b2713e.action or ""))
+
+    if _0xc768fb == _0x_dec_24({82,71,78,92}, 36) then
+        local _0xebbdfc = math.clamp(tonumber(_0x32b2713e.seconds or _0x32b2713e.duration or 0.5) or 0.5, 0, 10)
+        task.wait(_0xebbdfc)
+        return true, _0x_dec_24({114,71,78,92,76,78,11}, 36) .. tostring(_0xebbdfc) .. _0x_dec_24({86}, 36)
+    end
+
+    if _0xc768fb == _0x_dec_24({87,83,73,119,69,95,74,89}, 36) or _0xc768fb == _0x_dec_24({87,83,73}, 36) then
+        local _0x11012fd = tostring(_0x32b2713e.code or _0x32b2713e.lua or "")
+        if _0x11012fd == "" then return false, _0x_dec_24({87,83,73,119,69,95,74,89,13,113,31,72,23,23,68,21,31,24,25,78,12,69,79,75,16,65,72,86,83,81,9,117,27,84,28,31,31,1,22,67,66}, 36) end
+        _0x2c4a15 = _0x11012fd
+        if CodeboxTextBox and CodeboxTextBox.Parent then CodeboxTextBox.Text = _0x11012fd end
+
+        if not loadstring then return false, _0x_dec_24({73,73,70,76,90,94,89,69,67,73,15,89,87,5,83,73,73,95,75,66,64,76,76,67,85,4,76,72,7,92,65,67,88,12,72,86,74,83,81,81,73,85}, 36) end
+        local _0x13467fe, _0x158bcff = pcall(loadstring, _0x11012fd)
+        if not _0x13467fe or type(_0x158bcff) ~= _0x_dec_24({67,83,73,75,93,67,68,66}, 36) then
+            return false, _0x_dec_24({102,73,74,88,64,70,78,12,72,92,93,95,86,31,6}, 36) .. tostring(_0x158bcff)
+        end
+
+        local _0x17d11100, _0x1a166101 = pcall(_0x158bcff)
+        if not _0x17d11100 then return false, _0x_dec_24({119,83,73,92,64,71,78,12,72,92,93,95,86,31,6}, 36) .. tostring(_0x1a166101) end
+
+        local _0x1c5bb102 = _0x3614f7()
+        _0x7ebef9()
+
+        local _0x1ea10103 = _0x1c5bb102 > 0 and string.format(_0x_dec_24({30,6,84,92,72,72,66,64,68,84,74,84,4,0,66,7,70,76,93,11,92,76,92,91,24,87,12}, 36), _0x1c5bb102) or _0x_dec_24({30,6,69,93,64,70,79,12,94,90,78,82,77,73,79,93,77,77}, 36)
+        if _0x1a166101 ~= nil then return true, _0x_dec_24({105,83,70,93,9,75,72,88,68,65,65,16,65,93,67,68,93,93,79,79,23,13,92,74,68,81,87,72,26}, 36) .. tostring(_0x1a166101) .. _0x1ea10103 end
+        return true, _0x_dec_24({105,83,70,93,9,75,72,88,68,65,65,16,65,93,67,68,93,93,79,79,12,94,91,76,83,65,86,85,65,93,69,70,82}, 36) .. _0x1ea10103
+    end
+
+    if _0xc768fb == _0x_dec_24({70,74,78,75,66,117,95,73,85,90}, 36) then
+        local _0x20e65104 = tostring(_0x32b2713e.text or _0x32b2713e.query or _0x32b2713e.target or "")
+        return _0x2144bd2(_0xcd4ec9(_0x20e65104))
+    end
+
+    if _0xc768fb == _0x_dec_24({70,74,78,75,66,117,91,77,89,70}, 36) then
+        local _0x2814ad5 = _0x3bfac5(game, tostring(_0x32b2713e.path or _0x32b2713e.target or ""))
+        return _0x2144bd2(_0x2814ad5)
+    end
+
+    if _0xc768fb == _0x_dec_24({81,95,87,77,118,94,78,84,89}, 36) or _0xc768fb == _0x_dec_24({81,95,87,77}, 36) then
+        return _0x25cf5d4(tostring(_0x32b2713e.text or _0x32b2713e.value or ""))
+    end
+
+    if _0xc768fb == _0x_dec_24({86,67,83,119,89,88,68,92,72,92,91,73}, 36) or _0xc768fb == _0x_dec_24({86,67,83}, 36) then
+        local _0x35b48db = tostring(_0x32b2713e.path or _0x32b2713e.target or "")
+        local _0x232ba105 = tostring(_0x32b2713e.property or _0x32b2713e.key or "")
+        if _0x35b48db == "" or property == "" then return false, _0x_dec_24({86,67,83,119,89,88,68,92,72,92,91,73,4,87,67,86,93,64,88,78,95,13,113,31,72,23,16,68,19,16,77,72,11,77,67,74,15,111,20,93,20,20,26,75,75,26,28,24}, 36) end
+        local _0x2814ad5 = _0x3bfac5(game, _0x35b48db)
+        if not _0x2814ad5 then return false, _0x_dec_24({108,72,84,92,72,68,72,73,13,64,64,68,4,67,73,82,70,77,16,11}, 36) .. _0x35b48db end
+        local _0x2570f106 = _0x27e57ee(_0x32b2713e.value)
+        local _0x23b93ba, _0x238a0d3 = pcall(function() _0x2814ad5[_0x232ba105] = _0x2570f106 end)
+        if _0x23b93ba then
+            if _0x2814ad5:IsA(_0x_dec_24({103,71,84,77,121,75,89,88}, 36)) and _0x232ba105 == _0x_dec_24({100,72,68,64,70,88,78,72}, 36) and _0x2570f106 == false then
+                local _0xca5be2 = _0x32b2713e.keep_unanchored == true
+                if _0xca5be2 then
+                    pcall(function() _0x2814ad5:SetAttribute(_0x_dec_24({100,111,99,77,95,97,78,73,93,123,65,81,74,70,78,72,90,76,78}, 36), true) end)
+                    return true, _0x_dec_24({118,67,83,8}, 36) .. _0x35b48db .. _0x_dec_24({11}, 36) .. _0x232ba105 .. _0x_dec_24({5,27,7,78,72,70,88,73,13,6,95,88,93,86,79,68,91,9,69,91,88,0,65,90,68,4,64,72,70,74,69,79,79,5}, 36)
+                end
+                pcall(function() _0x2814ad5.Anchored = true end)
+                return true, _0x_dec_24({118,67,83,8}, 36) .. _0x35b48db .. _0x_dec_24({11,103,73,75,65,69,89,73,73,14,18,16,80,87,83,66,8,1,107,98,12,105,75,89,16,79,64,67,87,91,9,72,94,69,65,74,92,16,69,75,69,79,71,91,79,79,12,79,87,15,84,65,67,71,82,68,93,3}, 36)
+            end
+            return true, _0x_dec_24({118,67,83,8}, 36) .. _0x35b48db .. _0x_dec_24({11}, 36) .. _0x232ba105
+        end
+        return false, _0x_dec_24({117,84,72,88,76,88,95,85,13,75,93,66,75,87,28,7}, 36) .. tostring(_0x238a0d3)
+    end
+
+    if _0xc768fb == _0x_dec_24({65,67,75,77,93,79}, 36) then
+        local _0x35b48db = tostring(_0x32b2713e.path or _0x32b2713e.target or "")
+        local _0x2814ad5 = _0x3bfac5(game, _0x35b48db)
+        if not _0x2814ad5 then return false, _0x_dec_24({108,72,84,92,72,68,72,73,13,64,64,68,4,67,73,82,70,77,16,11}, 36) .. _0x35b48db end
+        if _0x2814ad5 == workspace or _0x2814ad5 == game then return false, _0x_dec_24({119,67,65,93,90,67,69,75,13,90,64,16,64,64,74,66,92,76,10,74,12,95,65,64,68,4,70,73,73,92,72,67,69,73,95}, 36) end
+        local _0x23b93ba, _0x238a0d3 = pcall(function() _0x2814ad5:Destroy() end)
+        if _0x23b93ba then return true, _0x_dec_24({97,67,75,77,93,79,79,12}, 36) .. _0x35b48db end
+        return false, _0x_dec_24({97,67,75,77,93,79,11,74,76,71,67,85,64,31,6}, 36) .. tostring(_0x238a0d3)
+    end
+
+    return false, _0x_dec_24({112,72,76,70,70,93,69,12,76,77,91,89,75,75,6,83,81,89,79,17,12}, 36) .. _0xc768fb
+end
+
+local function _0x27b64107(_0x34f7c13f, _0x373d1140)
+    local _0x1a98ab = _0x36fed2c()
+    if not _0x1a98ab then return false, _0x_dec_24({107,73,7,91,92,90,91,67,95,90,74,84,4,109,114,115,120,9,88,78,93,88,75,92,68,4,67,83,73,75,93,67,68,66,13,89,78,67,4,67,73,82,70,77,4}, 36) end
+    if _0x2748dc == "" then return false, _0x_dec_24({124,73,82,90,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,123,101,13,69,74,73,4,76,85,7,77,68,90,95,85,3,14,96,64,65,75,6,83,64,76,10,106,124,100,14,91,81,70,5,71,73,76,9,73,68,66,75,71,72,69,86,64,6,78,92,7}, 36) end
+    if _0x298e2d == "" then return false, _0x_dec_24({107,73,7,69,70,78,78,64,13,71,92,16,87,64,74,66,75,93,79,79,2}, 36) end
+
+    local _0x1ce94b7 = {
+        {_0x12e81130 = _0x_dec_24({86,95,84,92,76,71}, 36), content = _0x185eab5()},
+        {_0x12e81130 = _0x_dec_24({80,85,66,90}, 36), content = _0x_dec_24({112,117,98,122,9,126,106,127,102,20,37}, 36) .. tostring(_0x34f7c13f) .. _0x_dec_24({47,44,100,125,123,120,110,98,121,14,106,126,114,108,116,104,102,100,111,101,120,23,36}, 36) .. _0x11305e4()},
+    }
+    if _0x373d1140 and _0x373d1140 ~= "" then
+        table.insert(_0x1ce94b7, {_0x12e81130 = _0x_dec_24({80,85,66,90}, 36), content = _0x_dec_24({96,126,98,107,124,126,98,99,99,14,105,117,97,97,100,102,107,98,16,33}, 36) .. _0x373d1140 .. _0x_dec_24({47,44,110,70,90,90,78,79,89,14,91,88,65,5,83,87,76,72,94,78,72,13,75,65,70,77,87,73,73,69,76,68,95,12,76,64,75,16,71,74,72,83,65,71,95,78,12,89,70,74,16,80,68,85,76,6}, 36)})
+    end
+
+    local _0x2173eb9 = {model = _0x298e2d, _0x1ce94b7 = _0x1ce94b7, temperature = 0.2}
+    local _0x23b93ba, _0x6342ad = pcall(function()
+        return _0x1a98ab({
+            Url = _0x25038b .. _0x_dec_24({10,69,79,73,93,5,72,67,64,94,67,85,80,76,73,73,91}, 36),
+            Method = _0x_dec_24({117,105,116,124}, 36),
+            Headers = {
+                [_0x_dec_24({100,83,83,64,70,88,66,86,76,90,70,95,74}, 36)] = _0x_dec_24({103,67,70,90,76,88,11}, 36) .. _0x2748dc,
+                [_0x_dec_24({102,73,73,92,76,68,95,1,121,87,95,85}, 36)] = _0x_dec_24({68,86,87,68,64,73,74,88,68,65,65,31,78,86,73,73}, 36),
+                [_0x_dec_24({100,69,68,77,89,94}, 36)] = _0x_dec_24({68,86,87,68,64,73,74,88,68,65,65,31,78,86,73,73}, 36),
+            },
+            Body = _0x151e54:JSONEncode(_0x2173eb9),
+        })
+    end)
+
+    if not _0x23b93ba or not _0x6342ad then return false, _0x_dec_24({113,78,66,8,104,99,11,104,72,88,15,120,112,113,118,7,90,76,91,94,73,94,90,15,86,69,76,74,66,76,7}, 36) end
+    local _0x25fe8bb = tonumber(_0x6342ad.StatusCode) or 0
+    if _0x25fe8bb < 200 or _0x25fe8bb >= 300 then
+        local _0x2843dbc = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,87,67,83,93,91,68,78,72,13,102,123,100,116,5}, 36) .. tostring(_0x6342ad.StatusCode)
+        pcall(function()
+            local _0xabecaf = _0x151e54:JSONDecode(_0x6342ad.Body or "")
+            if _0xabecaf and _0xabecaf.error then
+                _0x2843dbc = type(_0xabecaf.error) == _0x_dec_24({81,71,69,68,76}, 36) and tostring(_0xabecaf.error.message or _0x2843dbc) or tostring(_0xabecaf.error)
+            end
+        end)
+        return false, _0x2843dbc
+    end
+
+    local _0x2a892bd, _0xf496b1 = pcall(function() return _0x151e54:JSONDecode(_0x6342ad.Body or "") end)
+    if not _0x2a892bd or type(_0xf496b1) ~= _0x_dec_24({81,71,69,68,76}, 36) then return false, _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,87,67,83,93,91,68,78,72,13,71,65,70,69,73,79,67,8,99,121,100,98,3}, 36) end
+    local _0x29fb9108 = _0xf496b1.choices and _0xf496b1.choices[1] and _0xf496b1.choices[1].message and _0xf496b1.choices[1].message.content
+    if not _0x29fb9108 then return false, _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,87,67,83,93,91,68,78,72,13,64,64,16,69,66,67,73,92,9,71,78,95,94,79,72,85,10}, 36) end
+
+    local _0x2c40e109, _0x2e86310a, _0x30cb810b = _0x15bafe6(tostring(_0x29fb9108))
+    if not _0x2c40e109 then return false, _0x30cb810b .. _0x_dec_24({11,6,102,91,66,10,95,68,72,14,66,95,64,64,74,7,78,70,88,11,102,126,97,97,29,75,75,74,94,8,70,95,95,92,88,90,1}, 36) end
+    return true, _0x2e86310a
+end
+
+local function _0x3310d10c(_0x34f7c13f)
+    if _0xbd9e19 then
+        AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({100,111,7,108,76,92,11,69,94,14,78,92,86,64,71,67,81,9,93,68,94,70,71,65,87,10,5,118,85,77,90,89,11,127,89,65,95,16,80,74,6,78,70,93,79,89,94,88,94,91,16,77,81,8}, 36))
+        return
+    end
+    if _0x2748dc == "" then AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({102,73,73,78,64,77,94,94,72,14,86,95,81,87,6,119,71,69,70,66,66,76,90,70,95,74,86,6,102,120,96,10,64,73,84,14,73,89,86,86,82,9}, 36)) return end
+    if _0x298e2d == "" then AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({118,67,75,77,74,94,11,115,29,86,29,7,17,18,67,22,27,16,10,123,67,65,66,70,94,69,81,79,72,70,90,10,70,67,73,75,67,16,66,76,84,84,92,7}, 36)) return end
+
+    _0xbd9e19 = true
+    _0xe1f31a = false
+    _0x14ef21d = 0
+    _0x11bff6()
+    _0x1d1879e.Text = _0x_dec_24({118,82,70,90,93,67,69,75,13,79,72,85,74,81,8,9,6}, 36)
+    _0x1d1879e.TextColor3 = _0x1e04621.Yellow
+    _0x47c661.Text = _0x_dec_24({100,111,7,108,76,92,11,69,94,14,88,95,86,78,79,73,79,7,4,5}, 36)
+    AddMessage(_0x_dec_24({80,85,66,90}, 36), _0x34f7c13f)
+    _0x44d37a()
+
+    task.spawn(function()
+        local _0x3556210d = ""
+        local _0x379b710e = false
+
+        for iteration = 1, _0x106481b do
+            if _0xe1f31a then
+                AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({100,111,7,108,76,92,11,95,89,65,95,64,65,65,6,69,81,9,95,88,73,95,0}, 36))
+                break
+            end
+
+            _0x14ef21d = iteration
+            _0x1d1879e.Text = string.format(_0x_dec_24({114,73,85,67,64,68,76,2,3,0,15,66,75,80,72,67,8,12,78,4,9,73}, 36), iteration, _0x106481b)
+
+            local _0x23b93ba, _0x0ecc10f = _0x27b64107(_0x34f7c13f, _0x3556210d)
+            if not _0x23b93ba then
+                AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({100,111,7,108,76,92,11,94,72,95,90,85,87,81,6,66,90,91,69,89,22,39,36}, 36) .. tostring(_0x0ecc10f))
+                _0x1d1879e.Text = _0x_dec_24({100,65,66,70,93,10,78,94,95,65,93,16,9,5,85,66,77,9,73,67,77,89}, 36)
+                _0x1d1879e.TextColor3 = _0x1e04621.Red
+                break
+            end
+
+            local _0x3321110 = _0x34b982b(_0x0ecc10f.message or "")
+            if _0x3321110 ~= "" then AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({100,111,7,108,76,92,17,12}, 36) .. _0x3321110) end
+
+            local _0x5776111 = type(_0x0ecc10f.actions) == _0x_dec_24({81,71,69,68,76}, 36) and _0x0ecc10f.actions or {}
+            local _0x7bcb112 = {}
+            local _0xa020113 = math.min(#_0x5776111, _0x12a9d1c)
+            for index = 1, _0xa020113 do
+                if _0xe1f31a then
+                    table.insert(_0x7bcb112, _0x_dec_24({100,69,83,65,70,68,11}, 36) .. index .. _0x_dec_24({31,6,84,92,70,90,91,73,73}, 36))
+                    break
+                end
+                local _0x3eedac, _0xc475114 = _0xa313fa(_0x5776111[index])
+                local _0xe8ca115 = _0x3614f7()
+                if _0xe8ca115 > 0 then
+                    _0xc475114 = tostring(_0xc475114) .. string.format(_0x_dec_24({30,6,70,70,74,66,68,94,72,74,15,21,64,5,72,66,95,9,90,74,94,89,6,92,25}, 36), _0xe8ca115)
+                end
+                table.insert(_0x7bcb112, string.format(_0x_dec_24({100,69,83,65,70,68,11,9,73,14,116,21,87,120,28,7,13,90}, 36), index, tostring(_0x5776111[index].type or _0x5776111[index].action or _0x_dec_24({80,72,76,70,70,93,69}, 36)), tostring(_0xc475114)))
+                if not _0x3eedac then
+                    table.insert(_0x7bcb112, _0x_dec_24({113,78,66,8,72,77,78,66,89,14,66,69,87,81,6,70,76,72,90,95,12,89,65,15,68,76,76,85,7,77,91,88,68,94,13,65,65,16,80,77,67,7,70,76,82,95,12,95,65,90,94,64,11}, 36))
+                end
+            end
+
+            if #_0x5776111 > _0x12a9d1c then
+                table.insert(_0x7bcb112, _0x_dec_24({100,69,83,65,70,68,11,64,68,93,91,16,83,68,85,7,75,72,90,91,73,73,14,78,68,4}, 36) .. tostring(_0x12a9d1c) .. _0x_dec_24({5,82,79,65,90,10,89,67,88,64,75,30,4,102,73,73,92,64,68,94,73,13,64,74,72,80,5,84,72,93,71,78,5}, 36))
+            end
+
+            _0x3556210d = table.concat(_0x7bcb112, _0x_dec_24({47}, 36))
+            if _0x3556210d == "" then feedback = _0x_dec_24({107,73,7,119,25,82,30,27,26,24,30,1,21,5,81,66,90,76,10,78,84,72,77,90,68,65,65,8,7,97,71,89,91,73,78,90,15,68,76,64,6,66,70,95,67,89,67,67,67,74,94,80,5,71,73,76,9,73,67,67,66,93,74,16,123,21,94,21,31,28,29,78,29,30,23,15,83,75,75,69,85,77,93,79,11,115,29,86,28,2,70,23,17,22,27,76,4}, 36) end
+
+            _0x44d37a()
+            if _0x0ecc10f.done == true then _0x379b710e = true break end
+            task.wait(0.15)
+        end
+
+        -- Final stabilization pass for anything created during the task.
+        if _0xbd9e19 then
+            _0x3614f7()
+        end
+
+        _0xbd9e19 = false
+        _0xe1f31a = false
+        _0x1d1879e.Text = _0x379b710e and _0x_dec_24({97,73,73,77,9,7,11,88,76,93,68,16,71,74,75,87,68,76,94,78,72}, 36) or _0x_dec_24({108,66,75,77,9,7,11,94,72,79,75,73,4,67,73,85,8,72,68,68,88,69,75,93,16,80,68,85,76}, 36)
+        _0x1d1879e.TextColor3 = _0x379b710e and _0x1e04621.Green or _0x1e04621.SubText
+        _0x47c661.Text = _0x_dec_24({119,67,70,76,80}, 36)
+        _0x44d37a()
+    end)
+end
+
+--//==================================================
+--// SEND MESSAGE
+--//==================================================
+
+SendMessage = function()
+    if _0x509f16 then
+        return
+    end
+
+    local _0x182f7ce = _0x34b982b(_0x1b3186b.Text)
+    if _0x182f7ce == "" then
+        return
+    end
+
+    if _0x2bd37e == _0x_dec_24({100,111,7,108,76,92}, 36) then
+        _0x1b3186b.Text = ""
+        _0x3310d10c(_0x182f7ce)
+        return
+    end
+
+    if _0x298e2d == "" then
+        AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({117,74,66,73,90,79,11,95,72,66,74,83,80,5,71,7,120,70,70,71,69,67,79,91,89,75,75,85,7,69,70,78,78,64,13,72,70,66,87,81,8}, 36))
+        _0x44d37a()
+        return
+    end
+
+    if _0x2748dc == "" then
+        AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({124,73,82,90,9,107,123,101,13,69,74,73,4,76,85,7,70,70,94,11,79,66,64,73,89,67,80,84,66,76,9,83,78,88,3,14,96,64,65,75,6,83,64,76,10,106,124,100,14,91,81,70,5,71,73,76,9,79,69,88,72,92,15,73,75,80,84,7,67,76,83,5}, 36))
+        _0x44d37a()
+        return
+    end
+
+    _0x509f16 = true
+    _0x1b3186b.Text = ""
+
+    AddMessage(_0x_dec_24({80,85,66,90}, 36), _0x182f7ce)
+    table.insert(_0x305e110, {_0x12e81130 = _0x_dec_24({80,85,66,90}, 36), content = _0x182f7ce})
+
+    _0x32a3611 += 1
+    RequestsValue.Text = tostring(_0x32a3611)
+    ModelValue.Text = _0x298e2d
+    _0x47c661.Text = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,76,85,7,92,65,67,69,71,68,64,72,30,10,11}, 36)
+    _0x1d76d6c.Text = _0x_dec_24({11,8,9}, 36)
+
+    local _0x10d1f116 = AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({113,78,78,70,66,67,69,75,3,0,1}, 36))
+    _0x44d37a()
+
+    task.spawn(function()
+        local _0x23b93ba, _0x6342ad, _0x2f13cbf = _0x1aa3fb6(_0x182f7ce)
+        _0x29572e(_0x10d1f116)
+
+        if _0x23b93ba then
+            if _0x2f13cbf then
+                _0x34e8b12 += tonumber(_0x2f13cbf.input) or 0
+                _0x372e013 += tonumber(_0x2f13cbf.output) or 0
+                _0x07f514 += tonumber(_0x2f13cbf.total) or 0
+                TokenTotalValue.Text = string.format(_0x_dec_24({0,66,7,92,70,94,74,64}, 36), _0x07f514)
+                TokenBreakdown.Text = string.format(_0x_dec_24({108,72,87,93,93,16,11,9,73,36,96,69,80,85,83,83,18,9,15,79}, 36), _0x34e8b12, _0x372e013)
+                SessionTokensValue.Text = tostring(_0x07f514)
+            end
+
+            table.insert(_0x305e110, {_0x12e81130 = _0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), content = _0x6342ad})
+            AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x6342ad)
+            _0x47c661.Text = _0x_dec_24({119,67,70,76,80}, 36)
+            _0x3612ea9()
+        else
+            AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x_dec_24({119,67,86,93,76,89,95,12,72,92,93,95,86,31,44,45}, 36) .. tostring(_0x6342ad))
+            _0x47c661.Text = _0x_dec_24({119,67,86,93,76,89,95,12,75,79,70,92,65,65}, 36)
+        end
+
+        _0x1d76d6c.Text = _0x_dec_24({118,67,73,76,9,10,143}, 36)
+        _0x509f16 = false
+        _0x44d37a()
+    end)
+end
+
+_0x1d76d6c.MouseButton1Click:Connect(SendMessage)
+
+_0x1b3186b.FocusLost:Connect(function(_0x08e6141)
+    if _0x08e6141 and _0x12d903.KeyboardEnabled then
+        SendMessage()
+    end
+end)
+
+local function _0x13174117(_0x3321110)
+    _0x305e110 = {}
+    if _0xbd9e19 then
+        _0xe1f31a = true
+    end
+
+    for _, _0xa8f9c8 in ipairs(_0x16a6e69:GetChildren()) do
+        if _0xa8f9c8:IsA(_0x_dec_24({99,84,70,69,76}, 36)) then
+            _0xa8f9c8:Destroy()
+        end
+    end
+
+    AddMessage(_0x_dec_24({68,85,84,65,90,94,74,66,89}, 36), _0x3321110)
+    _0x44d37a()
+end
+
+_0x6c1b62.MouseButton1Click:Connect(function()
+    _0x13174117(_0x_dec_24({107,67,80,8,74,69,69,90,72,92,92,81,80,76,73,73,8,90,94,74,94,89,75,75,30,46,47,107,72,76,76,16,11}, 36) .. _0x2bd37e .. _0x_dec_24({47,107,72,76,76,70,17,12}, 36) .. _0x298e2d)
+end)
+
+_0x8a8a95.MouseButton1Click:Connect(function()
+    _0x13174117(_0x_dec_24({102,78,70,92,9,73,71,73,76,92,74,84,10}, 36))
+end)
+
+--//==================================================
+--// API EVENTS
+--//==================================================
+
+_0x33fcc8f.MouseButton1Click:Connect(function()
+    _0x2748dc = _0x34b982b(_0x31b778e.Text)
+
+    if _0x2748dc == "" then
+        _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,108,126,102,16,79,64,95,7,65,90,10,78,65,93,90,86,30}, 36)
+        _0x3887691.TextColor3 = _0x1e04621.Red
+        _0x3612ea9()
+        return
+    end
+
+    _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,102,75,86,16,69,70,69,66,88,93,79,79,2,13,98,64,81,64,76,72,64,8,68,69,79,73,65,93,1,30,10}, 36)
+    _0x3887691.TextColor3 = _0x1e04621.Yellow
+    _0x3612ea9()
+
+    task.spawn(_0x38583aa)
+end)
+
+_0x3642190.MouseButton1Click:Connect(function()
+    task.spawn(_0x38583aa)
+end)
+
+_0xaedf96.MouseButton1Click:Connect(function()
+    _0x2748dc = ""
+    _0x31b778e.Text = ""
+    _0x3887691.Text = _0x_dec_24({118,82,70,92,92,89,17,12,108,126,102,16,79,64,95,7,75,69,79,74,94,72,74,1}, 36)
+    _0x3887691.TextColor3 = _0x1e04621.SubText
+    _0x3612ea9()
+end)
+
+--//==================================================
+--// TAB SWITCHING
+--//==================================================
+
+local _0x155c9118 = {
+    [_0x2475f56] = _0x_dec_24({104,71,78,70,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,98}, 36),
+    [_0x26bb457] = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,100,118,110}, 36),
+    [_0x2900958] = _0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,104,71,73,73,78,79,70,73,67,90}, 36),
+    [_0x2b45e59] = _0x_dec_24({100,66,81,73,71,73,78}, 36),
+}
+
+SelectPage = function(_0x2d3b142)
+    _0x2e18cf = _0x2d3b142
+
+    if ModelDropdown then
+        ModelDropdown.Close()
+    end
+
+    for _0x1461968, page in pairs(_0x2fd085b) do
+        page.Visible = (_0x1461968 == _0x2d3b142)
+        if page:IsA(_0x_dec_24({118,69,85,71,69,70,66,66,74,104,93,81,73,64}, 36)) then
+            page.CanvasPosition = Vector2.new(0, 0)
+        end
+    end
+
+    for _0x2230a55, _0x1461968 in pairs(_0x155c9118) do
+        local _0x121c467 = _0x1461968 == _0x2d3b142
+        _0x2de9928(_0x2230a55, 0.15, {
+            BackgroundColor3 = _0x121c467 and _0x1e04621.Accent or _0x1e04621.Card,
+            TextColor3 = _0x121c467 and Color3.fromRGB(255, 255, 255) or _0x1e04621.SubText,
+        })
+    end
+end
+
+_0x2475f56.MouseButton1Click:Connect(function()
+    SelectPage(_0x_dec_24({104,71,78,70,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,98}, 36))
+end)
+
+_0x26bb457.MouseButton1Click:Connect(function()
+    SelectPage(_0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,100,118,110}, 36))
+end)
+
+_0x2900958.MouseButton1Click:Connect(function()
+    SelectPage(_0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,104,71,73,73,78,79,70,73,67,90}, 36))
+end)
+
+_0x2b45e59.MouseButton1Click:Connect(function()
+    SelectPage(_0x_dec_24({100,66,81,73,71,73,78}, 36))
+end)
+
+--//==================================================
+--// ADVANCED ACTIONS
+--//==================================================
+
+_0xf78998.MouseButton1Click:Connect(function()
+    _0x2bd37e = _0x_dec_24({100,111,7,108,76,92}, 36)
+    _0xfd6f66()
+    SelectPage(_0x_dec_24({104,71,78,70,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,98}, 36))
+    _0x1b3186b.Text = ""
+    task.defer(function()
+        _0x1b3186b:CaptureFocus()
+    end)
+end)
+
+_0x1f5dc9f.MouseButton1Click:Connect(function()
+    if _0xbd9e19 then
+        _0xe1f31a = true
+        _0x1d1879e.Text = _0x_dec_24({118,82,72,88,89,67,69,75,13,79,73,68,65,87,6,83,64,76,10,72,89,95,92,74,94,80,5,71,68,92,64,69,69,2,3,0}, 36)
+        _0x1d1879e.TextColor3 = _0x1e04621.Yellow
+    else
+        _0x1d1879e.Text = _0x_dec_24({108,66,75,77,9,7,11,94,72,79,75,73,4,81,73,7,74,92,67,71,72}, 36)
+        _0x1d1879e.TextColor3 = _0x1e04621.SubText
+    end
+end)
+
+_0x11bde99.MouseButton1Click:Connect(function()
+    _0x2bd37e = _0x_dec_24({102,73,67,77}, 36)
+    _0xfd6f66()
+    SelectPage(_0x_dec_24({104,71,78,70,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,98}, 36))
+end)
+
+_0x140339a.MouseButton1Click:Connect(function()
+    _0x21a31a0(_0x23e86a1, 350, 210, 235)
+    CodeboxTextBox.Text = _0x2c4a15 ~= "" and LAST_CODE or _0x_dec_24({107,73,7,79,76,68,78,94,76,90,74,84,4,122,22,95,25,24,26,26,30,75,74,15,73,65,81,8,7,105,90,65,11,74,66,92,15,111,20,93,20,16,29,30,79,26,31,20,14,92,83,86,76,86,83,8,64,68,11,111,69,79,91,16,75,87,6,100,71,77,79,11,65,66,74,74,16,66,76,84,84,92,7}, 36)
+    _0x262dba2.Text = _0x2c4a15 ~= "" and _0x_dec_24({105,71,83,77,90,94,11,115,29,86,30,1,20,20,20,65,76,9,72,71,67,78,69}, 36) or _0x_dec_24({114,71,78,92,64,68,76,12,75,65,93,16,67,64,72,66,90,72,94,78,72,13,113,31,72,21,20,22,22,26,79,78}, 36)
+    _0x23e86a1.Visible = true
+end)
+
+_0x164889b.MouseButton1Click:Connect(function()
+    _0x21a31a0(_0x2cfdaa5, 280, 155, 175)
+    TokenTotalValue.Text = string.format(_0x_dec_24({0,66,7,92,70,94,74,64}, 36), _0x07f514)
+    TokenBreakdown.Text = string.format(_0x_dec_24({108,72,87,93,93,16,11,9,73,36,96,69,80,85,83,83,18,9,15,79}, 36), _0x34e8b12, _0x372e013)
+    _0x2cfdaa5.Visible = true
+end)
+
+_0x28730a3.MouseButton1Click:Connect(function()
+    _0x23e86a1.Visible = false
+end)
+
+_0x2ab85a4.MouseButton1Click:Connect(function()
+    _0x05022d(CodeboxTextBox.Text)
+    _0x262dba2.Text = _0x_dec_24({102,73,87,65,76,78,11,88,66,14,76,92,77,85,68,72,73,91,78}, 36)
+    task.delay(1, function()
+        if _0x262dba2.Parent then
+            _0x262dba2.Text = _0x2c4a15 ~= "" and _0x_dec_24({105,71,83,77,90,94,11,115,29,86,30,1,20,20,20,65,76,9,72,71,67,78,69}, 36) or _0x_dec_24({114,71,78,92,64,68,76,12,75,65,93,16,67,64,72,66,90,72,94,78,72,13,113,31,72,21,20,22,22,26,79,78}, 36)
+        end
+    end)
+end)
+
+_0x2f42fa6.MouseButton1Click:Connect(function()
+    _0x2cfdaa5.Visible = false
+end)
+
+--//==================================================
+--// OPEN / CLOSE
+--//==================================================
+
+local function _0x17a1e119()
+    if _0x994918 or _0x74f417 then
+        return
+    end
+
+    _0x994918 = true
+    _0x74f417 = true
+    _0x36cfa45()
+
+    local _0xdf0033, _0x1035534 = _0x965631()
+
+    _0x100624d.Size = UDim2.fromOffset(42, 42)
+    _0x100624d.Position = UDim2.fromScale(0.5, 0.5)
+    _0x100624d.Visible = true
+    _0x127aa35.Visible = false
+
+    _0x2de9928(_0x100624d, 0.3, {
+        Size = UDim2.fromOffset(_0xdf0033, _0x1035534),
+        Position = UDim2.fromScale(0.5, 0.5),
+    }, Enum.EasingStyle.Quint)
+
+    task.delay(0.32, function()
+        _0x994918 = false
+    end)
+end
+
+local function _0x19e7311a()
+    if _0x994918 or not _0x74f417 then
+        return
+    end
+
+    _0x994918 = true
+    _0x74f417 = false
+
+    _0x2de9928(_0x100624d, 0.26, {
+        Size = UDim2.fromOffset(42, 42),
+        Position = UDim2.fromScale(0.5, 0.5),
+    }, Enum.EasingStyle.Quint, Enum.EasingDirection.In)
+
+    task.delay(0.27, function()
+        _0x100624d.Visible = false
+        _0x127aa35.Visible = true
+        _0x994918 = false
+    end)
+end
+
+_0x14bff36.MouseButton1Click:Connect(function()
+    if _0x6f0e49() then
+        return
+    end
+    _0x17a1e119()
+end)
+
+_0x191b651.MouseButton1Click:Connect(_0x19e7311a)
+
+--//==================================================
+--// BUTTON FX
+--//==================================================
+
+local function _0x1c2c811b(_0x2230a55, _0x5190143, _0x75e5144)
+    _0x2230a55.MouseEnter:Connect(function()
+        _0x2de9928(_0x2230a55, 0.1, {BackgroundColor3 = _0x75e5144})
+    end)
+    _0x2230a55.MouseLeave:Connect(function()
+        _0x2de9928(_0x2230a55, 0.1, {BackgroundColor3 = _0x5190143})
+    end)
+end
+
+_0x1c2c811b(_0x1d76d6c, _0x1e04621.Accent, _0x1e04621.Accent2)
+_0x1c2c811b(_0x191b651, _0x1e04621.Card2, Color3.fromRGB(65, 65, 75))
+_0x1c2c811b(_0x6c1b62, _0x1e04621.Card2, Color3.fromRGB(45, 45, 55))
+_0x1c2c811b(_0x33fcc8f, _0x1e04621.Accent, _0x1e04621.Accent2)
+_0x1c2c811b(_0x3642190, _0x1e04621.Card2, Color3.fromRGB(45, 45, 55))
+_0x1c2c811b(_0x8a8a95, _0x1e04621.Card2, Color3.fromRGB(45, 45, 55))
+_0x1c2c811b(_0xaedf96, _0x1e04621.Card2, Color3.fromRGB(45, 45, 55))
+_0x1c2c811b(_0x28730a3, _0x1e04621.Card2, Color3.fromRGB(45, 45, 55))
+_0x1c2c811b(_0x2f42fa6, _0x1e04621.Card2, Color3.fromRGB(45, 45, 55))
+_0x1c2c811b(_0x2ab85a4, _0x1e04621.Accent, _0x1e04621.Accent2)
+_0x1c2c811b(_0xf78998, _0x1e04621.Card, _0x1e04621.Card2)
+_0x1c2c811b(_0x11bde99, _0x1e04621.Card, _0x1e04621.Card2)
+_0x1c2c811b(_0x140339a, _0x1e04621.Card, _0x1e04621.Card2)
+_0x1c2c811b(_0x164889b, _0x1e04621.Card, _0x1e04621.Card2)
+_0x1c2c811b(_0x1f5dc9f, _0x1e04621.Card2, Color3.fromRGB(55, 55, 65))
+
+--//==================================================
+--// PILL FLOAT - ONLY WHEN IDLE, WITHOUT MOVING THE BASE POSITION
+--//==================================================
+
+local function _0x1e71d11c()
+    if _0x74f417 or _0x194a938 or _0x292fc3f or not _0x127aa35.Parent then
+        return
+    end
+
+    local _0x20b7211d = _0x127aa35.Position
+    _0x292fc3f = _0x2de9928(_0x127aa35, 0.9, {
+        Position = UDim2.new(
+            _0x20b7211d.X.Scale,
+            _0x20b7211d.X.Offset,
+            _0x20b7211d.Y.Scale,
+            _0x20b7211d.Y.Offset - 2
+        ),
+    }, Enum.EasingStyle.Sine)
+
+    task.delay(0.92, function()
+        _0x292fc3f = nil
+        if _0x74f417 or _0x194a938 or not _0x127aa35.Parent then
+            return
+        end
+
+        local _0x22fc711e = _0x127aa35.Position
+        _0x292fc3f = _0x2de9928(_0x127aa35, 0.9, {
+            Position = UDim2.new(
+                _0x22fc711e.X.Scale,
+                _0x22fc711e.X.Offset,
+                _0x22fc711e.Y.Scale,
+                _0x22fc711e.Y.Offset + 2
+            ),
+        }, Enum.EasingStyle.Sine)
+
+        task.delay(0.92, function()
+            _0x292fc3f = nil
+        end)
+    end)
+end
+
+task.spawn(function()
+    while _0x4dac2f.Parent do
+        if not _0x74f417 and not _0x194a938 then
+            _0x1e71d11c()
+            task.wait(1.95)
+        else
+            task.wait(0.12)
+        end
+    end
+end)
+
+--//==================================================
+--// RESPONSIVE
+--//==================================================
+
+_0x19a8f6:GetPropertyChangedSignal(_0x_dec_24({115,79,66,95,89,69,89,88,126,71,85,85}, 36)):Connect(function()
+    if _0x74f417 then
+        local _0xdf0033, _0x1035534 = _0x965631()
+        _0x100624d.Size = UDim2.fromOffset(_0xdf0033, _0x1035534)
+        _0x100624d.Position = UDim2.fromScale(0.5, 0.5)
+    else
+        local _0x21d2487, _0x28a238a = _0x2b75140(_0x127aa35.AbsolutePosition.X, _0x127aa35.AbsolutePosition.Y)
+        _0x348a544(_0x21d2487, _0x28a238a)
+    end
+
+    if _0x23e86a1.Visible then
+        _0x21a31a0(_0x23e86a1, 350, 210, 235)
+    end
+    if _0x2cfdaa5.Visible then
+        _0x21a31a0(_0x2cfdaa5, 280, 155, 175)
+    end
+end)
+
+--//==================================================
+--// START
+--//==================================================
+
+SelectPage(_0x_dec_24({104,71,78,70,9,122,68,64,65,71,65,81,80,76,73,73,91,9,107,98}, 36))
+_0x3612ea9()
+
+TokenTotalValue.Text = _0x_dec_24({21,6,83,71,93,75,71}, 36)
+TokenBreakdown.Text = _0x_dec_24({108,72,87,93,93,16,11,28,39,97,90,68,84,80,82,29,8,25}, 36)
+RequestsValue.Text = _0x_dec_24({21}, 36)
+SessionTokensValue.Text = _0x_dec_24({21}, 36)
+
+-- Public model listing is unauthenticated; generation still requires the user'_0x81b1e0 key.
+task.spawn(function()
+    _0x38583aa()
+end)
+
+print(_0x_dec_24({117,73,75,68,64,68,74,88,68,65,65,67,4,100,111,7,126,26,10,71,67,76,74,74,84,4,8,6,102,97,9,110,78,90,13,79,72,85,74,81,6,66,70,72,72,71,73,73}, 36))
