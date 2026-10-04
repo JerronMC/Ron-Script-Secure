@@ -1,0 +1,1768 @@
+--[[ Protected by Lua Guard ]]
+
+(function(...) 
+--"\091\010\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\010\032\032\032\032\032\032\067\072\065\084\071\080\084\032\077\079\066\073\076\069\032\085\073\032\032\045\032\032\082\111\110\110\105\101\032\077\117\108\116\105\045\065\073\032\032\040\118\055\041\010\032\032\032\032\032\032\065\117\116\111\045\115\099\114\111\108\108\032\124\032\065\110\105\109\097\116\105\111\110\115\032\124\032\073\110\102\111\032\099\097\114\100\032\124\032\069\120\101\099\117\116\111\114\032\077\111\100\101\010\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\010\093"
+local Players          = game:GetService("\080\108\097\121\101\114\115")
+local TweenService     = game:GetService("\084\119\101\101\110\083\101\114\118\105\099\101")
+local UserInputService = game:GetService("\085\115\101\114\073\110\112\117\116\083\101\114\118\105\099\101")
+local HttpService      = game:GetService("\072\116\116\112\083\101\114\118\105\099\101")
+local CoreGui          = game:GetService("\067\111\114\101\071\117\105")
+local RunService       = game:GetService("\082\117\110\083\101\114\118\105\099\101")
+local LocalPlayer      = Players.LocalPlayer
+
+local function getReq()
+    if typeof(request) == "\102\117\110\099\116\105\111\110" then return request end
+    if typeof(http_request) == "\102\117\110\099\116\105\111\110" then return http_request end
+    if syn and typeof(syn.request) == "\102\117\110\099\116\105\111\110" then return syn.request end
+    if fluxus and typeof(fluxus.request) == "\102\117\110\099\116\105\111\110" then return fluxus.request end
+end
+local Request = getReq()
+
+local function getGuiParent()
+    if typeof(gethui) == "\102\117\110\099\116\105\111\110" then
+        local ok, g = pcall(gethui); if ok and g then return g end
+    end
+    return CoreGui
+end
+local GuiParent = getGuiParent()
+
+local function hasFileAPI()
+    return typeof(writefile) == "\102\117\110\099\116\105\111\110" and typeof(readfile) == "\102\117\110\099\116\105\111\110" and typeof(isfile) == "\102\117\110\099\116\105\111\110"
+end
+local function hasFolderAPI() return typeof(makefolder) == "\102\117\110\099\116\105\111\110" and typeof(isfolder) == "\102\117\110\099\116\105\111\110" end
+local function getAssetFunction()
+    if typeof(getcustomasset) == "\102\117\110\099\116\105\111\110" then return getcustomasset end
+    if typeof(getsynasset) == "\102\117\110\099\116\105\111\110" then return getsynasset end
+end
+local GetCustomAsset = getAssetFunction()
+
+local function copyClipboard(t)
+    if typeof(setclipboard) == "\102\117\110\099\116\105\111\110" then return pcall(setclipboard, t) end
+    if typeof(toclipboard) == "\102\117\110\099\116\105\111\110" then return pcall(toclipboard, t) end
+    return false
+end
+local function pasteClipboard()
+    if typeof(getclipboard) == "\102\117\110\099\116\105\111\110" then
+        local ok, v = pcall(getclipboard); if ok then return v end
+    end
+    return nil
+end
+
+pcall(function() local o = GuiParent:FindFirstChild("\067\104\097\116\071\080\084\095\077\117\108\116\105\065\073\095\082\111\110\110\105\101"); if o then o:Destroy() end end)
+pcall(function() local o = GuiParent:FindFirstChild("\067\104\097\116\071\080\084\095\084\084\083\095\082\111\110\110\105\101"); if o then o:Destroy() end end)
+
+--// SAVE
+local SAVE_FOLDER = "\067\104\097\116\071\080\084\095\077\117\108\116\105\065\073\095\082\111\110\110\105\101"
+local SAVE_FILE = SAVE_FOLDER .. "\047\100\097\116\097\046\106\115\111\110"
+
+local ROBLOX_PERSONA = "\091\010\089\111\117\032\097\114\101\032\097\110\032\101\120\112\101\114\116\032\082\111\098\108\111\120\032\076\117\097\117\032\100\101\118\101\108\111\112\101\114\032\065\073\046\032\089\111\117\032\098\117\105\108\100\032\097\110\100\032\115\099\114\105\112\116\032\105\110\115\105\100\101\032\097\010\076\073\086\069\032\114\117\110\110\105\110\103\032\103\097\109\101\046\032\069\118\101\114\121\032\096\096\096\108\117\097\032\098\108\111\099\107\032\121\111\117\032\111\117\116\112\117\116\032\105\115\032\101\120\101\099\117\116\101\100\032\102\111\114\032\114\101\097\108\046\010\010\079\085\084\080\085\084\032\070\079\082\077\065\084\010\045\032\082\101\112\108\121\032\119\105\116\104\032\079\078\069\032\096\096\096\108\117\097\032\099\111\100\101\032\098\108\111\099\107\032\099\111\110\116\097\105\110\105\110\103\032\116\104\101\032\099\111\109\112\108\101\116\101\032\119\111\114\107\105\110\103\032\099\111\100\101\046\010\045\032\075\101\101\112\032\112\114\111\115\101\032\116\111\032\049\045\050\032\115\104\111\114\116\032\108\105\110\101\115\046\032\084\104\101\032\099\111\100\101\032\073\083\032\116\104\101\032\097\110\115\119\101\114\046\010\010\067\082\073\084\073\067\065\076\032\082\085\076\069\032\049\032\045\032\065\078\067\072\079\082\073\078\071\010\069\118\101\114\121\032\066\097\115\101\080\097\114\116\032\077\085\083\084\032\104\097\118\101\032\065\110\099\104\111\114\101\100\032\115\101\116\032\101\120\112\108\105\099\105\116\108\121\046\032\069\120\097\109\112\108\101\058\010\032\032\108\111\099\097\108\032\112\032\061\032\073\110\115\116\097\110\099\101\046\110\101\119\040\034\080\097\114\116\034\041\010\032\032\112\046\065\110\099\104\111\114\101\100\032\061\032\116\114\117\101\010\032\032\112\046\067\097\110\067\111\108\108\105\100\101\032\061\032\102\097\108\115\101\010\032\032\112\046\077\097\116\101\114\105\097\108\032\061\032\069\110\117\109\046\077\097\116\101\114\105\097\108\046\083\109\111\111\116\104\080\108\097\115\116\105\099\010\032\032\112\046\083\105\122\101\032\061\032\086\101\099\116\111\114\051\046\110\101\119\040\052\044\049\044\052\041\010\032\032\112\046\080\111\115\105\116\105\111\110\032\061\032\086\101\099\116\111\114\051\046\110\101\119\040\048\044\032\048\046\053\044\032\048\041\010\010\067\082\073\084\073\067\065\076\032\082\085\076\069\032\050\032\045\032\083\067\082\073\080\084\032\080\076\065\067\069\077\069\078\084\010\032\032\083\101\114\118\101\114\032\108\111\103\105\099\032\032\045\062\032\103\097\109\101\046\083\101\114\118\101\114\083\099\114\105\112\116\083\101\114\118\105\099\101\010\032\032\067\108\105\101\110\116\032\108\111\103\105\099\032\032\045\062\032\103\097\109\101\046\083\116\097\114\116\101\114\080\108\097\121\101\114\046\083\116\097\114\116\101\114\080\108\097\121\101\114\083\099\114\105\112\116\115\010\032\032\085\073\032\115\099\114\105\112\116\032\032\032\032\032\045\062\032\103\097\109\101\046\083\116\097\114\116\101\114\071\117\105\032\040\076\111\099\097\108\083\099\114\105\112\116\041\010\032\032\083\104\097\114\101\100\032\109\111\100\117\108\101\032\045\062\032\103\097\109\101\046\082\101\112\108\105\099\097\116\101\100\083\116\111\114\097\103\101\010\032\032\084\111\111\108\115\032\032\032\032\032\032\032\032\032\045\062\032\103\097\109\101\046\083\116\097\114\116\101\114\080\097\099\107\010\010\067\082\073\084\073\067\065\076\032\082\085\076\069\032\051\032\045\032\076\073\086\069\032\085\073\010\032\032\073\109\109\101\100\105\097\116\101\032\085\073\032\045\062\032\103\097\109\101\046\080\108\097\121\101\114\115\046\076\111\099\097\108\080\108\097\121\101\114\046\080\108\097\121\101\114\071\117\105\010\032\032\065\102\116\101\114\032\114\101\115\112\097\119\110\032\045\062\032\103\097\109\101\046\083\116\097\114\116\101\114\071\117\105\010\032\032\078\101\118\101\114\032\119\111\114\107\115\112\097\099\101\046\010\010\067\082\073\084\073\067\065\076\032\082\085\076\069\032\052\032\045\032\071\082\079\085\080\032\066\085\073\076\068\083\010\087\114\097\112\032\109\117\108\116\105\112\108\101\032\112\097\114\116\115\032\105\110\032\097\032\110\097\109\101\100\032\070\111\108\100\101\114\032\117\110\100\101\114\032\119\111\114\107\115\112\097\099\101\046\010\010\067\082\073\084\073\067\065\076\032\082\085\076\069\032\053\032\045\032\071\082\079\085\078\068\032\082\069\083\084\010\032\032\112\046\080\111\115\105\116\105\111\110\032\061\032\086\101\099\116\111\114\051\046\110\101\119\040\120\044\032\115\105\122\101\046\089\047\050\044\032\122\041\010\010\082\085\076\069\032\054\032\045\032\083\065\070\069\010\085\115\101\032\112\099\097\108\108\032\102\111\114\032\114\105\115\107\121\032\099\097\108\108\115\046\032\085\115\101\032\103\097\109\101\058\071\101\116\083\101\114\118\105\099\101\040\041\032\097\108\119\097\121\115\046\010\093"
+
+local EXECUTOR_PERSONA = "\091\010\089\111\117\032\097\114\101\032\097\110\032\101\120\112\101\114\116\032\076\117\097\117\047\101\120\101\099\117\116\111\114\045\115\099\114\105\112\116\105\110\103\032\065\073\046\032\084\104\101\032\117\115\101\114\032\114\117\110\115\032\116\104\101\032\099\111\100\101\032\121\111\117\010\112\114\111\100\117\099\101\032\105\110\115\105\100\101\032\097\032\082\111\098\108\111\120\032\101\120\101\099\117\116\111\114\032\040\068\101\108\116\097\044\032\083\121\110\097\112\115\101\044\032\083\111\108\097\114\097\044\032\101\116\099\046\041\046\010\069\118\101\114\121\032\096\096\096\108\117\097\032\098\108\111\099\107\032\105\115\032\101\120\101\099\117\116\101\100\032\105\110\032\116\104\101\032\101\120\101\099\117\116\111\114\032\101\110\118\105\114\111\110\109\101\110\116\046\010\010\079\085\084\080\085\084\032\070\079\082\077\065\084\010\045\032\082\101\112\108\121\032\119\105\116\104\032\079\078\069\032\096\096\096\108\117\097\032\099\111\100\101\032\098\108\111\099\107\032\099\111\110\116\097\105\110\105\110\103\032\097\032\102\117\108\108\032\115\116\097\110\100\097\108\111\110\101\032\115\099\114\105\112\116\046\010\045\032\075\101\101\112\032\112\114\111\115\101\032\116\111\032\049\045\050\032\108\105\110\101\115\046\010\010\069\088\069\067\085\084\079\082\032\065\080\073\083\032\089\079\085\032\067\065\078\032\085\083\069\010\032\032\072\084\084\080\058\032\032\114\101\113\117\101\115\116\123\085\114\108\061\046\046\046\044\032\077\101\116\104\111\100\061\046\046\046\044\032\072\101\097\100\101\114\115\061\046\046\046\044\032\066\111\100\121\061\046\046\046\125\010\032\032\032\032\032\032\032\032\032\040\102\097\108\108\032\098\097\099\107\032\116\111\032\104\116\116\112\095\114\101\113\117\101\115\116\032\047\032\115\121\110\046\114\101\113\117\101\115\116\032\105\102\032\110\101\101\100\101\100\041\010\032\032\070\105\108\101\115\058\032\119\114\105\116\101\102\105\108\101\040\112\097\116\104\044\032\100\097\116\097\041\044\032\114\101\097\100\102\105\108\101\040\112\097\116\104\041\044\032\105\115\102\105\108\101\040\112\097\116\104\041\044\010\032\032\032\032\032\032\032\032\032\109\097\107\101\102\111\108\100\101\114\040\112\097\116\104\041\044\032\105\115\102\111\108\100\101\114\040\112\097\116\104\041\044\032\100\101\108\102\105\108\101\040\112\097\116\104\041\044\032\108\105\115\116\102\105\108\101\115\040\112\097\116\104\041\010\032\032\065\115\115\101\116\115\058\103\101\116\099\117\115\116\111\109\097\115\115\101\116\040\112\097\116\104\041\044\032\103\101\116\115\121\110\097\115\115\101\116\040\112\097\116\104\041\010\032\032\069\120\101\099\058\032\032\108\111\097\100\115\116\114\105\110\103\040\099\111\100\101\041\044\032\108\111\097\100\115\116\114\105\110\103\040\103\097\109\101\058\072\116\116\112\071\101\116\040\117\114\108\041\041\010\032\032\067\108\105\112\058\032\032\115\101\116\099\108\105\112\098\111\097\114\100\040\116\101\120\116\041\044\032\103\101\116\099\108\105\112\098\111\097\114\100\040\041\010\032\032\071\085\073\058\032\032\032\103\101\116\104\117\105\040\041\032\114\101\116\117\114\110\115\032\104\105\100\100\101\110\032\085\073\032\112\097\114\101\110\116\032\040\102\097\108\108\032\098\097\099\107\032\116\111\032\067\111\114\101\071\117\105\041\010\032\032\083\097\118\101\058\032\032\119\114\105\116\101\102\105\108\101\040\034\099\111\110\102\105\103\046\106\115\111\110\034\044\032\072\116\116\112\083\101\114\118\105\099\101\058\074\083\079\078\069\110\099\111\100\101\040\116\098\108\041\041\010\010\083\067\082\073\080\084\032\083\084\082\085\067\084\085\082\069\032\082\085\076\069\083\010\049\046\032\065\108\119\097\121\115\032\115\116\097\114\116\032\119\105\116\104\058\032\108\111\099\097\108\032\072\116\116\112\083\101\114\118\105\099\101\032\061\032\103\097\109\101\058\071\101\116\083\101\114\118\105\099\101\040\034\072\116\116\112\083\101\114\118\105\099\101\034\041\010\050\046\032\087\114\097\112\032\114\105\115\107\121\032\065\080\073\032\099\097\108\108\115\032\105\110\032\112\099\097\108\108\046\010\051\046\032\068\101\102\105\110\101\032\085\073\032\112\097\114\101\110\116\032\115\097\102\101\108\121\058\010\032\032\032\032\032\108\111\099\097\108\032\080\065\082\069\078\084\032\061\032\040\116\121\112\101\111\102\040\103\101\116\104\117\105\041\061\061\034\102\117\110\099\116\105\111\110\034\032\097\110\100\032\103\101\116\104\117\105\040\041\041\032\111\114\032\103\097\109\101\058\071\101\116\083\101\114\118\105\099\101\040\034\067\111\114\101\071\117\105\034\041\010\052\046\032\078\101\118\101\114\032\108\101\097\118\101\032\115\121\110\116\097\120\032\101\114\114\111\114\115\046\032\084\101\115\116\045\116\114\097\099\101\032\109\101\110\116\097\108\108\121\046\010\053\046\032\070\111\114\032\107\105\108\108\045\097\108\108\032\047\032\104\105\116\098\111\120\032\047\032\097\117\116\111\045\102\097\114\109\032\115\099\114\105\112\116\115\044\032\116\097\114\103\101\116\032\097\108\108\032\112\108\097\121\101\114\115\032\101\120\099\101\112\116\032\076\111\099\097\108\080\108\097\121\101\114\046\010\054\046\032\070\111\114\032\071\085\073\032\115\099\114\105\112\116\115\044\032\098\117\105\108\100\032\083\099\114\101\101\110\071\117\105\032\119\105\116\104\032\112\114\111\112\101\114\032\073\103\110\111\114\101\071\117\105\073\110\115\101\116\046\010\055\046\032\082\101\117\115\101\058\032\109\097\107\101\032\099\108\101\097\110\032\116\111\103\103\108\101\045\097\098\108\101\032\115\099\114\105\112\116\115\032\119\105\116\104\032\097\032\115\109\097\108\108\032\099\108\111\115\101\032\098\117\116\116\111\110\046\010\056\046\032\078\101\118\101\114\032\104\097\114\100\099\111\100\101\032\065\080\073\032\107\101\121\115\032\111\114\032\116\111\107\101\110\115\046\010\010\067\079\077\077\079\078\032\084\065\083\075\083\010\032\032\034\117\110\105\118\101\114\115\097\108\032\115\099\114\105\112\116\034\032\032\032\032\032\032\032\045\062\032\111\110\101\032\102\105\108\101\044\032\119\111\114\107\115\032\111\110\032\097\110\121\032\103\097\109\101\032\119\105\116\104\032\108\111\111\112\115\010\032\032\034\115\101\110\100\032\119\101\098\104\111\111\107\034\032\032\032\032\032\032\032\032\032\032\032\045\062\032\114\101\113\117\101\115\116\123\085\114\108\061\119\101\098\104\111\111\107\044\032\066\111\100\121\061\074\083\079\078\069\110\099\111\100\101\040\123\046\046\046\125\041\125\010\032\032\034\097\117\116\111\032\102\097\114\109\034\032\032\032\032\032\032\032\032\032\032\032\032\032\032\045\062\032\116\097\115\107\046\115\112\097\119\110\032\108\111\111\112\032\119\105\116\104\032\112\099\097\108\108\010\032\032\034\104\105\116\098\111\120\032\101\120\112\097\110\100\101\114\034\032\032\032\032\032\032\032\032\045\062\032\102\111\114\032\095\044\112\032\105\110\032\105\112\097\105\114\115\040\080\108\097\121\101\114\115\058\071\101\116\080\108\097\121\101\114\115\040\041\041\032\046\046\046\010\032\032\034\115\097\118\101\032\099\111\110\102\105\103\034\032\032\032\032\032\032\032\032\032\032\032\032\045\062\032\119\114\105\116\101\102\105\108\101\032\043\032\074\083\079\078\069\110\099\111\100\101\010\010\073\102\032\097\109\098\105\103\117\111\117\115\044\032\097\115\107\032\079\078\069\032\115\104\111\114\116\032\113\117\101\115\116\105\111\110\046\032\079\116\104\101\114\119\105\115\101\032\111\117\116\112\117\116\032\099\111\100\101\046\010\093"
+
+local DEFAULT_DATA = {
+    activeProvider = "\079\112\101\110\065\073",
+    activeModel = "\103\112\116\045\053\045\109\105\110\105",
+    customModel = "",
+    keys = {},
+    saveKeys = false,
+    personaMode = "\114\111\098\108\111\120",  -- "\114\111\098\108\111\120" or "\101\120\101\099\117\116\111\114"
+    persona = ROBLOX_PERSONA,
+    temperature = 0.6,
+    maxTokens = 0x1000,
+    voiceRead = false,
+    ttsVoice = "\097\108\108\111\121",
+    enterToSend = true,
+    introEnabled = true,
+    animationsEnabled = true,
+    compactMode = false,
+    autoScroll = true,
+    autoExecute = false,
+    safeMode = true,
+    fontScale = "\110\111\114\109\097\108",
+    freeGuard = false,
+    maxRequestsPerSession = 0x64,
+    customBaseURL = "",
+    customHeaders = "",
+    selectedChat = nil,
+    chats = {}
+}
+
+local Data = {}
+local function cloneTable(v)
+    if type(v) ~= "\116\097\098\108\101" then return v end
+    local o = {}; for k, x in pairs(v) do o[k] = cloneTable(x) end; return o
+end
+local function loadData()
+    Data = cloneTable(DEFAULT_DATA)
+    if not hasFileAPI() then return end
+    pcall(function()
+        if isfile(SAVE_FILE) then
+            local d = HttpService:JSONDecode(readfile(SAVE_FILE))
+            if type(d) == "\116\097\098\108\101" then for k, v in pairs(d) do Data[k] = v end end
+        end
+    end)
+end
+local function saveData()
+    if not hasFileAPI() then return end
+    pcall(function()
+        if hasFolderAPI() and not isfolder(SAVE_FOLDER) then makefolder(SAVE_FOLDER) end
+        writefile(SAVE_FILE, HttpService:JSONEncode(Data))
+    end)
+end
+loadData()
+
+local FONT_SIZES = { small = 0xC, normal = 0xE, large = 0x10 }
+local function bodyFont() return FONT_SIZES[Data.fontScale] or 0xE end
+
+--// PROVIDERS
+local PROVIDERS = {
+    OpenAI = { baseURL = "\104\116\116\112\115\058\047\047\097\112\105\046\111\112\101\110\097\105\046\099\111\109\047\118\049", models = {"\103\112\116\045\053\045\109\105\110\105","\103\112\116\045\053","\103\112\116\045\052\046\049\045\109\105\110\105","\103\112\116\045\052\046\049"} },
+    Groq = { baseURL = "\104\116\116\112\115\058\047\047\097\112\105\046\103\114\111\113\046\099\111\109\047\111\112\101\110\097\105\047\118\049", models = {"\108\108\097\109\097\045\051\046\051\045\055\048\098\045\118\101\114\115\097\116\105\108\101","\111\112\101\110\097\105\047\103\112\116\045\111\115\115\045\049\050\048\098","\111\112\101\110\097\105\047\103\112\116\045\111\115\115\045\050\048\098","\113\119\101\110\047\113\119\101\110\051\045\051\050\098"} },
+    Anthropic = { baseURL = "\104\116\116\112\115\058\047\047\097\112\105\046\097\110\116\104\114\111\112\105\099\046\099\111\109\047\118\049", models = {"\099\108\097\117\100\101\045\115\111\110\110\101\116\045\052\045\053","\099\108\097\117\100\101\045\111\112\117\115\045\052\045\049","\099\108\097\117\100\101\045\104\097\105\107\117\045\052\045\053"} },
+    Gemini = { baseURL = "\104\116\116\112\115\058\047\047\103\101\110\101\114\097\116\105\118\101\108\097\110\103\117\097\103\101\046\103\111\111\103\108\101\097\112\105\115\046\099\111\109\047\118\049\098\101\116\097", models = {"\103\101\109\105\110\105\045\050\046\053\045\102\108\097\115\104","\103\101\109\105\110\105\045\050\046\053\045\112\114\111","\103\101\109\105\110\105\045\050\046\048\045\102\108\097\115\104"} },
+    Pollinations = { baseURL = "\104\116\116\112\115\058\047\047\103\101\110\046\112\111\108\108\105\110\097\116\105\111\110\115\046\097\105\047\118\049", models = {"\111\112\101\110\097\105\047\103\112\116\045\053\046\052\045\109\105\110\105","\111\112\101\110\097\105\047\103\112\116\045\053\046\053","\103\111\111\103\108\101\047\103\101\109\105\110\105\045\051\046\055\045\102\108\097\115\104","\097\110\116\104\114\111\112\105\099\047\099\108\097\117\100\101\045\115\111\110\110\101\116\045\053","\100\101\101\112\115\101\101\107\047\100\101\101\112\115\101\101\107\045\118\052\045\102\108\097\115\104","\109\101\116\097\047\108\108\097\109\097\045\052\045\115\099\111\117\116"} },
+    Grok = { baseURL = "\104\116\116\112\115\058\047\047\097\112\105\046\120\046\097\105\047\118\049", models = {"\103\114\111\107\045\051","\103\114\111\107\045\051\045\109\105\110\105"} },
+    DeepSeek = { baseURL = "\104\116\116\112\115\058\047\047\097\112\105\046\100\101\101\112\115\101\101\107\046\099\111\109", models = {"\100\101\101\112\115\101\101\107\045\099\104\097\116","\100\101\101\112\115\101\101\107\045\114\101\097\115\111\110\101\114"} },
+    Mistral = { baseURL = "\104\116\116\112\115\058\047\047\097\112\105\046\109\105\115\116\114\097\108\046\097\105\047\118\049", models = {"\109\105\115\116\114\097\108\045\115\109\097\108\108\045\108\097\116\101\115\116","\109\105\115\116\114\097\108\045\108\097\114\103\101\045\108\097\116\101\115\116","\099\111\100\101\115\116\114\097\108\045\108\097\116\101\115\116"} },
+    OpenRouter = { baseURL = "\104\116\116\112\115\058\047\047\111\112\101\110\114\111\117\116\101\114\046\097\105\047\097\112\105\047\118\049", models = {"\111\112\101\110\097\105\047\103\112\116\045\111\115\115\045\049\050\048\098","\103\111\111\103\108\101\047\103\101\109\105\110\105\045\050\046\053\045\102\108\097\115\104","\097\110\116\104\114\111\112\105\099\047\099\108\097\117\100\101\045\115\111\110\110\101\116\045\052\045\053","\100\101\101\112\115\101\101\107\047\100\101\101\112\115\101\101\107\045\099\104\097\116"} },
+    ["\067\117\115\116\111\109\032\047\032\079\112\101\110\065\073\045\067\111\109\112\097\116\105\098\108\101"] = { baseURL = "", models = {"\099\117\115\116\111\109\045\109\111\100\101\108"} }
+}
+local PROVIDER_NAMES = {}
+for n in pairs(PROVIDERS) do table.insert(PROVIDER_NAMES, n) end
+table.sort(PROVIDER_NAMES)
+
+--// CHAT
+local function newId() return tostring(os.time()) .. "\095" .. tostring(math.random(0x186A0,0xF423F)) end
+local function createChat()
+    local c = { id = newId(), title = "\078\101\119\032\067\104\097\116", provider = Data.activeProvider,
+        model = Data.customModel ~= "" and Data.customModel or Data.activeModel,
+        createdAt = os.time(), updatedAt = os.time(), messages = {} }
+    table.insert(Data.chats, 0x1, c)
+    Data.selectedChat = c.id
+    saveData()
+    return c
+end
+local function getCurrentChat()
+    for _, c in ipairs(Data.chats) do if c.id == Data.selectedChat then return c end end
+    if #Data.chats > 0x0 then Data.selectedChat = Data.chats[0x1].id; return Data.chats[0x1] end
+    return createChat()
+end
+local CurrentChat = getCurrentChat()
+
+--// COLORS
+local COLORS = {
+    BG = Color3.fromRGB(0x0,0x0,0x0),
+    Surface = Color3.fromRGB(0x1C,0x1C,0x1E),
+    Surface2 = Color3.fromRGB(0x2C,0x2C,0x30),
+    Surface3 = Color3.fromRGB(0x3A,0x3A,0x3E),
+    Hover = Color3.fromRGB(0x46,0x46,0x4C),
+    Border = Color3.fromRGB(0x38,0x38,0x3C),
+    Text = Color3.fromRGB(0xEC,0xEC,0xF1),
+    Muted = Color3.fromRGB(0x98,0x98,0xA0),
+    Accent = Color3.fromRGB(0x25,0x63,0xEB),
+    AccentHover = Color3.fromRGB(0x3B,0x82,0xF6),
+    UserBubble = Color3.fromRGB(0x1E,0x37,0x96),
+    Green = Color3.fromRGB(0x4E,0xD3,0x82),
+    Yellow = Color3.fromRGB(0xF6,0xBF,0x4E),
+    Red = Color3.fromRGB(0xF5,0x58,0x5E)
+}
+
+--// HELPERS
+local function create(cls, props)
+    local o = Instance.new(cls)
+    for p, v in pairs(props or {}) do pcall(function() o[p] = v end) end
+    return o
+end
+local function corner(obj, r) create("\085\073\067\111\114\110\101\114", { Parent = obj, CornerRadius = UDim.new(0x0, r or 0xC) }) end
+local function stroke(obj, c, t)
+    return create("\085\073\083\116\114\111\107\101", { Parent = obj, Color = c or COLORS.Border, Thickness = 0x1,
+        Transparency = t or 0.3, ApplyStrokeMode = Enum.ApplyStrokeMode.Border })
+end
+local function tween(obj, props, dur, style, dir)
+    if not Data.animationsEnabled then
+        for p, v in pairs(props) do pcall(function() obj[p] = v end) end
+        return
+    end
+    local t = TweenService:Create(obj, TweenInfo.new(dur or 0.22, style or Enum.EasingStyle.Quart, dir or Enum.EasingDirection.Out), props)
+    t:Play(); return t
+end
+local function hoverable(btn, base, hover)
+    local b = base or btn.BackgroundColor3
+    local h = hover or COLORS.Hover
+    btn.MouseEnter:Connect(function()
+        if Data.animationsEnabled then tween(btn, {BackgroundColor3 = h}, 0.12)
+        else btn.BackgroundColor3 = h end
+    end)
+    btn.MouseLeave:Connect(function()
+        if Data.animationsEnabled then tween(btn, {BackgroundColor3 = b}, 0.16)
+        else btn.BackgroundColor3 = b end
+    end)
+end
+local function safeText(s, limit)
+    s = tostring(s or ""); if limit and #s > limit then return s:sub(0x1,limit).."\046\046\046" end; return s
+end
+
+--// ANIMATED ENTRY (fade + slide up)
+local function enterAnimation(frame, fromY, delay)
+    if not Data.animationsEnabled then return end
+    local originalY = frame.Position.Y
+    frame.Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset,
+        originalY.Scale, originalY.Offset + (fromY or 0xC))
+    frame.BackgroundTransparency = 0x1
+    if frame:IsA("\084\101\120\116\076\097\098\101\108") or frame:IsA("\084\101\120\116\066\117\116\116\111\110") or frame:IsA("\084\101\120\116\066\111\120") then
+        frame.TextTransparency = 0x1
+    end
+    task.delay(delay or 0.02, function()
+        tween(frame, {
+            Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset, originalY.Scale, originalY.Offset),
+            BackgroundTransparency = frame:IsA("\070\114\097\109\101") and 0x0 or nil
+        }, 0.32, Enum.EasingStyle.Quart)
+        if frame:IsA("\084\101\120\116\076\097\098\101\108") or frame:IsA("\084\101\120\116\066\117\116\116\111\110") or frame:IsA("\084\101\120\116\066\111\120") then
+            tween(frame, {TextTransparency = 0x0}, 0.3)
+        end
+    end)
+end
+
+--// ICONS
+local function drawHamburger(p, c)
+    for i = -0x1, 0x1 do create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5,0x0,0.5,i*4.5),
+        Size = UDim2.new(0x0,0x11,0x0,0x2) }) end
+end
+local function drawPlus(p, c)
+    create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,0x0,0.5,0x0),
+        Size = UDim2.new(0x0,0xE,0x0,0x2) })
+    create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,0x0,0.5,0x0),
+        Size = UDim2.new(0x0,0x2,0x0,0xE) })
+end
+local function drawKebab(p, c)
+    for i = -0x1, 0x1 do
+        local d = create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+            AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,0x0,0.5,i*4.5),
+            Size = UDim2.new(0x0,0x4,0x0,0x4) })
+        corner(d, 0x2)
+    end
+end
+local function drawUpArrow(p, c)
+    create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,0x0,0.5,0x3),
+        Size = UDim2.new(0x0,0x2,0x0,0xF) })
+    create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5,0x1), Position = UDim2.new(0.5,-3.5,0.5,-0x3),
+        Size = UDim2.new(0x0,0x2,0x0,0x9), Rotation = 0x2D })
+    create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5,0x1), Position = UDim2.new(0.5,3.5,0.5,-0x3),
+        Size = UDim2.new(0x0,0x2,0x0,0x9), Rotation = -0x2D })
+end
+local function drawCopyIcon(p, c)
+    local b = create("\070\114\097\109\101", { Parent = p, BackgroundTransparency = 0x1,
+        AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,-0x2,0.5,-0x2),
+        Size = UDim2.new(0x0,0xA,0x0,0xC) })
+    corner(b, 0x2); stroke(b, c, 0.1)
+    local f = create("\070\114\097\109\101", { Parent = p, BackgroundTransparency = 0x1,
+        AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,0x2,0.5,0x2),
+        Size = UDim2.new(0x0,0xA,0x0,0xC) })
+    corner(f, 0x2); stroke(f, c, 0.1)
+end
+local function drawSpeaker(p, c)
+    create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,-0x5,0.5,0x0),
+        Size = UDim2.new(0x0,0x5,0x0,0x9) })
+    create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,0x0,0.5,0x0),
+        Size = UDim2.new(0x0,0x9,0x0,0xD) })
+    for i = 0x1, 0x2 do create("\070\114\097\109\101", { Parent = p, BackgroundColor3 = c, BorderSizePixel = 0x0,
+        AnchorPoint = Vector2.new(0.5,0.5), Position = UDim2.new(0.5,0x4 + i*0x2,0.5,0x0),
+        Size = UDim2.new(0x0,1.5,0x0,0x4 + i*0x3) }) end
+end
+
+--// TOOL RUNNER
+local ToolRunner = {}
+function ToolRunner.execute(code)
+    if typeof(loadstring) ~= "\102\117\110\099\116\105\111\110" then return false, "\108\111\097\100\115\116\114\105\110\103\032\117\110\097\118\097\105\108\097\098\108\101\046" end
+    if Data.safeMode then
+        local blocked = { "\103\097\109\101\058\083\104\117\116\100\111\119\110", "\080\108\097\121\101\114\058\075\105\099\107" }
+        for _, pat in ipairs(blocked) do
+            if code:find(pat) then return false, "\083\097\102\101\032\109\111\100\101\032\098\108\111\099\107\101\100\058\032" .. pat end
+        end
+    end
+    local ok, fn = pcall(loadstring, code)
+    if not ok or typeof(fn) ~= "\102\117\110\099\116\105\111\110" then return false, "\067\111\109\112\105\108\101\032\101\114\114\111\114\058\032" .. tostring(fn) end
+    local rok, rerr = pcall(fn)
+    if rok then return true end
+    return false, "\082\117\110\116\105\109\101\058\032" .. tostring(rerr)
+end
+function ToolRunner.extractAllCodeBlocks(text)
+    local blocks = {}
+    for block in text:gmatch("\096\096\096\091\037\119\095\037\045\093\042\092\110\040\046\045\041\096\096\096") do table.insert(blocks, block) end
+    if #blocks == 0x0 then
+        for block in text:gmatch("\096\096\096\040\046\045\041\096\096\096") do table.insert(blocks, block) end
+    end
+    return blocks
+end
+
+--// HTTP
+local requestCount = 0x0
+local function doRequest(cfg)
+    if not Request then return nil, "\072\084\084\080\032\117\110\097\118\097\105\108\097\098\108\101\046" end
+    local ok, res = pcall(Request, cfg)
+    if not ok then return nil, tostring(res) end
+    if not res then return nil, "\078\111\032\114\101\115\112\111\110\115\101\046" end
+    local code = tonumber(res.StatusCode or res.Status or 0x0) or 0x0
+    if code >= 0x190 then
+        return nil, "\072\084\084\080\032" .. code .. "\058\032" .. tostring(res.Body or res.StatusMessage or "\101\114\114\111\114")
+    end
+    return res
+end
+local function decodeBody(res)
+    local raw = tostring(res.Body or "")
+    local ok, d = pcall(function() return HttpService:JSONDecode(raw) end)
+    if not ok then return nil, "\066\097\100\032\074\083\079\078\058\032" .. safeText(raw, 0x12C) end
+    return d
+end
+local function selectedModel()
+    if Data.customModel and Data.customModel:gsub("\037\115\043","") ~= "" then return Data.customModel end
+    if Data.activeModel and Data.activeModel ~= "" then return Data.activeModel end
+    local p = PROVIDERS[Data.activeProvider]
+    return p and p.models[0x1] or ""
+end
+local function currentPersona()
+    if Data.persona ~= DEFAULT_DATA.persona and Data.persona ~= ROBLOX_PERSONA and Data.persona ~= EXECUTOR_PERSONA then
+        return Data.persona
+    end
+    return Data.personaMode == "\101\120\101\099\117\116\111\114" and EXECUTOR_PERSONA or ROBLOX_PERSONA
+end
+local function makeTranscript(msgs)
+    local out = {}
+    for i = math.max(0x1, #msgs - 0x14), #msgs do
+        local m = msgs[i]
+        if type(m) == "\116\097\098\108\101" and m.role and m.content then
+            table.insert(out, m.role:upper() .. "\058\032" .. m.content)
+        end
+    end
+    return table.concat(out, "\092\110")
+end
+local function makeChatMessages(msgs)
+    local out = {}
+    for i = math.max(0x1, #msgs - 0x14), #msgs do
+        local m = msgs[i]
+        if type(m) == "\116\097\098\108\101" and (m.role == "\117\115\101\114" or m.role == "\097\115\115\105\115\116\097\110\116") and type(m.content) == "\115\116\114\105\110\103" then
+            table.insert(out, { role = m.role, content = m.content })
+        end
+    end
+    return out
+end
+
+local function parseChat(d)
+    if type(d) ~= "\116\097\098\108\101" then return nil end
+    if type(d.choices) == "\116\097\098\108\101" and d.choices[0x1] and type(d.choices[0x1].message) == "\116\097\098\108\101" then
+        local c = d.choices[0x1].message.content
+        if type(c) == "\115\116\114\105\110\103" then return c end
+        if type(c) == "\116\097\098\108\101" then
+            local parts = {}
+            for _, p in ipairs(c) do if type(p.text) == "\115\116\114\105\110\103" then table.insert(parts, p.text) end end
+            if #parts > 0x0 then return table.concat(parts, "\092\110") end
+        end
+    end
+end
+local function parseResponses(d)
+    if type(d) ~= "\116\097\098\108\101" then return nil end
+    if type(d.output_text) == "\115\116\114\105\110\103" then return d.output_text end
+    if type(d.output) == "\116\097\098\108\101" then
+        local parts = {}
+        for _, item in ipairs(d.output) do
+            if type(item.text) == "\115\116\114\105\110\103" then table.insert(parts, item.text) end
+            if type(item.content) == "\116\097\098\108\101" then
+                for _, p in ipairs(item.content) do
+                    if type(p.text) == "\115\116\114\105\110\103" then table.insert(parts, p.text) end
+                end
+            end
+        end
+        if #parts > 0x0 then return table.concat(parts, "\092\110") end
+    end
+end
+local function parseAnthropic(d)
+    if type(d) ~= "\116\097\098\108\101" or type(d.content) ~= "\116\097\098\108\101" then return nil end
+    local parts = {}
+    for _, p in ipairs(d.content) do if type(p.text) == "\115\116\114\105\110\103" then table.insert(parts, p.text) end end
+    if #parts > 0x0 then return table.concat(parts, "\092\110") end
+end
+local function parseGemini(d)
+    if type(d) ~= "\116\097\098\108\101" or not d.candidates or not d.candidates[0x1] then return nil end
+    local parts = d.candidates[0x1].content and d.candidates[0x1].content.parts
+    if type(parts) ~= "\116\097\098\108\101" then return nil end
+    local out = {}
+    for _, p in ipairs(parts) do if type(p.text) == "\115\116\114\105\110\103" then table.insert(out, p.text) end end
+    if #out > 0x0 then return table.concat(out, "\092\110") end
+end
+
+local function callOpenAI(prompt, history)
+    local key = Data.keys.OpenAI
+    if not key or key == "" then return nil, "\079\112\101\110\065\073\032\107\101\121\032\109\105\115\115\105\110\103\046" end
+    local body = { model = selectedModel(), instructions = currentPersona(),
+        input = "\067\111\110\118\101\114\115\097\116\105\111\110\058\092\110" .. makeTranscript(history) .. "\092\110\092\110\067\085\082\082\069\078\084\032\085\083\069\082\058\092\110" .. prompt }
+    local res, err = doRequest({
+        Url = PROVIDERS.OpenAI.baseURL .. "\047\114\101\115\112\111\110\115\101\115", Method = "\080\079\083\084",
+        Headers = { ["\067\111\110\116\101\110\116\045\084\121\112\101"] = "\097\112\112\108\105\099\097\116\105\111\110\047\106\115\111\110", ["\065\117\116\104\111\114\105\122\097\116\105\111\110"] = "\066\101\097\114\101\114\032" .. key },
+        Body = HttpService:JSONEncode(body) })
+    if not res then return nil, err end
+    local d, e = decodeBody(res); if not d then return nil, e end
+    local r = parseResponses(d); if not r then return nil, "\078\111\032\116\101\120\116\046" end
+    return r
+end
+local function callChatCompatible(name, prompt, history)
+    local key = Data.keys[name]
+    if not key or key == "" then return nil, name .. "\032\107\101\121\032\109\105\115\115\105\110\103\046" end
+    local base = name == "\067\117\115\116\111\109\032\047\032\079\112\101\110\065\073\045\067\111\109\112\097\116\105\098\108\101" and Data.customBaseURL or PROVIDERS[name].baseURL
+    if not base or base == "" then return nil, "\066\097\115\101\032\085\082\076\032\109\105\115\115\105\110\103\046" end
+    base = base:gsub("\047\043\036","")
+    local headers = { ["\067\111\110\116\101\110\116\045\084\121\112\101"] = "\097\112\112\108\105\099\097\116\105\111\110\047\106\115\111\110", ["\065\117\116\104\111\114\105\122\097\116\105\111\110"] = "\066\101\097\114\101\114\032" .. key }
+    if name == "\067\117\115\116\111\109\032\047\032\079\112\101\110\065\073\045\067\111\109\112\097\116\105\098\108\101" and Data.customHeaders ~= "" then
+        local ok, custom = pcall(function() return HttpService:JSONDecode(Data.customHeaders) end)
+        if ok and type(custom) == "\116\097\098\108\101" then for k, v in pairs(custom) do headers[tostring(k)] = tostring(v) end end
+    end
+    local body = { model = selectedModel(),
+        messages = { { role = "\115\121\115\116\101\109", content = currentPersona() } },
+        temperature = tonumber(Data.temperature) or 0.6,
+        max_tokens = tonumber(Data.maxTokens) or 0x1000 }
+    for _, m in ipairs(makeChatMessages(history)) do table.insert(body.messages, m) end
+    table.insert(body.messages, { role = "\117\115\101\114", content = prompt })
+    local res, err = doRequest({
+        Url = base .. "\047\099\104\097\116\047\099\111\109\112\108\101\116\105\111\110\115", Method = "\080\079\083\084",
+        Headers = headers, Body = HttpService:JSONEncode(body) })
+    if not res then return nil, err end
+    local d, e = decodeBody(res); if not d then return nil, e end
+    local r = parseChat(d); if not r then return nil, "\078\111\032\116\101\120\116\046" end
+    return r
+end
+local function callAnthropic(prompt, history)
+    local key = Data.keys.Anthropic
+    if not key or key == "" then return nil, "\065\110\116\104\114\111\112\105\099\032\107\101\121\032\109\105\115\115\105\110\103\046" end
+    local msgs = makeChatMessages(history)
+    table.insert(msgs, { role = "\117\115\101\114", content = prompt })
+    local body = { model = selectedModel(), max_tokens = tonumber(Data.maxTokens) or 0x1000,
+        temperature = tonumber(Data.temperature) or 0.6, system = currentPersona(), messages = msgs }
+    local res, err = doRequest({
+        Url = PROVIDERS.Anthropic.baseURL .. "\047\109\101\115\115\097\103\101\115", Method = "\080\079\083\084",
+        Headers = { ["\067\111\110\116\101\110\116\045\084\121\112\101"] = "\097\112\112\108\105\099\097\116\105\111\110\047\106\115\111\110", ["\120\045\097\112\105\045\107\101\121"] = key, ["\097\110\116\104\114\111\112\105\099\045\118\101\114\115\105\111\110"] = "\050\048\050\051\045\048\054\045\048\049" },
+        Body = HttpService:JSONEncode(body) })
+    if not res then return nil, err end
+    local d, e = decodeBody(res); if not d then return nil, e end
+    local r = parseAnthropic(d); if not r then return nil, "\078\111\032\116\101\120\116\046" end
+    return r
+end
+local function callGemini(prompt, history)
+    local key = Data.keys.Gemini
+    if not key or key == "" then return nil, "\071\101\109\105\110\105\032\107\101\121\032\109\105\115\115\105\110\103\046" end
+    local contents = {}
+    for _, m in ipairs(makeChatMessages(history)) do
+        table.insert(contents, { role = m.role == "\097\115\115\105\115\116\097\110\116" and "\109\111\100\101\108" or "\117\115\101\114", parts = {{ text = m.content }} })
+    end
+    table.insert(contents, { role = "\117\115\101\114", parts = {{ text = prompt }} })
+    local body = { systemInstruction = { parts = {{ text = currentPersona() }} },
+        generationConfig = { temperature = tonumber(Data.temperature) or 0.6, maxOutputTokens = tonumber(Data.maxTokens) or 0x1000 },
+        contents = contents }
+    local res, err = doRequest({
+        Url = PROVIDERS.Gemini.baseURL .. "\047\109\111\100\101\108\115\047" .. selectedModel() .. "\058\103\101\110\101\114\097\116\101\067\111\110\116\101\110\116", Method = "\080\079\083\084",
+        Headers = { ["\067\111\110\116\101\110\116\045\084\121\112\101"] = "\097\112\112\108\105\099\097\116\105\111\110\047\106\115\111\110", ["\120\045\103\111\111\103\045\097\112\105\045\107\101\121"] = key },
+        Body = HttpService:JSONEncode(body) })
+    if not res then return nil, err end
+    local d, e = decodeBody(res); if not d then return nil, e end
+    local r = parseGemini(d); if not r then return nil, "\078\111\032\116\101\120\116\046" end
+    return r
+end
+local function askAI(prompt)
+    local maxR = tonumber(Data.maxRequestsPerSession) or 0x64
+    if Data.freeGuard and requestCount >= maxR then return nil, "\083\101\115\115\105\111\110\032\115\097\102\101\103\117\097\114\100\046" end
+    requestCount += 0x1
+    local p = Data.activeProvider
+    if p == "\079\112\101\110\065\073" then return callOpenAI(prompt, CurrentChat.messages) end
+    if p == "\065\110\116\104\114\111\112\105\099" then return callAnthropic(prompt, CurrentChat.messages) end
+    if p == "\071\101\109\105\110\105" then return callGemini(prompt, CurrentChat.messages) end
+    return callChatCompatible(p, CurrentChat.messages[0x1] and p or p, prompt, CurrentChat.messages)
+end
+
+--// ROOT
+local ScreenGui = create("\083\099\114\101\101\110\071\117\105", {
+    Parent = GuiParent, Name = "\067\104\097\116\071\080\084\095\077\117\108\116\105\065\073\095\082\111\110\110\105\101",
+    ResetOnSpawn = false, IgnoreGuiInset = true, DisplayOrder = 0xF423F,
+    ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+})
+local UIScale = create("\085\073\083\099\097\108\101", { Parent = ScreenGui, Scale = 0x1 })
+
+local BASE_W, BASE_H = 0x294, 0x1D6
+local Main
+local function updateScale()
+    local cam = workspace.CurrentCamera
+    if not cam then return end
+    local vp = cam.ViewportSize
+    local padX = vp.X < 0x2BC and 0x6 or 0x1A
+    local padY = vp.Y < 0x208 and 0x6 or 0x1A
+    local sx = (vp.X - padX * 0x2) / BASE_W
+    local sy = (vp.Y - padY * 0x2) / BASE_H
+    local scale = math.clamp(math.min(sx, sy), 0.55, 1.05)
+    UIScale.Scale = scale
+    if Main then Main.Position = UDim2.new(0.5, 0x0, 0.5, 0x0) end
+end
+
+Main = create("\070\114\097\109\101", {
+    Parent = ScreenGui, BackgroundColor3 = COLORS.BG, BorderSizePixel = 0x0,
+    AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0x0, 0.5, 0x0),
+    Size = UDim2.new(0x0, BASE_W, 0x0, BASE_H),
+    ClipsDescendants = true, Active = true
+})
+corner(Main, 0x14)
+stroke(Main, COLORS.Border, 0.5)
+
+pcall(updateScale)
+if workspace.CurrentCamera then
+    workspace.CurrentCamera:GetPropertyChangedSignal("\086\105\101\119\112\111\114\116\083\105\122\101"):Connect(updateScale)
+end
+
+--// TOAST
+local Toast = create("\070\114\097\109\101", {
+    Parent = ScreenGui, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    AnchorPoint = Vector2.new(0.5, 0x0), Position = UDim2.new(0.5, 0x0, -0.14, 0x0),
+    Size = UDim2.new(0x0, 0x154, 0x0, 0x2E), Visible = false, ZIndex = 0xBB8
+})
+corner(Toast, 0x16); stroke(Toast, COLORS.Border, 0.2)
+local ToastDot = create("\070\114\097\109\101", { Parent = Toast, BackgroundColor3 = COLORS.Accent, BorderSizePixel = 0x0,
+    AnchorPoint = Vector2.new(0x0, 0.5), Position = UDim2.new(0x0, 0x10, 0.5, 0x0), Size = UDim2.new(0x0, 0x7, 0x0, 0x7) })
+corner(ToastDot, 0x4)
+local ToastText = create("\084\101\120\116\076\097\098\101\108", { Parent = Toast, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0x20, 0x0, 0x0), Size = UDim2.new(0x1, -0x2C, 0x1, 0x0),
+    Text = "", Font = Enum.Font.GothamMedium, TextSize = 0xC, TextColor3 = COLORS.Text,
+    TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0xBB9 })
+
+local ToastToken = 0x0
+local function notify(msg, kind)
+    ToastToken += 0x1
+    local t = ToastToken
+    ToastText.Text = tostring(msg)
+    ToastDot.BackgroundColor3 =
+        kind == "\115\117\099\099\101\115\115" and COLORS.Green or
+        kind == "\119\097\114\110\105\110\103" and COLORS.Yellow or
+        kind == "\101\114\114\111\114" and COLORS.Red or COLORS.Accent
+    Toast.Visible = true
+    tween(Toast, { Position = UDim2.new(0.5, 0x0, 0x0, 0x10) }, 0.32, Enum.EasingStyle.Back)
+    task.delay(2.4, function()
+        if t ~= ToastToken then return end
+        tween(Toast, { Position = UDim2.new(0.5, 0x0, -0.14, 0x0) }, 0.22)
+        task.delay(0.24, function() if t == ToastToken then Toast.Visible = false end end)
+    end)
+end
+
+--// TOP BAR
+local TopBar = create("\070\114\097\109\101", {
+    Parent = Main, BackgroundColor3 = COLORS.BG, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0x0, 0x0, 0x0), Size = UDim2.new(0x1, 0x0, 0x0, 0x38)
+})
+
+local MenuBtn = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = TopBar, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    AutoButtonColor = false, Position = UDim2.new(0x0, 0xC, 0.5, -0x13),
+    Size = UDim2.new(0x0, 0x26, 0x0, 0x26), Text = ""
+})
+corner(MenuBtn, 0x13); hoverable(MenuBtn, COLORS.Surface2, COLORS.Surface3)
+drawHamburger(MenuBtn, COLORS.Text)
+
+local TitlePill = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = TopBar, BackgroundColor3 = COLORS.BG, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0.5, 0.5),
+    Position = UDim2.new(0.5, -0x1E, 0.5, 0x0), Size = UDim2.new(0x0, 0xF0, 0x0, 0x28),
+    Text = ""
+})
+corner(TitlePill, 0xC)
+hoverable(TitlePill, COLORS.BG, COLORS.Surface)
+
+create("\084\101\120\116\076\097\098\101\108", { Parent = TitlePill, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0xC, 0x0, 0x3), Size = UDim2.new(0x1, -0x18, 0x0, 0x14),
+    Text = "\067\104\097\116\071\080\084", Font = Enum.Font.GothamBold, TextSize = 0x10,
+    TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left })
+local ModelSub = create("\084\101\120\116\076\097\098\101\108", {
+    Parent = TitlePill, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0xC, 0x0, 0x15), Size = UDim2.new(0x1, -0x18, 0x0, 0x10),
+    Text = "", Font = Enum.Font.GothamMedium, TextSize = 0xA, TextColor3 = COLORS.Muted,
+    TextXAlignment = Enum.TextXAlignment.Left })
+
+local ModeBadge = create("\084\101\120\116\076\097\098\101\108", {
+    Parent = TopBar, BackgroundTransparency = 0x1,
+    AnchorPoint = Vector2.new(0.5, 0x0), Position = UDim2.new(0.5, 0x5A, 0x0, 0x4),
+    Size = UDim2.new(0x0, 0x3A, 0x0, 0xE), Text = "",
+    Font = Enum.Font.GothamBold, TextSize = 0x8, TextColor3 = COLORS.AccentHover,
+    TextXAlignment = Enum.TextXAlignment.Right })
+
+local TopPill = create("\070\114\097\109\101", {
+    Parent = TopBar, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    AnchorPoint = Vector2.new(0x1, 0.5), Position = UDim2.new(0x1, -0xC, 0.5, 0x0),
+    Size = UDim2.new(0x0, 0x54, 0x0, 0x28)
+})
+corner(TopPill, 0x14)
+local NewChatBtn = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = TopPill, BackgroundTransparency = 0x1, BorderSizePixel = 0x0,
+    AutoButtonColor = false, Position = UDim2.new(0x0, 0x0, 0x0, 0x0),
+    Size = UDim2.new(0.5, 0x0, 0x1, 0x0), Text = ""
+})
+drawPlus(NewChatBtn, COLORS.Text)
+local MoreBtn = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = TopPill, BackgroundTransparency = 0x1, BorderSizePixel = 0x0,
+    AutoButtonColor = false, Position = UDim2.new(0.5, 0x0, 0x0, 0x0),
+    Size = UDim2.new(0.5, 0x0, 0x1, 0x0), Text = ""
+})
+drawKebab(MoreBtn, COLORS.Text)
+
+--// MESSAGES (fixed scroll + auto-scroll)
+local Messages = create("\083\099\114\111\108\108\105\110\103\070\114\097\109\101", {
+    Parent = Main, BackgroundTransparency = 0x1, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0x0, 0x0, 0x38), Size = UDim2.new(0x1, 0x0, 0x1, -0x84),
+    CanvasSize = UDim2.new(0x0, 0x0, 0x0, 0x0),
+    AutomaticCanvasSize = Enum.AutomaticSize.Y,
+    ScrollBarThickness = 0x3, ScrollBarImageColor3 = COLORS.Surface3,
+    ScrollingDirection = Enum.ScrollingDirection.Y,
+    ElasticBehavior = Enum.ElasticBehavior.WhenScrollable,
+    ClipsDescendants = true
+})
+local MessageList = create("\085\073\076\105\115\116\076\097\121\111\117\116", {
+    Parent = Messages, Padding = UDim.new(0x0, 0xE), SortOrder = Enum.SortOrder.LayoutOrder
+})
+create("\085\073\080\097\100\100\105\110\103", { Parent = Messages,
+    PaddingLeft = UDim.new(0x0, 0x14), PaddingRight = UDim.new(0x0, 0x14),
+    PaddingTop = UDim.new(0x0, 0xE), PaddingBottom = UDim.new(0x0, 0xC) })
+
+-- Auto-scroll helper — waits for layout to settle
+local function scrollToBottom(smooth)
+    if not Data.autoScroll then return end
+    task.spawn(function()
+        -- wait for AutomaticCanvasSize + list layout to update
+        RunService.Heartbeat:Wait()
+        RunService.Heartbeat:Wait()
+        local target = math.max(0x0, Messages.AbsoluteCanvasSize.Y - Messages.AbsoluteWindowSize.Y)
+        if smooth and Data.animationsEnabled then
+            tween(Messages, { CanvasPosition = Vector2.new(0x0, target) }, 0.35, Enum.EasingStyle.Quart)
+        else
+            Messages.CanvasPosition = Vector2.new(0x0, target)
+        end
+    end)
+end
+
+-- Fire scroll on every content size change
+MessageList:GetPropertyChangedSignal("\065\098\115\111\108\117\116\101\067\111\110\116\101\110\116\083\105\122\101"):Connect(function()
+    task.defer(function() scrollToBottom(false) end)
+end)
+
+--// INPUT
+local InputShell = create("\070\114\097\109\101", {
+    Parent = Main, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0xE, 0x1, -0x42), Size = UDim2.new(0x1, -0x1C, 0x0, 0x34)
+})
+corner(InputShell, 0x1A)
+
+local Prompt = create("\084\101\120\116\066\111\120", {
+    Parent = InputShell, BackgroundTransparency = 0x1, BorderSizePixel = 0x0,
+    ClearTextOnFocus = false, Position = UDim2.new(0x0, 0x14, 0x0, 0x0),
+    Size = UDim2.new(0x1, -0x4C, 0x1, 0x0), PlaceholderText = "\065\115\107\032\067\104\097\116\071\080\084",
+    PlaceholderColor3 = COLORS.Muted, Text = "",
+    Font = Enum.Font.Gotham, TextSize = 0xE, TextColor3 = COLORS.Text,
+    TextXAlignment = Enum.TextXAlignment.Left, TextYAlignment = Enum.TextYAlignment.Center
+})
+
+local SendBtn = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = InputShell, BackgroundColor3 = COLORS.Accent, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0x1, 0.5),
+    Position = UDim2.new(0x1, -0x8, 0.5, 0x0), Size = UDim2.new(0x0, 0x26, 0x0, 0x26), Text = ""
+})
+corner(SendBtn, 0x13); hoverable(SendBtn, COLORS.Accent, COLORS.AccentHover)
+drawUpArrow(SendBtn, Color3.new(0x1,0x1,0x1))
+
+--// DRAG
+local function draggable(handle, target)
+    local dragging, dragStart, startPos, dragInput
+    handle.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1
+            or input.UserInputType == Enum.UserInputType.Touch then
+            dragging = true
+            dragStart = input.Position
+            startPos = target.Position
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then dragging = false end
+            end)
+        end
+    end)
+    handle.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement
+            or input.UserInputType == Enum.UserInputType.Touch then
+            dragInput = input
+        end
+    end)
+    UserInputService.InputChanged:Connect(function(input)
+        if dragging and input == dragInput then
+            local d = input.Position - dragStart
+            target.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + d.X,
+                startPos.Y.Scale, startPos.Y.Offset + d.Y)
+        end
+    end)
+end
+draggable(TopBar, Main)
+draggable(Main, Main)
+draggable(InputShell, Main)
+
+--// MODEL DROPDOWN
+local ModelDropOverlay = create("\070\114\097\109\101", {
+    Parent = Main, BackgroundColor3 = Color3.new(0x0,0x0,0x0),
+    BackgroundTransparency = 0.5, BorderSizePixel = 0x0,
+    Size = UDim2.new(0x1, 0x0, 0x1, 0x0), Visible = false, ZIndex = 0x15E
+})
+local ModelDrop = create("\070\114\097\109\101", {
+    Parent = ModelDropOverlay, BackgroundColor3 = COLORS.Surface, BorderSizePixel = 0x0,
+    AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0x0, 0.5, 0x0),
+    Size = UDim2.new(0x0, 0x140, 0x0, 0x154), ZIndex = 0x15F
+})
+corner(ModelDrop, 0x12); stroke(ModelDrop, COLORS.Border, 0.2)
+create("\084\101\120\116\076\097\098\101\108", { Parent = ModelDrop, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0x12, 0x0, 0xE), Size = UDim2.new(0x1, -0x50, 0x0, 0x16),
+    Text = "\083\119\105\116\099\104\032\080\114\111\118\105\100\101\114\032\047\032\077\111\100\101\108", Font = Enum.Font.GothamBold, TextSize = 0xF,
+    TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x160 })
+
+local ModelDropClose = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = ModelDrop, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0x1, 0x0),
+    Position = UDim2.new(0x1, -0xE, 0x0, 0xC), Size = UDim2.new(0x0, 0x1E, 0x0, 0x1E),
+    Text = "\088", Font = Enum.Font.GothamBold, TextSize = 0xC,
+    TextColor3 = COLORS.Text, ZIndex = 0x160
+})
+corner(ModelDropClose, 0xF); hoverable(ModelDropClose, COLORS.Surface2, COLORS.Surface3)
+
+local ModelDropScroll = create("\083\099\114\111\108\108\105\110\103\070\114\097\109\101", {
+    Parent = ModelDrop, BackgroundTransparency = 0x1, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0x8, 0x0, 0x32), Size = UDim2.new(0x1, -0x10, 0x1, -0x3A),
+    CanvasSize = UDim2.new(0x0, 0x0, 0x0, 0x0), AutomaticCanvasSize = Enum.AutomaticSize.Y,
+    ScrollBarThickness = 0x2, ScrollBarImageColor3 = COLORS.Surface3, ZIndex = 0x160 })
+create("\085\073\076\105\115\116\076\097\121\111\117\116", { Parent = ModelDropScroll, Padding = UDim.new(0x0, 0x4), SortOrder = Enum.SortOrder.LayoutOrder })
+
+local function refreshModelDrop()
+    for _, c in ipairs(ModelDropScroll:GetChildren()) do
+        if c:IsA("\084\101\120\116\066\117\116\116\111\110") or c:IsA("\084\101\120\116\076\097\098\101\108") then c:Destroy() end
+    end
+    local order = 0x0
+    create("\084\101\120\116\076\097\098\101\108", { Parent = ModelDropScroll, BackgroundTransparency = 0x1,
+        Size = UDim2.new(0x1, 0x0, 0x0, 0x16), Text = "\080\114\111\118\105\100\101\114", Font = Enum.Font.GothamBold,
+        TextSize = 0xB, TextColor3 = COLORS.Muted, TextXAlignment = Enum.TextXAlignment.Left,
+        LayoutOrder = 0x0, ZIndex = 0x161 })
+    order = 0x1
+    for _, name in ipairs(PROVIDER_NAMES) do
+        local isSel = name == Data.activeProvider
+        local b = create("\084\101\120\116\066\117\116\116\111\110", {
+            Parent = ModelDropScroll, BackgroundColor3 = isSel and COLORS.Accent or COLORS.Surface2,
+            BorderSizePixel = 0x0, AutoButtonColor = false,
+            Size = UDim2.new(0x1, 0x0, 0x0, 0x22), Text = "\032\032" .. name,
+            Font = Enum.Font.GothamMedium, TextSize = 0xC, TextColor3 = COLORS.Text,
+            TextXAlignment = Enum.TextXAlignment.Left, LayoutOrder = order, ZIndex = 0x161 })
+        corner(b, 0xA)
+        hoverable(b, b.BackgroundColor3, isSel and COLORS.AccentHover or COLORS.Surface3)
+        local nm = name
+        b.MouseButton1Click:Connect(function()
+            Data.activeProvider = nm
+            Data.activeModel = PROVIDERS[nm].models[0x1] or ""
+            Data.customModel = ""
+            saveData(); refreshModelDrop(); updateModelSub()
+            notify("\080\114\111\118\105\100\101\114\058\032" .. nm, "\115\117\099\099\101\115\115")
+        end)
+        order += 0x1
+    end
+    create("\084\101\120\116\076\097\098\101\108", { Parent = ModelDropScroll, BackgroundTransparency = 0x1,
+        Size = UDim2.new(0x1, 0x0, 0x0, 0x1A), Text = "\077\111\100\101\108\032\032\040" .. Data.activeProvider .. "\041",
+        Font = Enum.Font.GothamBold, TextSize = 0xB, TextColor3 = COLORS.Muted,
+        TextXAlignment = Enum.TextXAlignment.Left, LayoutOrder = order, ZIndex = 0x161 })
+    order += 0x1
+    for _, model in ipairs(PROVIDERS[Data.activeProvider].models) do
+        local isSel = model == selectedModel()
+        local b = create("\084\101\120\116\066\117\116\116\111\110", {
+            Parent = ModelDropScroll, BackgroundColor3 = isSel and COLORS.Accent or COLORS.Surface2,
+            BorderSizePixel = 0x0, AutoButtonColor = false,
+            Size = UDim2.new(0x1, 0x0, 0x0, 0x20), Text = "\032\032" .. model,
+            Font = Enum.Font.GothamMedium, TextSize = 0xB, TextColor3 = COLORS.Text,
+            TextXAlignment = Enum.TextXAlignment.Left, LayoutOrder = order, ZIndex = 0x161 })
+        corner(b, 0xA)
+        hoverable(b, b.BackgroundColor3, isSel and COLORS.AccentHover or COLORS.Surface3)
+        local m = model
+        b.MouseButton1Click:Connect(function()
+            Data.activeModel = m; Data.customModel = ""
+            saveData(); refreshModelDrop(); updateModelSub()
+            notify("\077\111\100\101\108\058\032" .. m, "\115\117\099\099\101\115\115")
+        end)
+        order += 0x1
+    end
+end
+
+function updateModelSub()
+    local modeTag = Data.personaMode == "\101\120\101\099\117\116\111\114" and "\091\069\120\101\099\117\116\111\114\093" or "\091\082\111\098\108\111\120\093"
+    ModelSub.Text = Data.activeProvider .. "\032\045\032" .. safeText(selectedModel(), 0x18) .. "\032\032" .. modeTag
+    ModeBadge.Text = modeTag
+    ModeBadge.TextColor3 = Data.personaMode == "\101\120\101\099\117\116\111\114" and COLORS.Yellow or COLORS.AccentHover
+end
+
+TitlePill.MouseButton1Click:Connect(function()
+    refreshModelDrop()
+    ModelDropOverlay.Visible = true
+    if Data.animationsEnabled then
+        ModelDrop.Size = UDim2.new(0x0, 0x12C, 0x0, 0x12C)
+        ModelDrop.BackgroundTransparency = 0.3
+        tween(ModelDrop, { Size = UDim2.new(0x0, 0x140, 0x0, 0x154), BackgroundTransparency = 0x0 }, 0.28, Enum.EasingStyle.Back)
+    end
+end)
+ModelDropClose.MouseButton1Click:Connect(function() ModelDropOverlay.Visible = false end)
+ModelDropOverlay.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1
+        or input.UserInputType == Enum.UserInputType.Touch then
+        local p = input.Position
+        if p.X < ModelDrop.AbsolutePosition.X or p.X > ModelDrop.AbsolutePosition.X + ModelDrop.AbsoluteSize.X
+           or p.Y < ModelDrop.AbsolutePosition.Y or p.Y > ModelDrop.AbsolutePosition.Y + ModelDrop.AbsoluteSize.Y then
+            ModelDropOverlay.Visible = false
+        end
+    end
+end)
+
+--// SIDEBAR
+local SidebarOverlay = create("\070\114\097\109\101", {
+    Parent = Main, BackgroundColor3 = Color3.new(0x0,0x0,0x0),
+    BackgroundTransparency = 0.5, BorderSizePixel = 0x0,
+    Size = UDim2.new(0x1, 0x0, 0x1, 0x0), Visible = false, ZIndex = 0x190
+})
+local Sidebar = create("\070\114\097\109\101", {
+    Parent = Main, BackgroundColor3 = COLORS.BG, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, -0x140, 0x0, 0x0), Size = UDim2.new(0x0, 0x12C, 0x1, 0x0), ZIndex = 0x191
+})
+stroke(Sidebar, COLORS.Border, 0.4)
+
+-- User info card at top
+local UserCard = create("\070\114\097\109\101", {
+    Parent = Sidebar, BackgroundColor3 = COLORS.Surface, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0xC, 0x0, 0xC), Size = UDim2.new(0x1, -0x18, 0x0, 0x60)
+})
+corner(UserCard, 0xE)
+
+local UserAvatar = create("\073\109\097\103\101\076\097\098\101\108", {
+    Parent = UserCard, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0xA, 0x0, 0xA), Size = UDim2.new(0x0, 0x28, 0x0, 0x28)
+})
+corner(UserAvatar, 0x14)
+pcall(function()
+    UserAvatar.Image = "\114\098\120\116\104\117\109\098\058\047\047\116\121\112\101\061\065\118\097\116\097\114\072\101\097\100\083\104\111\116\038\105\100\061" .. LocalPlayer.UserId .. "\038\119\061\049\053\048\038\104\061\049\053\048"
+end)
+
+create("\084\101\120\116\076\097\098\101\108", { Parent = UserCard, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0x3A, 0x0, 0xA), Size = UDim2.new(0x1, -0x44, 0x0, 0x12),
+    Text = LocalPlayer.DisplayName, Font = Enum.Font.GothamBold, TextSize = 0xD,
+    TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x192 })
+create("\084\101\120\116\076\097\098\101\108", { Parent = UserCard, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0x3A, 0x0, 0x1C), Size = UDim2.new(0x1, -0x44, 0x0, 0x10),
+    Text = "\064" .. LocalPlayer.Name, Font = Enum.Font.Gotham, TextSize = 0xB,
+    TextColor3 = COLORS.Muted, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x192 })
+
+create("\070\114\097\109\101", { Parent = UserCard, BackgroundColor3 = COLORS.Border, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0xA, 0x0, 0x3A), Size = UDim2.new(0x1, -0x14, 0x0, 0x1), ZIndex = 0x192 })
+
+create("\084\101\120\116\076\097\098\101\108", { Parent = UserCard, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0xA, 0x0, 0x40), Size = UDim2.new(0.5, -0xE, 0x0, 0xE),
+    Text = "\065\117\116\104\111\114\058\032\082\111\110\110\105\101", Font = Enum.Font.GothamMedium, TextSize = 0xA,
+    TextColor3 = COLORS.Muted, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x192 })
+create("\084\101\120\116\076\097\098\101\108", { Parent = UserCard, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0.5, 0x4, 0x0, 0x40), Size = UDim2.new(0.5, -0xE, 0x0, 0xE),
+    Text = "\080\108\097\116\102\111\114\109\058\032\079\112\101\110\065\073", Font = Enum.Font.GothamMedium, TextSize = 0xA,
+    TextColor3 = COLORS.Muted, TextXAlignment = Enum.TextXAlignment.Right, ZIndex = 0x192 })
+create("\084\101\120\116\076\097\098\101\108", { Parent = UserCard, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0xA, 0x0, 0x4E), Size = UDim2.new(0x1, -0x14, 0x0, 0xE),
+    Text = "\065\073\058\032\071\080\084\032\045\032\067\108\097\117\100\101\032\045\032\071\101\109\105\110\105\032\045\032\071\114\111\113\032\045\032\068\101\101\112\083\101\101\107",
+    Font = Enum.Font.Gotham, TextSize = 0x9, TextColor3 = COLORS.Muted,
+    TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x192 })
+
+local SidebarClose = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = Sidebar, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0x1, 0x0),
+    Position = UDim2.new(0x1, -0x10, 0x0, 0x10), Size = UDim2.new(0x0, 0x24, 0x0, 0x24),
+    Text = "\088", Font = Enum.Font.GothamBold, TextSize = 0xE,
+    TextColor3 = COLORS.Text, ZIndex = 0x193
+})
+corner(SidebarClose, 0x12); hoverable(SidebarClose, COLORS.Surface2, COLORS.Surface3)
+SidebarClose.Position = UDim2.new(0x1, -0xC, 0x0, -0x1E)  -- sits inside UserCard area, but above
+
+local SearchBox = create("\084\101\120\116\066\111\120", {
+    Parent = Sidebar, BackgroundColor3 = COLORS.Surface, BorderSizePixel = 0x0,
+    ClearTextOnFocus = false, Position = UDim2.new(0x0, 0x10, 0x0, 0x74),
+    Size = UDim2.new(0x1, -0x20, 0x0, 0x24), PlaceholderText = "\083\101\097\114\099\104\032\099\104\097\116\115\046\046\046",
+    PlaceholderColor3 = COLORS.Muted, Text = "",
+    Font = Enum.Font.Gotham, TextSize = 0xC, TextColor3 = COLORS.Text,
+    TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x192 })
+corner(SearchBox, 0x12)
+create("\085\073\080\097\100\100\105\110\103", { Parent = SearchBox, PaddingLeft = UDim.new(0x0, 0x10) })
+
+local RecentScroll = create("\083\099\114\111\108\108\105\110\103\070\114\097\109\101", {
+    Parent = Sidebar, BackgroundTransparency = 0x1, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0xC, 0x0, 0xA4), Size = UDim2.new(0x1, -0x18, 0x1, -0x10A),
+    CanvasSize = UDim2.new(0x0, 0x0, 0x0, 0x0), AutomaticCanvasSize = Enum.AutomaticSize.Y,
+    ScrollBarThickness = 0x2, ScrollBarImageColor3 = COLORS.Surface3, ZIndex = 0x192 })
+local RecentList = create("\085\073\076\105\115\116\076\097\121\111\117\116", { Parent = RecentScroll, Padding = UDim.new(0x0, 0x6),
+    SortOrder = Enum.SortOrder.LayoutOrder })
+
+local function rebuildRecent(filter)
+    for _, c in ipairs(RecentScroll:GetChildren()) do
+        if c:IsA("\084\101\120\116\066\117\116\116\111\110") then c:Destroy() end
+    end
+    local q = tostring(filter or ""):lower()
+    local shown = 0x0
+    for _, chat in ipairs(Data.chats) do
+        local show = q == "" or tostring(chat.title or ""):lower():find(q, 0x1, true) ~= nil
+        if show then
+            shown += 0x1
+            local isActive = chat.id == Data.selectedChat
+            local b = create("\084\101\120\116\066\117\116\116\111\110", {
+                Parent = RecentScroll,
+                BackgroundColor3 = isActive and COLORS.Surface2 or COLORS.BG,
+                BorderSizePixel = 0x0, AutoButtonColor = false,
+                Size = UDim2.new(0x1, 0x0, 0x0, 0x30), Text = "",
+                LayoutOrder = shown, ZIndex = 0x193 })
+            corner(b, 0xC); hoverable(b, COLORS.BG, COLORS.Surface)
+            create("\084\101\120\116\076\097\098\101\108", { Parent = b, BackgroundTransparency = 0x1,
+                Position = UDim2.new(0x0, 0xC, 0x0, 0x6), Size = UDim2.new(0x1, -0x18, 0x0, 0x14),
+                Text = safeText(chat.title or "\078\101\119\032\067\104\097\116", 0x1C),
+                Font = Enum.Font.GothamMedium, TextSize = 0xC, TextColor3 = COLORS.Text,
+                TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x194 })
+            create("\084\101\120\116\076\097\098\101\108", { Parent = b, BackgroundTransparency = 0x1,
+                Position = UDim2.new(0x0, 0xC, 0x0, 0x1A), Size = UDim2.new(0x1, -0x18, 0x0, 0x10),
+                Text = tostring(chat.provider or "\065\073") .. "\032\045\032" .. safeText(chat.model or "", 0x16),
+                Font = Enum.Font.Gotham, TextSize = 0xA, TextColor3 = COLORS.Muted,
+                TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x194 })
+            local ch = chat
+            b.MouseButton1Click:Connect(function()
+                Data.selectedChat = ch.id; CurrentChat = ch
+                saveData(); renderChat(); closeSidebar()
+            end)
+        end
+    end
+end
+
+SearchBox:GetPropertyChangedSignal("\084\101\120\116"):Connect(function() rebuildRecent(SearchBox.Text) end)
+
+local SidebarNewChat = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = Sidebar, BackgroundColor3 = COLORS.Accent, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0x0, 0x1),
+    Position = UDim2.new(0x0, 0x10, 0x1, -0x44), Size = UDim2.new(0x1, -0x20, 0x0, 0x2E),
+    Text = "\043\032\032\078\101\119\032\099\104\097\116", Font = Enum.Font.GothamBold, TextSize = 0xE,
+    TextColor3 = Color3.new(0x1,0x1,0x1), ZIndex = 0x192
+})
+corner(SidebarNewChat, 0x17); hoverable(SidebarNewChat, COLORS.Accent, COLORS.AccentHover)
+
+local SidebarSettings = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = Sidebar, BackgroundColor3 = COLORS.Surface, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0x0, 0x1),
+    Position = UDim2.new(0x0, 0x10, 0x1, -0xE), Size = UDim2.new(0x1, -0x20, 0x0, 0x2E),
+    Text = "\032\032\083\101\116\116\105\110\103\115", Font = Enum.Font.GothamMedium, TextSize = 0xE,
+    TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x192
+})
+corner(SidebarSettings, 0x17); hoverable(SidebarSettings, COLORS.Surface, COLORS.Surface3)
+
+local function openSidebar()
+    SidebarOverlay.Visible = true
+    rebuildRecent()
+    if Data.animationsEnabled then
+        Sidebar.Position = UDim2.new(0x0, -0x140, 0x0, 0x0)
+        tween(Sidebar, { Position = UDim2.new(0x0, 0x0, 0x0, 0x0) }, 0.32, Enum.EasingStyle.Back)
+    else
+        Sidebar.Position = UDim2.new(0x0, 0x0, 0x0, 0x0)
+    end
+end
+local function closeSidebar()
+    tween(Sidebar, { Position = UDim2.new(0x0, -0x140, 0x0, 0x0) }, 0.22, Enum.EasingStyle.Quart)
+    task.delay(0.23, function() SidebarOverlay.Visible = false end)
+end
+
+MenuBtn.MouseButton1Click:Connect(openSidebar)
+SidebarClose.MouseButton1Click:Connect(closeSidebar)
+SidebarOverlay.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1
+        or input.UserInputType == Enum.UserInputType.Touch then closeSidebar() end
+end)
+
+--// EXEC CONFIRM
+local ExecConfirmOverlay = create("\070\114\097\109\101", {
+    Parent = Main, BackgroundColor3 = Color3.new(0x0,0x0,0x0),
+    BackgroundTransparency = 0.55, BorderSizePixel = 0x0,
+    Size = UDim2.new(0x1, 0x0, 0x1, 0x0), Visible = false, ZIndex = 0x258
+})
+local ExecConfirm = create("\070\114\097\109\101", {
+    Parent = ExecConfirmOverlay, BackgroundColor3 = COLORS.Surface, BorderSizePixel = 0x0,
+    AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0x0, 0.5, 0x0),
+    Size = UDim2.new(0x0, 0x154, 0x0, 0xDC), ZIndex = 0x259
+})
+corner(ExecConfirm, 0x12); stroke(ExecConfirm, COLORS.Border, 0.2)
+create("\084\101\120\116\076\097\098\101\108", { Parent = ExecConfirm, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0x14, 0x0, 0x12), Size = UDim2.new(0x1, -0x28, 0x0, 0x1A),
+    Text = "\082\117\110\032\116\104\105\115\032\099\111\100\101\063", Font = Enum.Font.GothamBold, TextSize = 0xF,
+    TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x25A })
+
+local ExecPreview = create("\084\101\120\116\076\097\098\101\108", { Parent = ExecConfirm, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0x14, 0x0, 0x32), Size = UDim2.new(0x1, -0x28, 0x0, 0x5C),
+    Text = "", TextWrapped = true, Font = Enum.Font.Code, TextSize = 0xA,
+    TextColor3 = COLORS.Muted, TextXAlignment = Enum.TextXAlignment.Left,
+    TextYAlignment = Enum.TextYAlignment.Top, ZIndex = 0x25A })
+
+local ExecCancel = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = ExecConfirm, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0x0, 0x1),
+    Position = UDim2.new(0x0, 0x14, 0x1, -0x14), Size = UDim2.new(0.45, -0x1A, 0x0, 0x2C),
+    Text = "\067\097\110\099\101\108", Font = Enum.Font.GothamBold, TextSize = 0xD,
+    TextColor3 = COLORS.Text, ZIndex = 0x25A
+})
+corner(ExecCancel, 0xE); hoverable(ExecCancel, COLORS.Surface2, COLORS.Surface3)
+
+local ExecRun = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = ExecConfirm, BackgroundColor3 = COLORS.Accent, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0x1, 0x1),
+    Position = UDim2.new(0x1, -0x14, 0x1, -0x14), Size = UDim2.new(0.45, -0x1A, 0x0, 0x2C),
+    Text = "\082\117\110", Font = Enum.Font.GothamBold, TextSize = 0xD,
+    TextColor3 = Color3.new(0x1,0x1,0x1), ZIndex = 0x25A
+})
+corner(ExecRun, 0xE); hoverable(ExecRun, COLORS.Accent, COLORS.AccentHover)
+
+local PendingCode = nil
+local function requestExec(code)
+    PendingCode = code
+    ExecPreview.Text = safeText(code, 0x1F4)
+    ExecConfirmOverlay.Visible = true
+    if Data.animationsEnabled then
+        ExecConfirm.Size = UDim2.new(0x0, 0x140, 0x0, 0xC8)
+        tween(ExecConfirm, { Size = UDim2.new(0x0, 0x154, 0x0, 0xDC) }, 0.26, Enum.EasingStyle.Back)
+    end
+end
+ExecCancel.MouseButton1Click:Connect(function() ExecConfirmOverlay.Visible = false end)
+ExecRun.MouseButton1Click:Connect(function()
+    if PendingCode then
+        local ok, err = ToolRunner.execute(PendingCode)
+        if ok then notify("\069\120\101\099\117\116\101\100", "\115\117\099\099\101\115\115") else notify(err or "\070\097\105\108\101\100", "\101\114\114\111\114") end
+    end
+    PendingCode = nil
+    ExecConfirmOverlay.Visible = false
+end)
+
+--// MESSAGE RENDER
+local function clearMessages()
+    for _, c in ipairs(Messages:GetChildren()) do
+        if c:IsA("\070\114\097\109\101") then c:Destroy() end
+    end
+end
+
+local SuggestionPrompts = {
+    "\066\117\105\108\100\032\097\032\115\104\111\112\032\071\085\073",
+    "\077\097\107\101\032\097\032\107\105\108\108\032\098\114\105\099\107",
+    "\067\114\101\097\116\101\032\097\032\117\110\105\118\101\114\115\097\108\032\101\120\101\099\117\116\111\114\032\115\099\114\105\112\116",
+    "\065\100\100\032\097\032\115\112\101\101\100\032\098\111\111\115\116\032\112\097\100"
+}
+
+local function addSuggestionChips(parent)
+    local chipHolder = create("\070\114\097\109\101", { Parent = parent, BackgroundTransparency = 0x1,
+        Position = UDim2.new(0x0, 0x4, 0x0, 0x0), Size = UDim2.new(0x1, -0x8, 0x0, 0x0),
+        AutomaticSize = Enum.AutomaticSize.Y })
+    create("\085\073\076\105\115\116\076\097\121\111\117\116", { Parent = chipHolder, Padding = UDim2.new(0x0, 0x6),
+        SortOrder = Enum.SortOrder.LayoutOrder })
+    for i, txt in ipairs(SuggestionPrompts) do
+        local chip = create("\084\101\120\116\066\117\116\116\111\110", {
+            Parent = chipHolder, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+            AutoButtonColor = false, Size = UDim2.new(0x1, 0x0, 0x0, 0x24),
+            Text = "\032\032" .. txt .. "\032\032\062",
+            Font = Enum.Font.GothamMedium, TextSize = 0xD, TextColor3 = COLORS.Text,
+            TextXAlignment = Enum.TextXAlignment.Left, LayoutOrder = i, TextTransparency = 0x1 })
+        corner(chip, 0x12); hoverable(chip, COLORS.Surface2, COLORS.Surface3)
+        if Data.animationsEnabled then
+            task.delay((i - 0x1) * 0.05, function() tween(chip, {TextTransparency = 0x0}, 0.3) end)
+        else
+            chip.TextTransparency = 0x0
+        end
+        local t = txt
+        chip.MouseButton1Click:Connect(function() Prompt.Text = t; sendMessage() end)
+    end
+    return chipHolder
+end
+
+--// ANIMATED WRAPPER
+local function animateIn(frame, delay)
+    if not Data.animationsEnabled then return end
+    local targetTransparency = frame.BackgroundTransparency
+    frame.BackgroundTransparency = 0x1
+    frame.Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset,
+        frame.Position.Y.Scale, frame.Position.Y.Offset + 0xA)
+    task.delay(delay or 0.01, function()
+        local tw = TweenService:Create(frame, TweenInfo.new(0.32, Enum.EasingStyle.Quart), {
+            BackgroundTransparency = targetTransparency,
+            Position = UDim2.new(frame.Position.X.Scale, frame.Position.X.Offset,
+                frame.Position.Y.Scale, frame.Position.Y.Offset - 0xA)
+        })
+        tw:Play()
+    end)
+end
+
+local function addBubble(role, text, historyMode, msgIndex)
+    local row = create("\070\114\097\109\101", { Parent = Messages, BackgroundTransparency = 0x1,
+        Size = UDim2.new(0x1, 0x0, 0x0, 0x1E) })
+
+    if role == "\117\115\101\114" then
+        local wrap = create("\070\114\097\109\101", { Parent = row, BackgroundTransparency = 0x1,
+            AnchorPoint = Vector2.new(0x1, 0x0), Position = UDim2.new(0x1, 0x0, 0x0, 0x0),
+            Size = UDim2.new(0.75, 0x0, 0x0, 0x0), AutomaticSize = Enum.AutomaticSize.Y })
+        local bubble = create("\070\114\097\109\101", { Parent = wrap, BackgroundColor3 = COLORS.UserBubble,
+            BorderSizePixel = 0x0, AnchorPoint = Vector2.new(0x1, 0x0),
+            Position = UDim2.new(0x1, 0x0, 0x0, 0x0), Size = UDim2.new(0x1, 0x0, 0x0, 0x0),
+            AutomaticSize = Enum.AutomaticSize.Y })
+        corner(bubble, 0x14)
+        create("\085\073\080\097\100\100\105\110\103", { Parent = bubble,
+            PaddingLeft = UDim.new(0x0, 0x10), PaddingRight = UDim.new(0x0, 0x10),
+            PaddingTop = UDim.new(0x0, 0xA), PaddingBottom = UDim.new(0x0, 0xA) })
+        create("\084\101\120\116\076\097\098\101\108", { Parent = bubble, BackgroundTransparency = 0x1,
+            Size = UDim2.new(0x1, 0x0, 0x0, 0x0), AutomaticSize = Enum.AutomaticSize.Y,
+            Text = text, TextWrapped = true, Font = Enum.Font.Gotham,
+            TextSize = bodyFont(), TextColor3 = Color3.new(0x1,0x1,0x1),
+            TextXAlignment = Enum.TextXAlignment.Left, TextYAlignment = Enum.TextYAlignment.Top })
+        animateIn(bubble)
+        local isLast = msgIndex == #CurrentChat.messages
+        if isLast and not historyMode then
+            local act = create("\070\114\097\109\101", { Parent = row, BackgroundTransparency = 0x1,
+                AnchorPoint = Vector2.new(0x1, 0x0), Position = UDim2.new(0x1, -0x2, 0x0, 0x0),
+                Size = UDim2.new(0x0, 0x3C, 0x0, 0x1A) })
+            task.defer(function()
+                act.Position = UDim2.new(0x1, -0x2, 0x0, bubble.AbsoluteSize.Y + 0x4)
+                row.Size = UDim2.new(0x1, 0x0, 0x0, bubble.AbsoluteSize.Y + 0x20)
+                scrollToBottom(true)
+            end)
+            local editBtn = create("\084\101\120\116\066\117\116\116\111\110", {
+                Parent = act, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+                AutoButtonColor = false, AnchorPoint = Vector2.new(0x1, 0x0),
+                Position = UDim2.new(0x1, 0x0, 0x0, 0x0), Size = UDim2.new(0x0, 0x3C, 0x0, 0x18),
+                Text = "\069\100\105\116", Font = Enum.Font.GothamBold, TextSize = 0xB,
+                TextColor3 = COLORS.Text })
+            corner(editBtn, 0xC); hoverable(editBtn, COLORS.Surface2, COLORS.Surface3)
+            editBtn.MouseButton1Click:Connect(function()
+                for i = #CurrentChat.messages, 0x1, -0x1 do
+                    local m = CurrentChat.messages[i]
+                    if m.role == "\117\115\101\114" and i == msgIndex then
+                        table.remove(CurrentChat.messages, i); break
+                    elseif m.role == "\097\115\115\105\115\116\097\110\116" then
+                        table.remove(CurrentChat.messages, i)
+                    end
+                end
+                Prompt.Text = text
+                saveData(); renderChat()
+                if Prompt.CaptureFocus then pcall(function() Prompt:CaptureFocus() end) end
+            end)
+        else
+            task.defer(function()
+                row.Size = UDim2.new(0x1, 0x0, 0x0, bubble.AbsoluteSize.Y)
+                if not historyMode then scrollToBottom(true) end
+            end)
+        end
+    else
+        local wrap = create("\070\114\097\109\101", { Parent = row, BackgroundTransparency = 0x1,
+            Size = UDim2.new(0x1, 0x0, 0x0, 0x0), AutomaticSize = Enum.AutomaticSize.Y })
+        local label = create("\084\101\120\116\076\097\098\101\108", { Parent = wrap, BackgroundTransparency = 0x1,
+            Size = UDim2.new(0x1, 0x0, 0x0, 0x0), AutomaticSize = Enum.AutomaticSize.Y,
+            Text = text, TextWrapped = true, Font = Enum.Font.Gotham,
+            TextSize = bodyFont(), TextColor3 = COLORS.Text,
+            TextXAlignment = Enum.TextXAlignment.Left, TextYAlignment = Enum.TextYAlignment.Top })
+        animateIn(label)
+        local actions = create("\070\114\097\109\101", { Parent = wrap, BackgroundTransparency = 0x1,
+            Position = UDim2.new(0x0, -0x8, 0x0, 0x0), Size = UDim2.new(0x1, 0x0, 0x0, 0x20) })
+
+        local function actionBtn(xOff, drawFn, onClick)
+            local b = create("\084\101\120\116\066\117\116\116\111\110", { Parent = actions, BackgroundTransparency = 0x1,
+                BorderSizePixel = 0x0, AutoButtonColor = false,
+                Position = UDim2.new(0x0, xOff, 0x0, 0x0), Size = UDim2.new(0x0, 0x20, 0x0, 0x20), Text = "" })
+            drawFn(b)
+            b.MouseButton1Click:Connect(onClick)
+            return b
+        end
+        actionBtn(0x0, function(b) drawCopyIcon(b, COLORS.Muted) end, function()
+            if copyClipboard(text) then notify("\067\111\112\105\101\100", "\115\117\099\099\101\115\115")
+            else notify("\067\108\105\112\098\111\097\114\100\032\117\110\097\118\097\105\108\097\098\108\101", "\119\097\114\110\105\110\103") end
+        end)
+        if Data.voiceRead then
+            actionBtn(0x20, function(b) drawSpeaker(b, COLORS.Muted) end, function()
+                if _G.ChatGPTRonnieReadVoice then _G.ChatGPTRonnieReadVoice(text) end
+            end)
+        end
+        local isLast = msgIndex == #CurrentChat.messages
+        if isLast and not historyMode then
+            local regenBtn = create("\084\101\120\116\066\117\116\116\111\110", {
+                Parent = actions, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+                AutoButtonColor = false, Position = UDim2.new(0x0, 0x44, 0x0, 0x3),
+                Size = UDim2.new(0x0, 0x5C, 0x0, 0x1A), Text = "\082\101\103\101\110\101\114\097\116\101",
+                Font = Enum.Font.GothamBold, TextSize = 0xB, TextColor3 = COLORS.Text })
+            corner(regenBtn, 0xD); hoverable(regenBtn, COLORS.Surface2, COLORS.Surface3)
+            regenBtn.MouseButton1Click:Connect(function()
+                for i = #CurrentChat.messages, 0x1, -0x1 do
+                    if CurrentChat.messages[i].role == "\097\115\115\105\115\116\097\110\116" then
+                        table.remove(CurrentChat.messages, i); break
+                    end
+                end
+                local lastUser
+                for i = #CurrentChat.messages, 0x1, -0x1 do
+                    if CurrentChat.messages[i].role == "\117\115\101\114" then
+                        lastUser = CurrentChat.messages[i].content; break
+                    end
+                end
+                saveData(); renderChat()
+                if lastUser then Prompt.Text = lastUser; sendMessage() end
+            end)
+        end
+        task.defer(function()
+            local h = label.AbsoluteSize.Y
+            actions.Position = UDim2.new(0x0, -0x8, 0x0, h + 0x6)
+            wrap.Size = UDim2.new(0x1, 0x0, 0x0, h + 0x2A)
+            row.Size = UDim2.new(0x1, 0x0, 0x0, h + 0x2A)
+            if not historyMode then scrollToBottom(true) end
+        end)
+
+        local blocks = ToolRunner.extractAllCodeBlocks(text)
+        if #blocks > 0x0 and not historyMode then
+            for _, code in ipairs(blocks) do
+                task.defer(function()
+                    local box = create("\070\114\097\109\101", { Parent = Messages, BackgroundColor3 = COLORS.Surface,
+                        BorderSizePixel = 0x0, Size = UDim2.new(0x1, -0xC, 0x0, 0xC8) })
+                    corner(box, 0xC); stroke(box, COLORS.Border, 0.3)
+                    create("\084\101\120\116\076\097\098\101\108", { Parent = box, BackgroundTransparency = 0x1,
+                        Position = UDim2.new(0x0, 0xC, 0x0, 0xA), Size = UDim2.new(0x0, 0x5A, 0x0, 0x16),
+                        Text = "\067\111\100\101", Font = Enum.Font.GothamBold, TextSize = 0xB,
+                        TextColor3 = COLORS.AccentHover, TextXAlignment = Enum.TextXAlignment.Left })
+                    local copyCode = create("\084\101\120\116\066\117\116\116\111\110", {
+                        Parent = box, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+                        AutoButtonColor = false, AnchorPoint = Vector2.new(0x1, 0x0),
+                        Position = UDim2.new(0x1, -0xC, 0x0, 0xA), Size = UDim2.new(0x0, 0x38, 0x0, 0x1A),
+                        Text = "\067\111\112\121", Font = Enum.Font.GothamBold, TextSize = 0xA,
+                        TextColor3 = COLORS.Text })
+                    corner(copyCode, 0xD); hoverable(copyCode, COLORS.Surface2, COLORS.Surface3)
+                    copyCode.MouseButton1Click:Connect(function()
+                        if copyClipboard(code) then notify("\067\111\100\101\032\099\111\112\105\101\100", "\115\117\099\099\101\115\115")
+                        else notify("\067\108\105\112\098\111\097\114\100\032\117\110\097\118\097\105\108\097\098\108\101", "\119\097\114\110\105\110\103") end
+                    end)
+                    local runCode = create("\084\101\120\116\066\117\116\116\111\110", {
+                        Parent = box, BackgroundColor3 = COLORS.Accent, BorderSizePixel = 0x0,
+                        AutoButtonColor = false, AnchorPoint = Vector2.new(0x1, 0x0),
+                        Position = UDim2.new(0x1, -0x4A, 0x0, 0xA), Size = UDim2.new(0x0, 0x38, 0x0, 0x1A),
+                        Text = "\082\117\110", Font = Enum.Font.GothamBold, TextSize = 0xA,
+                        TextColor3 = Color3.new(0x1,0x1,0x1) })
+                    corner(runCode, 0xD); hoverable(runCode, COLORS.Accent, COLORS.AccentHover)
+                    runCode.MouseButton1Click:Connect(function() requestExec(code) end)
+                    create("\084\101\120\116\066\111\120", { Parent = box, BackgroundTransparency = 0x1,
+                        Position = UDim2.new(0x0, 0xC, 0x0, 0x2C), Size = UDim2.new(0x1, -0x18, 0x1, -0x36),
+                        Text = code, MultiLine = true, TextEditable = false,
+                        ClearTextOnFocus = false, Font = Enum.Font.Code, TextSize = 0xB,
+                        TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left,
+                        TextYAlignment = Enum.TextYAlignment.Top })
+                    animateIn(box)
+                    scrollToBottom(true)
+                end)
+            end
+            if Data.autoExecute then
+                task.defer(function()
+                    for _, code in ipairs(blocks) do
+                        local ok, err = ToolRunner.execute(code)
+                        if ok then notify("\065\117\116\111\045\101\120\101\099\117\116\101\100", "\115\117\099\099\101\115\115")
+                        else notify(err or "\065\117\116\111\045\101\120\101\099\032\101\114\114\111\114", "\101\114\114\111\114") end
+                    end
+                end)
+            end
+        end
+    end
+end
+
+local function renderChat()
+    clearMessages()
+    CurrentChat = getCurrentChat()
+    if #CurrentChat.messages == 0x0 then
+        local w = create("\070\114\097\109\101", { Parent = Messages, BackgroundTransparency = 0x1,
+            Size = UDim2.new(0x1, 0x0, 0x0, 0x0), AutomaticSize = Enum.AutomaticSize.Y })
+        local h = create("\084\101\120\116\076\097\098\101\108", { Parent = w, BackgroundTransparency = 0x1,
+            Position = UDim2.new(0x0, 0x4, 0x0, 0x0), Size = UDim2.new(0x1, -0x8, 0x0, 0x22),
+            Text = "\072\111\119\032\099\097\110\032\073\032\104\101\108\112\063", Font = Enum.Font.GothamBold, TextSize = 0x16,
+            TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left, TextTransparency = 0x1 })
+        local s = create("\084\101\120\116\076\097\098\101\108", { Parent = w, BackgroundTransparency = 0x1,
+            Position = UDim2.new(0x0, 0x4, 0x0, 0x26), Size = UDim2.new(0x1, -0x8, 0x0, 0x14),
+            Text = Data.personaMode == "\101\120\101\099\117\116\111\114"
+                and "\065\115\107\032\109\101\032\102\111\114\032\097\110\121\032\101\120\101\099\117\116\111\114\032\115\099\114\105\112\116\032\045\032\097\117\116\111\032\102\097\114\109\044\032\119\101\098\104\111\111\107\044\032\071\085\073\046"
+                or "\065\115\107\032\109\101\032\116\111\032\098\117\105\108\100\044\032\115\099\114\105\112\116\044\032\111\114\032\109\111\100\105\102\121\032\121\111\117\114\032\103\097\109\101\046",
+            Font = Enum.Font.Gotham, TextSize = 0xC, TextColor3 = COLORS.Muted,
+            TextXAlignment = Enum.TextXAlignment.Left, TextTransparency = 0x1 })
+        if Data.animationsEnabled then
+            tween(h, { TextTransparency = 0x0 }, 0.32)
+            task.delay(0.08, function() tween(s, { TextTransparency = 0x0 }, 0.32) end)
+        else
+            h.TextTransparency = 0x0; s.TextTransparency = 0x0
+        end
+        local chips = addSuggestionChips(w)
+        chips.Position = UDim2.new(0x0, 0x4, 0x0, 0x44)
+        task.defer(function()
+            w.Size = UDim2.new(0x1, 0x0, 0x0, 0x44 + chips.AbsoluteSize.Y + 0x6)
+        end)
+    else
+        for i, m in ipairs(CurrentChat.messages) do
+            addBubble(m.role, m.content, true, i)
+        end
+        task.delay(0.35, function() scrollToBottom(false) end)
+    end
+end
+
+--// THINKING
+local function thinkingIndicator()
+    local row = create("\070\114\097\109\101", { Parent = Messages, BackgroundTransparency = 0x1,
+        Size = UDim2.new(0x1, 0x0, 0x0, 0x1E) })
+    local dots = {}
+    for i = 0x1, 0x3 do
+        local d = create("\070\114\097\109\101", { Parent = row, BackgroundColor3 = COLORS.Muted,
+            BorderSizePixel = 0x0, Position = UDim2.new(0x0, (i - 0x1) * 0xC, 0x0, 0x8),
+            Size = UDim2.new(0x0, 0x7, 0x0, 0x7) })
+        corner(d, 0x4); dots[i] = d
+    end
+    local running = true
+    task.spawn(function()
+        local phase = 0x0
+        while running do
+            phase = (phase + 0x1) % 0x3
+            for i, d in ipairs(dots) do
+                local a = (i - 0x1) == phase
+                tween(d, { BackgroundColor3 = a and COLORS.Accent or COLORS.Muted,
+                    Size = a and UDim2.new(0x0, 0x9, 0x0, 0x9) or UDim2.new(0x0, 0x7, 0x0, 0x7) }, 0.2)
+            end
+            task.wait(0.32)
+        end
+    end)
+    scrollToBottom(true)
+    return function() running = false; if row then row:Destroy() end end
+end
+
+--// TTS
+local function ttsOpenAI(text)
+    local key = Data.keys.OpenAI
+    if not key or key == "" then return false, "\079\112\101\110\065\073\032\107\101\121\032\114\101\113\117\105\114\101\100\046" end
+    if not Request or not hasFileAPI() or not GetCustomAsset then return false, "\065\080\073\115\032\109\105\115\115\105\110\103\046" end
+    local body = { model = "\103\112\116\045\052\111\045\109\105\110\105\045\116\116\115", voice = Data.ttsVoice or "\097\108\108\111\121",
+        input = text, response_format = "\109\112\051" }
+    local res, err = doRequest({
+        Url = "\104\116\116\112\115\058\047\047\097\112\105\046\111\112\101\110\097\105\046\099\111\109\047\118\049\047\097\117\100\105\111\047\115\112\101\101\099\104", Method = "\080\079\083\084",
+        Headers = { ["\067\111\110\116\101\110\116\045\084\121\112\101"] = "\097\112\112\108\105\099\097\116\105\111\110\047\106\115\111\110", ["\065\117\116\104\111\114\105\122\097\116\105\111\110"] = "\066\101\097\114\101\114\032" .. key },
+        Body = HttpService:JSONEncode(body) })
+    if not res then return false, err end
+    local file = SAVE_FOLDER .. "\047\118\111\105\099\101\046\109\112\051"
+    local ok = pcall(function()
+        if hasFolderAPI() and not isfolder(SAVE_FOLDER) then makefolder(SAVE_FOLDER) end
+        writefile(file, res.Body) end)
+    if not ok then return false, "\083\097\118\101\032\102\097\105\108\101\100\046" end
+    local ok2, asset = pcall(function() return GetCustomAsset(file) end)
+    if not ok2 or not asset then return false, "\076\111\097\100\032\102\097\105\108\101\100\046" end
+    local old = GuiParent:FindFirstChild("\067\104\097\116\071\080\084\095\084\084\083\095\082\111\110\110\105\101")
+    if old then pcall(function() old:Stop(); old:Destroy() end) end
+    local s = create("\083\111\117\110\100", { Parent = GuiParent, Name = "\067\104\097\116\071\080\084\095\084\084\083\095\082\111\110\110\105\101",
+        SoundId = asset, Volume = 0x1 })
+    local ok3 = pcall(function() s:Play() end)
+    if not ok3 then s:Destroy(); return false, "\080\108\097\121\098\097\099\107\032\114\101\102\117\115\101\100\046" end
+    return true
+end
+_G.ChatGPTRonnieReadVoice = function(text)
+    local t = tostring(text or ""); if #t > 0xFA0 then t = t:sub(0x1, 0xFA0) end
+    task.spawn(function()
+        local ok, err = ttsOpenAI(t)
+        if ok then notify("\086\111\105\099\101\032\115\116\097\114\116\101\100", "\115\117\099\099\101\115\115") else notify(err or "\086\111\105\099\101\032\102\097\105\108\101\100", "\119\097\114\110\105\110\103") end
+    end)
+end
+
+--// SETTINGS
+local Settings = create("\070\114\097\109\101", {
+    Parent = Main, BackgroundColor3 = COLORS.BG, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0x0, 0x0, 0x0), Size = UDim2.new(0x1, 0x0, 0x1, 0x0),
+    Visible = false, ZIndex = 0x1F4
+})
+local SettingsHeader = create("\070\114\097\109\101", { Parent = Settings, BackgroundTransparency = 0x1,
+    Size = UDim2.new(0x1, 0x0, 0x0, 0x38), ZIndex = 0x1F5 })
+create("\084\101\120\116\076\097\098\101\108", { Parent = SettingsHeader, BackgroundTransparency = 0x1,
+    Position = UDim2.new(0x0, 0x14, 0x0, 0x0), Size = UDim2.new(0x1, -0x50, 0x1, 0x0),
+    Text = "\083\101\116\116\105\110\103\115", Font = Enum.Font.GothamBold, TextSize = 0x12,
+    TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x1F6 })
+local SettingsClose = create("\084\101\120\116\066\117\116\116\111\110", {
+    Parent = SettingsHeader, BackgroundColor3 = COLORS.Surface2, BorderSizePixel = 0x0,
+    AutoButtonColor = false, AnchorPoint = Vector2.new(0x1, 0.5),
+    Position = UDim2.new(0x1, -0xE, 0.5, 0x0), Size = UDim2.new(0x0, 0x24, 0x0, 0x24),
+    Text = "\088", Font = Enum.Font.GothamBold, TextSize = 0xE,
+    TextColor3 = COLORS.Text, ZIndex = 0x1F6 })
+corner(SettingsClose, 0x12); hoverable(SettingsClose, COLORS.Surface2, COLORS.Surface3)
+
+local SettingsScroll = create("\083\099\114\111\108\108\105\110\103\070\114\097\109\101", {
+    Parent = Settings, BackgroundTransparency = 0x1, BorderSizePixel = 0x0,
+    Position = UDim2.new(0x0, 0x0, 0x0, 0x38), Size = UDim2.new(0x1, 0x0, 0x1, -0x38),
+    CanvasSize = UDim2.new(0x0, 0x0, 0x0, 0x0), AutomaticCanvasSize = Enum.AutomaticSize.Y,
+    ScrollBarThickness = 0x3, ScrollBarImageColor3 = COLORS.Surface3, ZIndex = 0x1F5 })
+local SettingsList = create("\085\073\076\105\115\116\076\097\121\111\117\116", {
+    Parent = SettingsScroll, Padding = UDim.new(0x0, 0xA), SortOrder = Enum.SortOrder.LayoutOrder })
+create("\085\073\080\097\100\100\105\110\103", { Parent = SettingsScroll,
+    PaddingLeft = UDim.new(0x0, 0x10), PaddingRight = UDim.new(0x0, 0x10),
+    PaddingTop = UDim.new(0x0, 0xA), PaddingBottom = UDim.new(0x0, 0x18) })
+
+local function section(parent, title, sub)
+    local f = create("\070\114\097\109\101", { Parent = parent, BackgroundTransparency = 0x1,
+        Size = UDim2.new(0x1, 0x0, 0x0, 0x2C), ZIndex = 0x1F6 })
+    create("\084\101\120\116\076\097\098\101\108", { Parent = f, BackgroundTransparency = 0x1,
+        Size = UDim2.new(0x1, 0x0, 0x0, 0x16), Text = title,
+        Font = Enum.Font.GothamBold, TextSize = 0xE, TextColor3 = COLORS.Text,
+        TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x1F6 })
+    create("\084\101\120\116\076\097\098\101\108", { Parent = f, BackgroundTransparency = 0x1,
+        Position = UDim2.new(0x0, 0x0, 0x0, 0x16), Size = UDim2.new(0x1, 0x0, 0x0, 0x10),
+        Text = sub or "", Font = Enum.Font.Gotham, TextSize = 0xB,
+        TextColor3 = COLORS.Muted, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x1F6 })
+    return f
+end
+
+local function field(parent, placeholder, text, h)
+    local box = create("\084\101\120\116\066\111\120", {
+        Parent = parent, BackgroundColor3 = COLORS.Surface, BorderSizePixel = 0x0,
+        ClearTextOnFocus = false, PlaceholderText = placeholder, Text = text or "",
+        PlaceholderColor3 = COLORS.Muted, TextColor3 = COLORS.Text,
+        Font = Enum.Font.Gotham, TextSize = 0xD, TextXAlignment = Enum.TextXAlignment.Left,
+        TextYAlignment = Enum.TextYAlignment.Top,
+        Size = UDim2.new(0x1, 0x0, 0x0, h or 0x2C), ZIndex = 0x1F6 })
+    corner(box, 0xC)
+    local s = stroke(box, COLORS.Border, 0.3)
+    box.Focused:Connect(function() tween(s, {Color = COLORS.Accent, Transparency = 0x0}, 0.16) end)
+    box.FocusLost:Connect(function() tween(s, {Color = COLORS.Border, Transparency = 0.3}, 0.18) end)
+    return box
+end
+
+local function button(parent, text, h)
+    local b = create("\084\101\120\116\066\117\116\116\111\110", {
+        Parent = parent, BackgroundColor3 = COLORS.Surface, BorderSizePixel = 0x0,
+        AutoButtonColor = false, Size = UDim2.new(0x1, 0x0, 0x0, h or 0x2A),
+        Text = "\032\032" .. text, Font = Enum.Font.GothamMedium, TextSize = 0xD,
+        TextColor3 = COLORS.Text, TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x1F6 })
+    corner(b, 0xC); stroke(b, COLORS.Border, 0.3)
+    hoverable(b, COLORS.Surface, COLORS.Surface3)
+    return b
+end
+
+section(SettingsScroll, "\065\073\032\077\111\100\101", "\082\111\098\108\111\120\032\103\097\109\101\032\100\101\118\032\111\114\032\101\120\101\099\117\116\111\114\032\115\099\114\105\112\116\105\110\103\046")
+local ModeRoblox   = button(SettingsScroll, "\077\111\100\101\058\032\082\111\098\108\111\120\032\068\101\118\101\108\111\112\101\114\032\032" .. (Data.personaMode == "\114\111\098\108\111\120" and "\091\079\078\093" or ""))
+local ModeExecutor = button(SettingsScroll, "\077\111\100\101\058\032\069\120\101\099\117\116\111\114\032\083\099\114\105\112\116\105\110\103\032\032" .. (Data.personaMode == "\101\120\101\099\117\116\111\114" and "\091\079\078\093" or ""))
+
+section(SettingsScroll, "\065\080\073\032\047\032\080\114\111\118\105\100\101\114", "\075\101\121\032\115\097\118\101\100\032\108\111\099\097\108\108\121\046")
+local KeyInfo = create("\084\101\120\116\076\097\098\101\108", { Parent = SettingsScroll, BackgroundTransparency = 0x1,
+    Size = UDim2.new(0x1, 0x0, 0x0, 0x12),
+    Text = "\080\114\111\118\105\100\101\114\058\032" .. Data.activeProvider .. "\032\032\124\032\032\077\111\100\101\108\058\032" .. selectedModel(),
+    Font = Enum.Font.GothamBold, TextSize = 0xB, TextColor3 = COLORS.AccentHover,
+    TextXAlignment = Enum.TextXAlignment.Left, ZIndex = 0x1F6 })
+local APIKey = field(SettingsScroll, "\080\114\111\118\105\100\101\114\032\065\080\073\032\107\101\121\046\046\046", Data.keys[Data.activeProvider] or "", 0x2C)
+local SaveKeys = button(SettingsScroll, "\083\097\118\101\032\107\101\121\115\032\108\111\099\097\108\108\121\032\032\045\032\032" .. (Data.saveKeys and "\079\078" or "\079\070\070"))
+local CustomModel = field(SettingsScroll, "\067\117\115\116\111\109\032\109\111\100\101\108\032\073\068", Data.customModel, 0x2A)
+local CustomURL = field(SettingsScroll, "\067\117\115\116\111\109\032\098\097\115\101\032\085\082\076", Data.customBaseURL, 0x2A)
+local CustomHeaders = field(SettingsScroll, "\067\117\115\116\111\109\032\104\101\097\100\101\114\115\032\074\083\079\078", Data.customHeaders, 0x2E)
+
+section(SettingsScroll, "\065\073\032\084\111\111\108\115", "\065\117\116\111\045\101\120\101\099\032\043\032\115\097\102\101\116\121\046")
+local AutoExecToggle = button(SettingsScroll, "\065\117\116\111\045\101\120\101\099\117\116\101\032\099\111\100\101\032\098\108\111\099\107\115\032\032\045\032\032" .. (Data.autoExecute and "\079\078" or "\079\070\070"))
+local SafeModeToggle = button(SettingsScroll, "\083\097\102\101\032\109\111\100\101\032\032\045\032\032" .. (Data.safeMode and "\079\078" or "\079\070\070"))
+local ResetPersona = button(SettingsScroll, "\082\101\115\101\116\032\112\101\114\115\111\110\097")
+
+section(SettingsScroll, "\065\073\032\080\101\114\115\111\110\097", "\067\117\115\116\111\109\032\105\110\115\116\114\117\099\116\105\111\110\115\046")
+local Persona = field(SettingsScroll, "\080\101\114\115\111\110\097\046\046\046", Data.persona, 0xA0)
+
+section(SettingsScroll, "\065\112\112\101\097\114\097\110\099\101", "")
+local FontSmall = button(SettingsScroll, "\070\111\110\116\032\115\105\122\101\058\032\083\109\097\108\108")
+local FontNormal = button(SettingsScroll, "\070\111\110\116\032\115\105\122\101\058\032\078\111\114\109\097\108")
+local FontLarge = button(SettingsScroll, "\070\111\110\116\032\115\105\122\101\058\032\076\097\114\103\101")
+
+section(SettingsScroll, "\071\101\110\101\114\097\116\105\111\110", "")
+local Temp = field(SettingsScroll, "\084\101\109\112\101\114\097\116\117\114\101\032\040\048\046\048\032\045\032\050\046\048\041", tostring(Data.temperature), 0x2A)
+local MaxTokens = field(SettingsScroll, "\077\097\120\032\111\117\116\112\117\116\032\116\111\107\101\110\115", tostring(Data.maxTokens), 0x2A)
+
+section(SettingsScroll, "\086\111\105\099\101", "")
+local VoiceToggle = button(SettingsScroll, "\086\111\105\099\101\032\082\101\097\100\032\032\045\032\032" .. (Data.voiceRead and "\079\078" or "\079\070\070"))
+local TTSVoice = field(SettingsScroll, "\084\084\083\032\118\111\105\099\101\032\040\097\108\108\111\121\047\110\111\118\097\047\101\099\104\111\041", tostring(Data.ttsVoice), 0x2A)
+
+section(SettingsScroll, "\073\110\116\101\114\102\097\099\101", "")
+local EnterSend = button(SettingsScroll, "\069\110\116\101\114\032\116\111\032\115\101\110\100\032\032\045\032\032" .. (Data.enterToSend and "\079\078" or "\079\070\070"))
+local IntroToggle = button(SettingsScroll, "\073\110\116\114\111\032\097\110\105\109\097\116\105\111\110\032\032\045\032\032" .. (Data.introEnabled and "\079\078" or "\079\070\070"))
+local AnimToggle = button(SettingsScroll, "\065\110\105\109\097\116\105\111\110\115\032\032\045\032\032" .. (Data.animationsEnabled and "\079\078" or "\079\070\070"))
+local ScrollToggle = button(SettingsScroll, "\065\117\116\111\045\115\099\114\111\108\108\032\111\110\032\114\101\112\108\121\032\032\045\032\032" .. (Data.autoScroll and "\079\078" or "\079\070\070"))
+
+section(SettingsScroll, "\067\104\097\116\115", "")
+local ClearCurrent = button(SettingsScroll, "\068\101\108\101\116\101\032\099\117\114\114\101\110\116\032\099\104\097\116")
+local ClearAll = button(SettingsScroll, "\068\101\108\101\116\101\032\065\076\076\032\099\104\097\116\115")
+
+section(SettingsScroll, "\065\098\111\117\116", "\082\111\110\110\105\101\032\077\117\108\116\105\045\065\073")
+local AboutLabel = create("\084\101\120\116\076\097\098\101\108", { Parent = SettingsScroll, BackgroundColor3 = COLORS.Surface,
+    BorderSizePixel = 0x0, Size = UDim2.new(0x1, 0x0, 0x0, 0xA0),
+    Text = "\065\117\116\104\111\114\058\032\082\111\110\110\105\101\092\110\080\108\097\116\102\111\114\109\058\032\079\112\101\110\065\073\092\110"
+        .. "\065\073\058\032\067\104\097\116\071\080\084\044\032\067\108\097\117\100\101\044\032\071\101\109\105\110\105\044\032\071\114\111\113\044\032\071\114\111\107\044\092\110\068\101\101\112\083\101\101\107\044\032\077\105\115\116\114\097\108\044\032\079\112\101\110\082\111\117\116\101\114\044\032\080\111\108\108\105\110\097\116\105\111\110\115\092\110\092\110"
+        .. "\072\084\084\080\058\032" .. (Request and "\079\075" or "\077\073\083\083\073\078\071")
+        .. "\032\124\032\070\105\108\101\058\032" .. (hasFileAPI() and "\079\075" or "\077\073\083\083\073\078\071")
+        .. "\092\110\108\111\097\100\115\116\114\105\110\103\058\032" .. (typeof(loadstring) == "\102\117\110\099\116\105\111\110" and "\079\075" or "\077\073\083\083\073\078\071")
+        .. "\092\110\067\108\105\112\098\111\097\114\100\058\032" .. (typeof(setclipboard) == "\102\117\110\099\116\105\111\110" and "\079\075" or "\077\073\083\083\073\078\071"),
+    Font = Enum.Font.Gotham, TextSize = 0xB, TextColor3 = COLORS.Muted,
+    TextXAlignment = Enum.TextXAlignment.Left, TextYAlignment = Enum.TextYAlignment.Top,
+    ZIndex = 0x1F6, ClipsDescendants = true })
+corner(AboutLabel, 0xC)
+create("\085\073\080\097\100\100\105\110\103", { Parent = AboutLabel,
+    PaddingLeft = UDim.new(0x0, 0xC), PaddingTop = UDim.new(0x0, 0xA), PaddingRight = UDim.new(0x0, 0xC) })
+
+SettingsClose.MouseButton1Click:Connect(function() Settings.Visible = false end)
+
+--// SETTINGS EVENTS
+APIKey.FocusLost:Connect(function()
+    Data.keys[Data.activeProvider] = APIKey.Text
+    if Data.saveKeys then saveData() end
+end)
+SaveKeys.MouseButton1Click:Connect(function()
+    Data.saveKeys = not Data.saveKeys
+    SaveKeys.Text = "\032\032\083\097\118\101\032\107\101\121\115\032\108\111\099\097\108\108\121\032\032\045\032\032" .. (Data.saveKeys and "\079\078" or "\079\070\070")
+    saveData()
+end)
+CustomModel.FocusLost:Connect(function() Data.customModel = CustomModel.Text; saveData(); updateModelSub() end)
+CustomURL.FocusLost:Connect(function() Data.customBaseURL = CustomURL.Text; saveData() end)
+CustomHeaders.FocusLost:Connect(function() Data.customHeaders = CustomHeaders.Text; saveData() end)
+Persona.FocusLost:Connect(function() Data.persona = Persona.Text; saveData() end)
+Temp.FocusLost:Connect(function()
+    local v = tonumber(Temp.Text); if not v then Temp.Text = tostring(Data.temperature); return end
+    Data.temperature = math.clamp(v, 0x0, 0x2); Temp.Text = tostring(Data.temperature); saveData()
+end)
+MaxTokens.FocusLost:Connect(function()
+    local v = tonumber(MaxTokens.Text); if not v then MaxTokens.Text = tostring(Data.maxTokens); return end
+    Data.maxTokens = math.clamp(math.floor(v), 0x40, 0x1F400); MaxTokens.Text = tostring(Data.maxTokens); saveData()
+end)
+VoiceToggle.MouseButton1Click:Connect(function()
+    Data.voiceRead = not Data.voiceRead
+    VoiceToggle.Text = "\032\032\086\111\105\099\101\032\082\101\097\100\032\032\045\032\032" .. (Data.voiceRead and "\079\078" or "\079\070\070"); saveData()
+end)
+TTSVoice.FocusLost:Connect(function()
+    Data.ttsVoice = TTSVoice.Text ~= "" and TTSVoice.Text or "\097\108\108\111\121"; saveData()
+end)
+EnterSend.MouseButton1Click:Connect(function()
+    Data.enterToSend = not Data.enterToSend
+    EnterSend.Text = "\032\032\069\110\116\101\114\032\116\111\032\115\101\110\100\032\032\045\032\032" .. (Data.enterToSend and "\079\078" or "\079\070\070"); saveData()
+end)
+IntroToggle.MouseButton1Click:Connect(function()
+    Data.introEnabled = not Data.introEnabled
+    IntroToggle.Text = "\032\032\073\110\116\114\111\032\097\110\105\109\097\116\105\111\110\032\032\045\032\032" .. (Data.introEnabled and "\079\078" or "\079\070\070"); saveData()
+end)
+AnimToggle.MouseButton1Click:Connect(function()
+    Data.animationsEnabled = not Data.animationsEnabled
+    AnimToggle.Text = "\032\032\065\110\105\109\097\116\105\111\110\115\032\032\045\032\032" .. (Data.animationsEnabled and "\079\078" or "\079\070\070"); saveData()
+end)
+ScrollToggle.MouseButton1Click:Connect(function()
+    Data.autoScroll = not Data.autoScroll
+    ScrollToggle.Text = "\032\032\065\117\116\111\045\115\099\114\111\108\108\032\111\110\032\114\101\112\108\121\032\032\045\032\032" .. (Data.autoScroll and "\079\078" or "\079\070\070"); saveData()
+end)
+FontSmall.MouseButton1Click:Connect(function() Data.fontScale = "\115\109\097\108\108"; saveData(); renderChat(); notify("\070\111\110\116\058\032\115\109\097\108\108", "\115\117\099\099\101\115\115") end)
+FontNormal.MouseButton1Click:Connect(function() Data.fontScale = "\110\111\114\109\097\108"; saveData(); renderChat(); notify("\070\111\110\116\058\032\110\111\114\109\097\108", "\115\117\099\099\101\115\115") end)
+FontLarge.MouseButton1Click:Connect(function() Data.fontScale = "\108\097\114\103\101"; saveData(); renderChat(); notify("\070\111\110\116\058\032\108\097\114\103\101", "\115\117\099\099\101\115\115") end)
+
+ModeRoblox.MouseButton1Click:Connect(function()
+    Data.personaMode = "\114\111\098\108\111\120"
+    Data.persona = ROBLOX_PERSONA
+    Persona.Text = ROBLOX_PERSONA
+    ModeRoblox.Text = "\032\032\077\111\100\101\058\032\082\111\098\108\111\120\032\068\101\118\101\108\111\112\101\114\032\032\091\079\078\093"
+    ModeExecutor.Text = "\032\032\077\111\100\101\058\032\069\120\101\099\117\116\111\114\032\083\099\114\105\112\116\105\110\103\032\032"
+    saveData(); updateModelSub()
+    notify("\077\111\100\101\058\032\082\111\098\108\111\120\032\100\101\118", "\115\117\099\099\101\115\115")
+    renderChat()
+end)
+ModeExecutor.MouseButton1Click:Connect(function()
+    Data.personaMode = "\101\120\101\099\117\116\111\114"
+    Data.persona = EXECUTOR_PERSONA
+    Persona.Text = EXECUTOR_PERSONA
+    ModeRoblox.Text = "\032\032\077\111\100\101\058\032\082\111\098\108\111\120\032\068\101\118\101\108\111\112\101\114\032\032"
+    ModeExecutor.Text = "\032\032\077\111\100\101\058\032\069\120\101\099\117\116\111\114\032\083\099\114\105\112\116\105\110\103\032\032\091\079\078\093"
+    saveData(); updateModelSub()
+    notify("\077\111\100\101\058\032\069\120\101\099\117\116\111\114\032\115\099\114\105\112\116\105\110\103", "\115\117\099\099\101\115\115")
+    renderChat()
+end)
+
+AutoExecToggle.MouseButton1Click:Connect(function()
+    Data.autoExecute = not Data.autoExecute
+    AutoExecToggle.Text = "\032\032\065\117\116\111\045\101\120\101\099\117\116\101\032\099\111\100\101\032\098\108\111\099\107\115\032\032\045\032\032" .. (Data.autoExecute and "\079\078" or "\079\070\070")
+    saveData()
+end)
+SafeModeToggle.MouseButton1Click:Connect(function()
+    Data.safeMode = not Data.safeMode
+    SafeModeToggle.Text = "\032\032\083\097\102\101\032\109\111\100\101\032\032\045\032\032" .. (Data.safeMode and "\079\078" or "\079\070\070")
+    saveData()
+end)
+ResetPersona.MouseButton1Click:Connect(function()
+    local p = Data.personaMode == "\101\120\101\099\117\116\111\114" and EXECUTOR_PERSONA or ROBLOX_PERSONA
+    Data.persona = p; Persona.Text = p
+    saveData(); notify("\080\101\114\115\111\110\097\032\114\101\115\101\116", "\115\117\099\099\101\115\115")
+end)
+ClearCurrent.MouseButton1Click:Connect(function()
+    if #Data.chats <= 0x1 then CurrentChat = createChat()
+    else
+        for i, c in ipairs(Data.chats) do if c.id == CurrentChat.id then table.remove(Data.chats, i); break end end
+        CurrentChat = getCurrentChat()
+    end
+    Data.selectedChat = CurrentChat.id
+    saveData(); renderChat(); rebuildRecent(); notify("\067\104\097\116\032\100\101\108\101\116\101\100", "\115\117\099\099\101\115\115")
+end)
+ClearAll.MouseButton1Click:Connect(function()
+    Data.chats = {}; CurrentChat = createChat()
+    Data.selectedChat = CurrentChat.id
+    saveData(); renderChat(); rebuildRecent(); notify("\065\108\108\032\099\108\101\097\114\101\100", "\115\117\099\099\101\115\115")
+end)
+
+SidebarNewChat.MouseButton1Click:Connect(function()
+    CurrentChat = createChat(); Data.selectedChat = CurrentChat.id
+    saveData(); renderChat(); rebuildRecent(); closeSidebar(); notify("\078\101\119\032\099\104\097\116", "\115\117\099\099\101\115\115")
+end)
+SidebarSettings.MouseButton1Click:Connect(function() closeSidebar(); Settings.Visible = true end)
+NewChatBtn.MouseButton1Click:Connect(function()
+    CurrentChat = createChat(); Data.selectedChat = CurrentChat.id
+    saveData(); renderChat(); rebuildRecent(); notify("\078\101\119\032\099\104\097\116", "\115\117\099\099\101\115\115")
+end)
+MoreBtn.MouseButton1Click:Connect(function()
+    local parts = {}
+    for _, m in ipairs(CurrentChat.messages) do
+        table.insert(parts, m.role:upper() .. "\058\092\110" .. m.content)
+    end
+    if copyClipboard(table.concat(parts, "\092\110\092\110")) then notify("\067\111\110\118\101\114\115\097\116\105\111\110\032\099\111\112\105\101\100", "\115\117\099\099\101\115\115")
+    else notify("\067\108\105\112\098\111\097\114\100\032\117\110\097\118\097\105\108\097\098\108\101", "\119\097\114\110\105\110\103") end
+end)
+
+--// SEND
+local Sending = false
+local function sendMessage()
+    if Sending then return end
+    local prompt = Prompt.Text
+    if not prompt or prompt:gsub("\037\115\043","") == "" then return end
+    local activeKey = Data.keys[Data.activeProvider]
+    if not activeKey or activeKey == "" then
+        Settings.Visible = true; notify("\065\100\100\032\097\032" .. Data.activeProvider .. "\032\107\101\121", "\119\097\114\110\105\110\103"); return
+    end
+    if Data.activeProvider == "\067\117\115\116\111\109\032\047\032\079\112\101\110\065\073\045\067\111\109\112\097\116\105\098\108\101"
+        and (not Data.customBaseURL or Data.customBaseURL == "") then
+        Settings.Visible = true; notify("\065\100\100\032\099\117\115\116\111\109\032\098\097\115\101\032\085\082\076", "\119\097\114\110\105\110\103"); return
+    end
+    Sending = true; Prompt.Text = ""
+    -- pulse send
+    if Data.animationsEnabled then
+        tween(SendBtn, { Size = UDim2.new(0x0, 0x22, 0x0, 0x22) }, 0.08)
+        task.delay(0.1, function() tween(SendBtn, { Size = UDim2.new(0x0, 0x26, 0x0, 0x26) }, 0.2, Enum.EasingStyle.Back) end)
+    end
+    CurrentChat = getCurrentChat()
+    if CurrentChat.title == "\078\101\119\032\067\104\097\116" then
+        CurrentChat.title = safeText(prompt:gsub("\037\115\043","\032"), 0x22)
+    end
+    CurrentChat.provider = Data.activeProvider
+    CurrentChat.model = selectedModel()
+    CurrentChat.updatedAt = os.time()
+    table.insert(CurrentChat.messages, { role = "\117\115\101\114", content = prompt, time = os.time() })
+    saveData(); rebuildRecent()
+    renderChat()
+    scrollToBottom(true)
+    local stop = thinkingIndicator()
+    task.spawn(function()
+        local answer, err = askAI(prompt)
+        stop()
+        if answer then
+            table.insert(CurrentChat.messages, { role = "\097\115\115\105\115\116\097\110\116", content = answer, time = os.time() })
+            CurrentChat.updatedAt = os.time()
+            saveData(); renderChat(); rebuildRecent()
+            scrollToBottom(true)
+            if Data.voiceRead and _G.ChatGPTRonnieReadVoice then
+                _G.ChatGPTRonnieReadVoice(answer)
+            end
+        else
+            table.insert(CurrentChat.messages, { role = "\097\115\115\105\115\116\097\110\116",
+                content = "\091\069\114\114\111\114\093\032" .. tostring(err or "\082\101\113\117\101\115\116\032\102\097\105\108\101\100\046"), time = os.time() })
+            saveData(); renderChat()
+            scrollToBottom(true)
+            notify(tostring(err or "\082\101\113\117\101\115\116\032\102\097\105\108\101\100"), "\101\114\114\111\114")
+        end
+        Sending = false
+    end)
+end
+SendBtn.MouseButton1Click:Connect(sendMessage)
+Prompt.FocusLost:Connect(function(entered) if entered and Data.enterToSend then sendMessage() end end)
+
+--// INTRO
+local Intro = create("\070\114\097\109\101", {
+    Parent = ScreenGui, BackgroundColor3 = COLORS.BG, BorderSizePixel = 0x0,
+    Size = UDim2.new(0x1, 0x0, 0x1, 0x0), ZIndex = 0xFA0
+})
+local IntroCenter = create("\070\114\097\109\101", {
+    Parent = Intro, BackgroundTransparency = 0x1,
+    AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0x0, 0.5, 0x0),
+    Size = UDim2.new(0x0, 0x12C, 0x0, 0xC8), ZIndex = 0xFA1
+})
+local IntroLogo = create("\070\114\097\109\101", {
+    Parent = IntroCenter, BackgroundColor3 = COLORS.Accent, BorderSizePixel = 0x0,
+    AnchorPoint = Vector2.new(0.5, 0.5), Position = UDim2.new(0.5, 0x0, 0x0, 0x14),
+    Size = UDim2.new(0x0, 0x54, 0x0, 0x54), BackgroundTransparency = 0x1, ZIndex = 0xFAA
+})
+corner(IntroLogo, 0x18)
+create("\085\073\071\114\097\100\105\101\110\116", { Parent = IntroLogo,
+    Color = ColorSequence.new{
+        ColorSequenceKeypoint.new(0x0, COLORS.Accent),
+        ColorSequenceKeypoint.new(0x1, COLORS.AccentHover)
+    }, Rotation = 0x2D })
+local IntroLogoMark = create("\084\101\120\116\076\097\098\101\108", {
+    Parent = IntroLogo, BackgroundTransparency = 0x1, Size = UDim2.new(0x1, 0x0, 0x1, 0x0),
+    Text = "\065\073", Font = Enum.Font.GothamBold, TextSize = 0x20,
+    TextColor3 = Color3.new(0x1,0x1,0x1), TextTransparency = 0x1, ZIndex = 0xFAB })
+local IntroTitle = create("\084\101\120\116\076\097\098\101\108", {
+    Parent = IntroCenter, BackgroundTransparency = 0x1,
+    AnchorPoint = Vector2.new(0.5, 0x0), Position = UDim2.new(0.5, 0x0, 0x0, 0x78),
+    Size = UDim2.new(0x0, 0x104, 0x0, 0x28), Text = "\067\104\097\116\071\080\084",
+    Font = Enum.Font.GothamBold, TextSize = 0x1E, TextColor3 = COLORS.Text,
+    TextTransparency = 0x1, ZIndex = 0xFAC })
+local IntroSub = create("\084\101\120\116\076\097\098\101\108", {
+    Parent = IntroCenter, BackgroundTransparency = 0x1,
+    AnchorPoint = Vector2.new(0.5, 0x0), Position = UDim2.new(0.5, 0x0, 0x0, 0x9C),
+    Size = UDim2.new(0x0, 0x104, 0x0, 0x14), Text = "\077\117\108\116\105\045\065\073\032\077\111\098\105\108\101\032\067\108\105\101\110\116",
+    Font = Enum.Font.Gotham, TextSize = 0xC, TextColor3 = COLORS.Muted,
+    TextTransparency = 0x1, ZIndex = 0xFAC })
+
+local function playIntro()
+    if not Data.introEnabled then Intro.Visible = false; return end
+    Intro.BackgroundTransparency = 0x0
+    IntroLogo.BackgroundTransparency = 0x1
+    IntroLogo.Size = UDim2.new(0x0, 0x3C, 0x0, 0x3C)
+    IntroLogoMark.TextTransparency = 0x1
+    IntroTitle.TextTransparency = 0x1
+    IntroSub.TextTransparency = 0x1
+    task.wait(0.15)
+    tween(IntroLogo, { BackgroundTransparency = 0x0, Size = UDim2.new(0x0, 0x54, 0x0, 0x54) }, 0.55, Enum.EasingStyle.Quart)
+    task.wait(0.2)
+    tween(IntroLogoMark, { TextTransparency = 0x0 }, 0.35)
+    task.wait(0.25)
+    tween(IntroTitle, { TextTransparency = 0x0 }, 0.35)
+    task.wait(0.1)
+    tween(IntroSub, { TextTransparency = 0x0 }, 0.3)
+    task.wait(1.4)
+    tween(IntroLogo, { BackgroundTransparency = 0x1 }, 0.45)
+    tween(IntroLogoMark, { TextTransparency = 0x1 }, 0.4)
+    tween(IntroTitle, { TextTransparency = 0x1 }, 0.4)
+    tween(IntroSub, { TextTransparency = 0x1 }, 0.4)
+    tween(Intro, { BackgroundTransparency = 0x1 }, 0.5)
+    task.delay(0.55, function() Intro.Visible = false end)
+end
+
+--// INIT
+if Data.activeModel == "" then Data.activeModel = PROVIDERS[Data.activeProvider].models[0x1] end
+if not Data.keys then Data.keys = {} end
+if not Data.chats or #Data.chats == 0x0 then CurrentChat = createChat() end
+updateModelSub()
+renderChat()
+rebuildRecent()
+saveData()
+
+task.spawn(function() playIntro() end)
+
+print("\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061")
+print("\032\067\104\097\116\071\080\084\032\077\111\098\105\108\101\032\085\073\032\118\055\032\045\032\082\111\110\110\105\101")
+print("\032\070\114\097\109\101\058\032" .. BASE_W .. "\120" .. BASE_H .. "\032\040\119\105\100\101\044\032\099\101\110\116\101\114\101\100\041")
+print("\032\077\111\100\101\058\032" .. Data.personaMode .. "\032\124\032\065\117\116\111\045\115\099\114\111\108\108\058\032" .. tostring(Data.autoScroll))
+print("\032\080\114\111\118\105\100\101\114\058\032" .. Data.activeProvider .. "\032\124\032\077\111\100\101\108\058\032" .. selectedModel())
+print("\032\072\084\084\080\058\032" .. (Request and "\079\075" or "\077\073\083\083\073\078\071"))
+print("\032\108\111\097\100\115\116\114\105\110\103\058\032" .. (typeof(loadstring) == "\102\117\110\099\116\105\111\110" and "\079\075" or "\077\073\083\083\073\078\071"))
+print("\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061\061")
+ end)(...)
